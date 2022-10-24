@@ -4,11 +4,21 @@ import '../styles/nav.css'
 import axios from 'axios';
 import User from '../models/user';
 import { Link } from 'react-router-dom'
+import Modal from 'react-modal';
+import Login from '../pages/auth/Login';
+import ModalComp from './Modal';
 
 const Nav = (preops:any) => {
     const location = useLocation()
     const[guest, setGuest] = useState(false);
     const[user, setUser] = useState(new User())
+    const [modalIsOpen, setIsOpen] = React.useState(false);
+
+    function openModal() {
+      setIsOpen(true);      
+    }
+
+    Modal.setAppElement('#root');
 
     const logout = async () => {
         await axios.post('logout', {})
@@ -19,7 +29,6 @@ const Nav = (preops:any) => {
       const getUser = async () =>{
         try{
           const {data} = await axios.get('user')
-          console.log(data)
   
           setUser(new User(
             data[0].id,
@@ -35,12 +44,11 @@ const Nav = (preops:any) => {
         }
       }
       getUser();
-      console.log(user)
     }, []);
 
 if(location.pathname === '/register')
   return (
-    <div className="nav">
+    <div className="nav" id='root'>
         <div className='logo'>Logo</div>
         <div className="button">
             <div className="">
@@ -51,7 +59,7 @@ if(location.pathname === '/register')
   )
 else if(location.pathname === '/login')
   return (
-    <div className="nav">
+    <div className="nav" id='root'>
         <div className='logo'>Logo</div>
         <div className="button">
             <div className="">
@@ -63,7 +71,7 @@ else if(location.pathname === '/login')
 else{
     if(guest){
         return (
-            <div className="nav">
+            <div className="nav" id='root'>
                 <div className='logo'>Logo</div>
                 <div className="button">
                 <div className="">
@@ -78,16 +86,21 @@ else{
     }
     else{
         return (
-            <div className="nav">
+            <div className="nav" id='root'>
                 <div className='logo'>Logo</div>
                 <div className="button">
-                    <Link className=""to="/">
+                    <Link className="" to="/">
                         Home
                     </Link>
-                    <button>Settings</button>
-                    <Link className=""to="/"
+
+                    <a onClick={openModal}>Settings</a>
+                    {/* if state is true, then it render modal component, with the passed component as prop*/}
+                    {modalIsOpen && <ModalComp open={modalIsOpen} children={<Login />} stayOpen={setIsOpen}></ModalComp>}
+
+                    <Link className="" to="/"
                         onClick={logout}>Sign out
                     </Link>
+
                     <div>{user.image}</div>
                     <button>Add quote</button>
                 </div>
