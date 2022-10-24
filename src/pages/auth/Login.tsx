@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { SyntheticEvent, useState } from 'react'
 import { Navigate } from 'react-router-dom';
+import Nav from '../../components/Nav';
 
 
 
@@ -25,9 +26,8 @@ function Login() {
   }
 
   return (
-
-
     <main className="form-signin w-100 m-auto">
+        <Nav />
         <form onSubmit={submit}>
             <h1 className="h3 mb-3 fw-normal">Please login</h1>
             <input type="email" className="form-control" placeholder="name@example.com" required onChange={e => setEmail(e.target.value)}/>

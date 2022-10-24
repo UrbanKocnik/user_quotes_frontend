@@ -1,0 +1,15 @@
+.nav{
+    display: flex;
+    margin: 20px  350px;
+    justify-content:space-between;
+}
+
+.logo{
+    color:red;
+}
+
+.button{
+    margin-left: auto;
+    margin-right: 0;
+    
+}
