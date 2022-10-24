@@ -1,8 +1,12 @@
 import React from 'react'
+import Nav from '../components/Nav'
 
 const Landing = () => {
   return (
-    <div>Landing</div>
+    <div>
+        <Nav />
+        Landing
+    </div>
   )
 }
 

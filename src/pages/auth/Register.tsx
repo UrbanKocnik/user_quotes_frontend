@@ -1,6 +1,7 @@
 import React, { SyntheticEvent, useState } from 'react'
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';
+import Nav from '../../components/Nav';
 
 function Register() {
     const [first_name, setFirstName] = useState('');
@@ -32,6 +33,7 @@ function Register() {
     
   return (
     <main className="form-signin w-100 m-auto">
+        <Nav />
         <form onSubmit={submit}>
             <h1 className="h3 mb-3 fw-normal">Please register</h1>
 
