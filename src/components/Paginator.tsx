@@ -3,24 +3,26 @@ import React, { useEffect, useState } from 'react'
 const Paginator = (props: 
     {lastPage: number,
     currPage: number,
+    multiplier: number,
     pageChanged: (page: number) => void
     }) => {
       const [visible, setVisible] = useState(true)
 
     const nextPage = () => {
-        const next = props.currPage + 1;
-        if(next < props.lastPage){
-          props.pageChanged(next)
-        }
-        else if (next === props.lastPage){
-          props.pageChanged(next)
-          setVisible(false);
+        const next = props.multiplier + 1;
+        if(props.lastPage > 1){
+          if(props.lastPage === 2){
+            props.pageChanged(next)
+            setVisible(false)
+          }
+          else{
+            props.pageChanged(next)
+          }   
         }
         else{
-          setVisible(false)
           window.alert("No more quotes to load")
-        }
-        
+          setVisible(false)
+        } 
       }
 
   return (

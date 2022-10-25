@@ -5,6 +5,7 @@ import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import RandomQuote from './components/RandomQuote';
 import BestQuotes from './components/BestQuotes';
+import RecentQuotes from './components/RecentQuotes';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path={'/register'} element={<Register />} />
             <Route path={'/random'} element={<RandomQuote />} />
             <Route path={'/best'} element={<BestQuotes />} />
+            <Route path={'/recent'} element={<RecentQuotes />} />
         </Routes>
       </BrowserRouter>
     </div>
