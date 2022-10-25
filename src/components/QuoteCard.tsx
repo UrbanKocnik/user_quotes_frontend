@@ -1,20 +1,19 @@
-import React from 'react'
-import Quote from '../models/quote'
 
-const QuoteCard = (props:any) => {
+const QuoteCard = (props: any) => {
+  console.log(props.quote.user)
   return (
     <div className="quoteCard">
         <div className='rating'>
             <button>Like</button>
-            <p>Rating</p>
+            <h4>{props.quote.rating}</h4>
             <button>Like</button>
         </div>
         <div className='quote'>
-            <p>Quote</p>
+            <p>{props.quote.quote}</p>
         </div>
         <div className='author'>
-            <p>Image</p>
-            <p>Author name</p>
+            <p>{props.quote.user.image}</p>
+            <p>{props.quote.user.first_name} {props.quote.user.last_name}</p>
         </div>
     </div>
     
