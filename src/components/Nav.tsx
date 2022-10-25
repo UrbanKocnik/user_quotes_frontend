@@ -5,8 +5,8 @@ import axios from 'axios';
 import User from '../models/user';
 import { Link } from 'react-router-dom'
 import Modal from 'react-modal';
-import QuoteCard from './QuoteCard';
 import ModalComp from './Modal';
+import RandomQuote from './RandomQuote';
 
 const Nav = (preops:any) => {
     const location = useLocation()
@@ -39,7 +39,6 @@ const Nav = (preops:any) => {
             ))
         }
         catch(e){
-            console.log('here=')
           setGuest(true);
         }
       }
@@ -95,7 +94,7 @@ else{
 
                     <a onClick={openModal}>Settings</a>
                     {/* if state is true, then it render modal component, with the passed component as prop*/}
-                    {modalIsOpen && <ModalComp open={modalIsOpen} children={<QuoteCard />} stayOpen={setIsOpen}></ModalComp>}
+                    {modalIsOpen && <ModalComp open={modalIsOpen} children={<RandomQuote />} stayOpen={setIsOpen}></ModalComp>}
 
                     <Link className="" to="/"
                         onClick={logout}>Sign out
