@@ -1,10 +1,10 @@
 import './App.css';
-import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Landing from './pages/Landing';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import RandomQuote from './components/RandomQuote';
+import BestQuotes from './components/BestQuotes';
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
             <Route path={'/login'} element={<Login />} />
             <Route path={'/register'} element={<Register />} />
             <Route path={'/random'} element={<RandomQuote />} />
+            <Route path={'/best'} element={<BestQuotes />} />
         </Routes>
       </BrowserRouter>
     </div>

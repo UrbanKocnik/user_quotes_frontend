@@ -1,6 +1,5 @@
 
 const QuoteCard = (props: any) => {
-  console.log(props.quote.user)
   return (
     <div className="quoteCard">
         <div className='rating'>
