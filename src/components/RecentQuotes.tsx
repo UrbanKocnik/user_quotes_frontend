@@ -4,7 +4,7 @@ import Quote from '../models/quote'
 import Paginator from './Paginator'
 import QuoteCard from './QuoteCard'
 
-const BestQuotes = () => {
+const RecentQuotes = () => {
     
     const [quotes, setQuotes] = useState([])
     const [page, setPage] = useState(1)
@@ -14,8 +14,9 @@ const BestQuotes = () => {
     useEffect(() => {
         (
           async () => {
-            const {data} = await axios.get(`quotes?page=${multiplier}`)
-            setQuotes(data.data) //prvi data je od axios (ime spremenljivke), drugi data je ime propertya od axios data.
+            const {data} = await axios.get(`quotes?page=${multiplier}&condition=created_at`)
+            console.log(page)
+            setQuotes(data.data) 
             setLastPage(data.meta.last_page)
           }
         )()
@@ -24,8 +25,8 @@ const BestQuotes = () => {
   return (
     <div>
         <div>
-            <h1>Most upvoted quotes</h1>
-            <p>Most upvoted quotes on the platform. Give a like to the ones you like to keep them in your profile</p>
+            <h1>Most recent quotes</h1>
+            <p>Recent quotes updates as soon user adds new quote. Go ahead and show them that you have seen the new quote and like the ones you like.</p>
         </div>
         <div>
             {quotes.map((q: Quote) => {
@@ -43,4 +44,4 @@ const BestQuotes = () => {
   )
 }
 
-export default BestQuotes
+export default RecentQuotes
