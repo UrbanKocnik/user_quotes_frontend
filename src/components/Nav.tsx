@@ -8,7 +8,7 @@ import Modal from 'react-modal';
 import ModalComp from './ModalComp';
 import RandomQuote from './RandomQuote';
 
-const Nav = (preops:any) => {
+const Nav = () => {
     const location = useLocation()
     const[guest, setGuest] = useState(false);
     const[user, setUser] = useState(new User())
