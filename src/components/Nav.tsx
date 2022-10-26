@@ -5,7 +5,7 @@ import axios from 'axios';
 import User from '../models/user';
 import { Link } from 'react-router-dom'
 import Modal from 'react-modal';
-import ModalComp from './Modal';
+import ModalComp from './ModalComp';
 import RandomQuote from './RandomQuote';
 
 const Nav = (preops:any) => {

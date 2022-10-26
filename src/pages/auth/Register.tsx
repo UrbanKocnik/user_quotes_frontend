@@ -1,6 +1,6 @@
 import React, { SyntheticEvent, useState } from 'react'
 import axios from 'axios';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import Nav from '../../components/Nav';
 
 function Register() {
@@ -47,6 +47,10 @@ function Register() {
 
             <button className="w-100 btn btn-lg btn-primary" type="submit">Register</button>
         </form>
+        <div>
+            <p>Already have an account?</p>
+            <Link to={'/login'}>Sign in</Link>
+        </div>
     </main>
   )
 }
