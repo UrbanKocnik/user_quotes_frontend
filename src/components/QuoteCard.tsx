@@ -14,10 +14,10 @@ const QuoteCard = (props: {
   useEffect(() => {
     (
       async () => {
-        if(props.rating == "no rating"){
-          //setRated(true) //rerender if data hasnt arrived yet
+        if(props.rating == ""){
+          setRated(true) //rerender if data hasnt arrived yet
         }
-        //setRated(true) //rerender just to be sure
+        setRated(true) //rerender just to be sure
         console.log('rating', props.rating)
         if(props.rating === "liked"){
           setLiked(true)

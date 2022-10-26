@@ -38,18 +38,24 @@ const BestQuotes = (props: any) => {
         </div>
         <div>
         {quotes.map((q: Quote) => {
-                let state = "no rating" 
+                let state = "" 
                 if(signedIn){                                     
-                    votes.forEach(vote => {
+                    votes.every(vote => {
                         if(vote.quote_id === q.id){
                             if(vote.rating){
                                 state = "liked"
+                                return false
                             }
                             else{
                                 state = "disliked"
+                                return false
                             }
                         }
-                    });
+                        else{
+                          state = "no rating"
+                          return true;
+                      }
+                    });                    
                 }
                 
                 return(
