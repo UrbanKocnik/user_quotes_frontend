@@ -5,7 +5,7 @@ const QuoteCard = (props: any) => {
         <div className='rating'>
             <button>Like</button>
             <h4>{props.quote.rating}</h4>
-            <button>Like</button>
+            <button>Dislike</button>
         </div>
         <div className='quote'>
             <p>{props.quote.quote}</p>
