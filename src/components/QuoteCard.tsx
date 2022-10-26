@@ -1,11 +1,42 @@
+import { useEffect, useState } from "react"
+import Quote from "../models/quote"
 
-const QuoteCard = (props: any) => {
+const QuoteCard = (props: {
+  quote: Quote,
+  rating: string
+}) => {
+ 
+  const [liked, setLiked] = useState(props.rating === "liked")
+  const [disliked, setDisliked] = useState(props.rating === "disliked")
+  const [rated, setRated] = useState(false)
+
+
+  useEffect(() => {
+    (
+      async () => {
+        if(props.rating == "no rating"){
+          //setRated(true) //rerender if data hasnt arrived yet
+        }
+        //setRated(true) //rerender just to be sure
+        console.log('rating', props.rating)
+        if(props.rating === "liked"){
+          setLiked(true)
+        }
+        else if(props.rating === "disliked"){
+          setDisliked(true)
+        }
+      }
+    )()
+  }, [rated])
+
   return (
     <div className="quoteCard">
         <div className='rating'>
-            <button>Like</button>
+            {liked && <button>LIKED</button>}
+            {!liked && <button>Like</button>}
             <h4>{props.quote.rating}</h4>
-            <button>Dislike</button>
+            {disliked && <button>DISLIKED</button>}
+            {!disliked && <button>Dislike</button>}
         </div>
         <div className='quote'>
             <p>{props.quote.quote}</p>

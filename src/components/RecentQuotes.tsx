@@ -4,12 +4,14 @@ import Quote from '../models/quote'
 import Paginator from './Paginator'
 import QuoteCard from './QuoteCard'
 
-const RecentQuotes = () => {
+const RecentQuotes = (props: any) => {
     
     const [quotes, setQuotes] = useState([])
+    const [votes, setVotes] = useState<any[]>([])
     const [page, setPage] = useState(1)
     const [lastPage, setLastPage] = useState(0)
     const [multiplier, setMultiplier] = useState(1)
+    const [signedIn, setSignedIn] = useState(true)
 
     useEffect(() => {
         (
@@ -17,6 +19,11 @@ const RecentQuotes = () => {
             const {data} = await axios.get(`quotes?page=${multiplier}&condition=created_at`)
             setQuotes(data.data) 
             setLastPage(data.meta.last_page)
+            setSignedIn(props.loggedIn)          
+            if(signedIn){            
+                const response = await axios.get(`quotes/votes`)
+                setVotes(response.data)
+            }
           }
         )()
       }, [multiplier])
@@ -29,12 +36,28 @@ const RecentQuotes = () => {
         </div>
         <div>
             {quotes.map((q: Quote) => {
+                let state = "no rating" 
+                if(signedIn){                                     
+                    votes.forEach(vote => {
+                        if(vote.quote_id === q.id){
+                            if(vote.rating){
+                                state = "liked"
+                            }
+                            else{
+                                state = "disliked"
+                            }
+                        }
+                    });
+                }
+                
                 return(
                     <div key={q.id}>
-                        <QuoteCard quote={q} />
+                        <QuoteCard quote={q} rating={state} />
                     </div>
                 )
+
             })}
+            
         </div>
         <div>
             <Paginator lastPage={lastPage} currPage={page} multiplier={multiplier} pageChanged={setMultiplier}/>

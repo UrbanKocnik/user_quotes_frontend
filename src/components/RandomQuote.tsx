@@ -34,7 +34,7 @@ const RandomQuote = () => {
         </div>
         <div>
              
-            <QuoteCard quote={quote}/>
+            <QuoteCard quote={quote} rating={"liked"}/>
         </div>
     </div>
   )
