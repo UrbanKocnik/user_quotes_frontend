@@ -15,7 +15,6 @@ const RecentQuotes = () => {
         (
           async () => {
             const {data} = await axios.get(`quotes?page=${multiplier}&condition=created_at`)
-            console.log(page)
             setQuotes(data.data) 
             setLastPage(data.meta.last_page)
           }
