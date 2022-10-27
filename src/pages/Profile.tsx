@@ -4,7 +4,9 @@ import { Navigate } from 'react-router-dom'
 import Nav from '../components/Nav'
 import Paginator from '../components/Paginator'
 import BestUserQuotes from '../components/profile/BestUserQuotes'
+import RecentUserQuotes from '../components/profile/BestUserQuotes copy'
 import ProfileData from '../components/profile/ProfileData'
+import RecentQuotes from '../components/RecentQuotes'
 import Quote from '../models/quote'
 import User from '../models/user'
 
@@ -60,7 +62,8 @@ const Profile = () => {
             {loaded && <ProfileData loggedUser={user} quotes={quoteCount} karma={karma}/>}
         </div>
         <div>
-          {loaded && <BestUserQuotes loggedUser={user} page={multiplier}/>}
+          <div>{loaded && <BestUserQuotes loggedUser={user} page={multiplier}/>}</div>
+          <div>{loaded && <RecentUserQuotes loggedUser={user} page={multiplier}/>}</div>          
         </div>
         <div>
           <Paginator lastPage={lastPage} currPage={page} multiplier={multiplier} pageChanged={setMultiplier}/>
