@@ -3,12 +3,8 @@ import React, { SyntheticEvent, useEffect, useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import User from '../../models/user'
 
-const AddQuote = (props:{
-    user: User
-}) => {
-    const[user, setUser] = useState(new User())
+const AddQuote = () => {
     const [quote, setQuote] = useState('');
-    const [redirect, setRedirect] = useState(false);
 
     const submit = async (e: SyntheticEvent) => {
       e.preventDefault();
@@ -17,29 +13,7 @@ const AddQuote = (props:{
       {
           quote
       });
-      setRedirect(true);
-    }
-    
-    useEffect(() => {
-        (
-          async () => {           
-            setUser(new User(
-                props.user.id,
-                props.user.first_name,
-                props.user.last_name,
-                props.user.email,
-                props.user.image
-            ))       
-          }
-        )()
-      }, [])
-
-      if(redirect){
-        return(
-            <h1>Quote added successfully</h1>
-            //ask how it would close easier s tem da je to child od child, pa sploh ni komponenta ampak prop
-            //al pa za auto update
-        )   
+      window.location.reload()
     }
 
   return (

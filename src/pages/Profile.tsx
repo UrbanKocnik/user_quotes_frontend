@@ -49,7 +49,16 @@ const Profile = () => {
             setLiked(response.data.data.length)
             if(liked === 0 && quoteCount > 0){
               setLiked(1) //da se pokaze pagination ceprav ni likanih quotov
-            }           
+            }        
+            if(liked > quoteCount){
+              const lp = Math.ceil((quoteCount / (multiplier * 4)))
+              setLastPage(lp)
+            }   
+            else{
+              const lp = Math.ceil((quoteCount / (multiplier * 4)))
+              console.log(lp)
+              setLastPage(lp) // to hide load more button when all 3 options are out of quotes
+            }
         }
         catch(e){
           setSignedIn(false);

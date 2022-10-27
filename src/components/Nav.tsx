@@ -5,7 +5,7 @@ import axios from 'axios';
 import User from '../models/user';
 import { Link } from 'react-router-dom'
 import Modal from 'react-modal';
-import ModalComp from './ModalComp';
+import ModalComp from './modals/ModalComp';
 import RandomQuote from './RandomQuote';
 import AddQuote from './actions/AddQuote';
 
@@ -105,7 +105,7 @@ else{
                     </Link>
                     <a onClick={openModal}>+</a>
                     {/* if state is true, then it render modal component, with the passed component as prop*/}
-                    {modalIsOpen && <ModalComp open={modalIsOpen} children={<AddQuote user={user} />} stayOpen={setIsOpen}></ModalComp>}
+                    {modalIsOpen && <ModalComp open={modalIsOpen} children={<AddQuote />} stayOpen={setIsOpen}></ModalComp>}
                 </div>
             </div>
           )
