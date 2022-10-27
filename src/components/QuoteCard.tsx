@@ -8,16 +8,16 @@ const QuoteCard = (props: {
  
   const [liked, setLiked] = useState(props.rating === "liked")
   const [disliked, setDisliked] = useState(props.rating === "disliked")
-  const [rated, setRated] = useState(false)
+  const [rerender, setRerender] = useState(false)
 
 
   useEffect(() => {
     (
       async () => {
         if(props.rating == ""){
-          setRated(true) //rerender if data hasnt arrived yet
+          setRerender(true) //rerender if data hasnt arrived yet
         }
-        setRated(true) //rerender just to be sure
+        setRerender(true) //rerender just to be sure
         console.log('rating', props.rating)
         if(props.rating === "liked"){
           setLiked(true)
@@ -27,7 +27,7 @@ const QuoteCard = (props: {
         }
       }
     )()
-  }, [rated])
+  }, [rerender])
 
   return (
     <div className="quoteCard">
