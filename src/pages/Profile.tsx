@@ -4,11 +4,11 @@ import { Navigate } from 'react-router-dom'
 import Nav from '../components/Nav'
 import Paginator from '../components/Paginator'
 import BestUserQuotes from '../components/profile/BestUserQuotes'
-import RecentUserQuotes from '../components/profile/BestUserQuotes copy'
+import RecentUserQuotes from '../components/profile/RecentUserQuotes'
 import ProfileData from '../components/profile/ProfileData'
-import RecentQuotes from '../components/RecentQuotes'
 import Quote from '../models/quote'
 import User from '../models/user'
+import UserLikedQuotes from '../components/profile/UserLikedQuotes'
 
 const Profile = () => {
     const [user, setUser] = useState(new User())
@@ -62,8 +62,9 @@ const Profile = () => {
             {loaded && <ProfileData loggedUser={user} quotes={quoteCount} karma={karma}/>}
         </div>
         <div>
-          <div>{loaded && <BestUserQuotes loggedUser={user} page={multiplier}/>}</div>
-          <div>{loaded && <RecentUserQuotes loggedUser={user} page={multiplier}/>}</div>          
+          <div>{loaded && <BestUserQuotes page={multiplier}/>}</div>
+          <div>{loaded && <RecentUserQuotes page={multiplier}/>}</div>          
+          <div>{loaded && <UserLikedQuotes page={multiplier}/>}</div>          
         </div>
         <div>
           {quoteCount > 0 && <Paginator lastPage={lastPage} currPage={page} multiplier={multiplier} pageChanged={setMultiplier}/>}
