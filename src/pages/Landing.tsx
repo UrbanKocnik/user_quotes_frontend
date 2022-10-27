@@ -10,7 +10,7 @@ import User from '../models/user'
 const Landing = () => {
 
   const [user, setUser] = useState(new User())
-  const [guest, setGuest] = useState(false)
+  const [signedIn, setSignedIn] = useState(true)
 
   useEffect(() => {
     const getUser = async () =>{
@@ -26,7 +26,7 @@ const Landing = () => {
           ))
       }
       catch(e){
-        setGuest(true);
+        setSignedIn(false);
       }
     }
     getUser();
@@ -35,14 +35,14 @@ const Landing = () => {
       <>
         <Nav />
         <div>
-          {guest && <WelcomeGuest />}
-          {!guest && <RandomQuote />}
+          {!signedIn && <WelcomeGuest />}
+          {signedIn && <RandomQuote />}
         </div>
         <div>
-          <BestQuotes loggedIn={true}/>
+          <BestQuotes loggedIn={signedIn}/>
         </div>
         <div>
-          {!guest && <RecentQuotes />}
+          {signedIn && <RecentQuotes loggedIn={signedIn}/>}
         </div>
       </>
   )

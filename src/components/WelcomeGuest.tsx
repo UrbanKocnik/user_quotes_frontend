@@ -27,7 +27,7 @@ const WelcomeGuest = () => {
             {quotes.map((q: Quote) => {
                     return(
                         <div key={q.id}>
-                            <QuoteCard quote={q} />
+                            <QuoteCard quote={q} rating={"no rating"} />
                         </div>
                     )
                 })}

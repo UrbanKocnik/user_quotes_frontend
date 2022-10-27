@@ -9,21 +9,26 @@ import QuoteCard from './QuoteCard'
 const BestQuotes = (props: any) => {
     
     const [quotes, setQuotes] = useState([])
+    const [votes, setVotes] = useState<any[]>([])
     const [page, setPage] = useState(1)
     const [lastPage, setLastPage] = useState(0)
     const [multiplier, setMultiplier] = useState(1)
     const [signedIn, setSignedIn] = useState(true) //send logged in state from page so you dont call twice (render welcome or random)
 
     useEffect(() => {
-        (
-          async () => {
-            const {data} = await axios.get(`quotes?page=${multiplier}`)
-            setQuotes(data.data) //prvi data je od axios (ime spremenljivke), drugi data je ime propertya od axios data.
-            setLastPage(data.meta.last_page)
-            setSignedIn(props.signedIn)
+      (
+        async () => {
+          const {data} = await axios.get(`quotes?page=${multiplier}&condition=created_at`)
+          setQuotes(data.data) 
+          setLastPage(data.meta.last_page)
+          setSignedIn(props.loggedIn)          
+          if(signedIn){            
+              const response = await axios.get(`quotes/votes`)
+              setVotes(response.data)
           }
-        )()
-      }, [multiplier])
+        }
+      )()
+    }, [multiplier])
       
   return (
     <div>
@@ -32,10 +37,30 @@ const BestQuotes = (props: any) => {
             <p>Most upvoted quotes on the platform. Give a like to the ones you like to keep them in your profile</p>
         </div>
         <div>
-            {quotes.map((q: Quote) => {
+        {quotes.map((q: Quote) => {
+                let state = "" 
+                if(signedIn){                                     
+                    votes.every(vote => {
+                        if(vote.quote_id === q.id){
+                            if(vote.rating){
+                                state = "liked"
+                                return false
+                            }
+                            else{
+                                state = "disliked"
+                                return false
+                            }
+                        }
+                        else{
+                          state = "no rating"
+                          return true;
+                      }
+                    });                    
+                }
+                
                 return(
                     <div key={q.id}>
-                        <QuoteCard quote={q} />
+                        <QuoteCard quote={q} rating={state} />
                     </div>
                 )
             })}
