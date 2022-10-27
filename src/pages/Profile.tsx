@@ -48,7 +48,7 @@ const Profile = () => {
             const response = await axios.get(`me/liked?page=${page}`)
             setLiked(response.data.data.length)
             if(liked === 0 && quoteCount > 0){
-              setLiked(1)
+              setLiked(1) //da se pokaze pagination ceprav ni likanih quotov
             }           
         }
         catch(e){
