@@ -14,6 +14,17 @@ const RecentUserQuotes = (props: any) => {
           }
         )()
       }, [])
+    
+      if(quotes.length === 0){
+        return (
+          <div>
+            <h1>Most recent quotes</h1>
+            <div>
+              <p>You have no quotes!</p>
+            </div>
+          </div>
+        )
+      }
       
   return (
     <div>

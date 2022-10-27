@@ -39,11 +39,11 @@ const Profile = () => {
             }, 0); //calculates user karma
             setKarma(karmaSum)
             setLoaded(true)
+            //rerender on pagination page change
             if(prevMultiplier !== multiplier){
               setPrevMultiplier(multiplier)
               setLoaded(false)
             }
-            console.log(multiplier, prevMultiplier, loaded)
         }
         catch(e){
           setSignedIn(false);
@@ -66,7 +66,7 @@ const Profile = () => {
           <div>{loaded && <RecentUserQuotes loggedUser={user} page={multiplier}/>}</div>          
         </div>
         <div>
-          <Paginator lastPage={lastPage} currPage={page} multiplier={multiplier} pageChanged={setMultiplier}/>
+          {quoteCount > 0 && <Paginator lastPage={lastPage} currPage={page} multiplier={multiplier} pageChanged={setMultiplier}/>}
         </div>
     </div>
   )

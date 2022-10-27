@@ -14,7 +14,16 @@ const BestUserQuotes = (props: any) => {
           }
         )()
       }, [])
-      
+      if(quotes.length === 0){
+        return (
+          <div>
+            <h1>Most liked quotes</h1>
+            <div>
+              <p>You have no quotes!</p>
+            </div>
+          </div>
+        )
+      }
   return (
     <div>
         <h1>Most liked quotes</h1>
