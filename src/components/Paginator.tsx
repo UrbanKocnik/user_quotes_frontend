@@ -20,7 +20,7 @@ const Paginator = (props:
           }   
         }
         else{
-          window.alert("No more quotes to load")
+          props.pageChanged(next)
           setVisible(false)
         } 
       }

@@ -2,6 +2,8 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import Nav from '../components/Nav'
+import Paginator from '../components/Paginator'
+import BestUserQuotes from '../components/profile/BestUserQuotes'
 import ProfileData from '../components/profile/ProfileData'
 import Quote from '../models/quote'
 import User from '../models/user'
@@ -12,6 +14,10 @@ const Profile = () => {
     const [loaded, setLoaded] = useState(false)
     const [quoteCount, setQuoteCount] = useState(0)
     const [karma, setKarma] = useState(0)
+    const [page, setPage] = useState(1)
+    const [lastPage, setLastPage] = useState(0)
+    const [multiplier, setMultiplier] = useState(1)
+    const [prevMultiplier, setPrevMultiplier] = useState(1)
 
     useEffect(() => {
       const getUser = async () =>{
@@ -31,13 +37,18 @@ const Profile = () => {
             }, 0); //calculates user karma
             setKarma(karmaSum)
             setLoaded(true)
+            if(prevMultiplier !== multiplier){
+              setPrevMultiplier(multiplier)
+              setLoaded(false)
+            }
+            console.log(multiplier, prevMultiplier, loaded)
         }
         catch(e){
           setSignedIn(false);
         }
       }
       getUser();
-    }, []);
+    }, [loaded, multiplier]);
 
     if(!signedIn){
         return <Navigate to={'/'} />
@@ -47,6 +58,12 @@ const Profile = () => {
         <Nav />
         <div>
             {loaded && <ProfileData loggedUser={user} quotes={quoteCount} karma={karma}/>}
+        </div>
+        <div>
+          {loaded && <BestUserQuotes loggedUser={user} page={multiplier}/>}
+        </div>
+        <div>
+          <Paginator lastPage={lastPage} currPage={page} multiplier={multiplier} pageChanged={setMultiplier}/>
         </div>
     </div>
   )
