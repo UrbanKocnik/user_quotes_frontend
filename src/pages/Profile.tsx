@@ -20,6 +20,7 @@ const Profile = () => {
     const [lastPage, setLastPage] = useState(0)
     const [multiplier, setMultiplier] = useState(1)
     const [prevMultiplier, setPrevMultiplier] = useState(1)
+    const [liked, setLiked] = useState(0)
 
     useEffect(() => {
       const getUser = async () =>{
@@ -44,6 +45,11 @@ const Profile = () => {
               setPrevMultiplier(multiplier)
               setLoaded(false)
             }
+            const response = await axios.get(`me/liked?page=${page}`)
+            setLiked(response.data.data.length)
+            if(liked === 0 && quoteCount > 0){
+              setLiked(1)
+            }           
         }
         catch(e){
           setSignedIn(false);
@@ -67,7 +73,7 @@ const Profile = () => {
           <div>{loaded && <UserLikedQuotes page={multiplier}/>}</div>          
         </div>
         <div>
-          {quoteCount > 0 && <Paginator lastPage={lastPage} currPage={page} multiplier={multiplier} pageChanged={setMultiplier}/>}
+          {liked > 0 && <Paginator lastPage={lastPage} currPage={page} multiplier={multiplier} pageChanged={setMultiplier}/>}
         </div>
     </div>
   )
