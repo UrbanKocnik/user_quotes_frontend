@@ -7,6 +7,9 @@ import RandomQuote from './components/RandomQuote';
 import BestQuotes from './components/BestQuotes';
 import RecentQuotes from './components/RecentQuotes';
 import WelcomeGuest from './components/WelcomeGuest';
+import ProfileData from './components/profile/ProfileData';
+import User from './models/user';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -21,6 +24,7 @@ function App() {
             <Route path={'/best'} element={<BestQuotes />} />
             <Route path={'/recent'} element={<RecentQuotes />} />
             <Route path={'/welcome'} element={<WelcomeGuest />} />
+            <Route path={'/profile'} element={<Profile />} />
         </Routes>
       </BrowserRouter>
     </div>

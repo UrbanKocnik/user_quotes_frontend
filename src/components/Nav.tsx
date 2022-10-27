@@ -28,7 +28,7 @@ const Nav = () => {
     useEffect(() => {
       const getUser = async () =>{
         try{
-          const {data} = await axios.get('user')
+          const {data} = await axios.get('me')
   
           setUser(new User(
             data[0].id,
@@ -99,8 +99,9 @@ else{
                     <Link className="" to="/"
                         onClick={logout}>Sign out
                     </Link>
-
-                    <div>{user.image}</div>
+                    <Link to={`/profile`}>
+                    {user.image}
+                    </Link>
                     <button>Add quote</button>
                 </div>
             </div>
