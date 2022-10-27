@@ -56,7 +56,6 @@ const Profile = () => {
             }   
             else{
               const lp = Math.ceil((quoteCount / (multiplier * 4)))
-              console.log(lp)
               setLastPage(lp) // to hide load more button when all 3 options are out of quotes
             }
         }

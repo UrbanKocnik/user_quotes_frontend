@@ -1,7 +1,5 @@
 import axios from 'axios'
 import React, { SyntheticEvent, useEffect, useState } from 'react'
-import { Navigate } from 'react-router-dom'
-import User from '../../models/user'
 
 const AddQuote = () => {
     const [quote, setQuote] = useState('');

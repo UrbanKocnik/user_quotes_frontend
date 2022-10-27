@@ -4,6 +4,7 @@ import '../styles/quoteCard.css'
 import Modal from 'react-modal';
 import ModalComp from './modals/ModalComp';
 import EditQuote from "./actions/EditQuote";
+import DeleteQuote from "./actions/DeleteQuote";
 
 interface QuoteProps {
   quote: Quote,
@@ -18,7 +19,7 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
   const [isAuthor, setIsAuthor] = useState(false)
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  function editQuote(){
+  function openModal(){
     setIsOpen(true)  
   }
 
@@ -58,9 +59,10 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
         </div>
         {isAuthor && 
         <div id="root">
-          <button onClick={editQuote}>Edit</button>
+          <button onClick={openModal}>Edit</button>
           {modalIsOpen && <ModalComp open={modalIsOpen} children={<EditQuote sentQuote={quote}/>} stayOpen={setIsOpen} />}
-          <button>Delete</button>
+          <button onClick={openModal}>Delete</button>
+          {modalIsOpen && <ModalComp open={modalIsOpen} children={<DeleteQuote sentQuote={quote}/>} stayOpen={setIsOpen} />}
         </div>}
     </div>
     
