@@ -17,10 +17,15 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
   const [liked, setLiked] = useState(false)
   const [disliked, setDisliked] = useState(false)
   const [isAuthor, setIsAuthor] = useState(false)
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const [modalEditIsOpen, setEditIsOpen] = useState(false);
+  const [modalDeleteIsOpen, setDeleteIsOpen] = useState(false);
 
-  function openModal(){
-    setIsOpen(true)  
+  function editModal(){
+    setEditIsOpen(true)  
+  }
+
+  function deleteModal(){
+    setDeleteIsOpen(true)  
   }
 
   Modal.setAppElement('#root');
@@ -59,10 +64,10 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
         </div>
         {isAuthor && 
         <div id="root">
-          <button onClick={openModal}>Edit</button>
-          {modalIsOpen && <ModalComp open={modalIsOpen} children={<EditQuote sentQuote={quote}/>} stayOpen={setIsOpen} />}
-          <button onClick={openModal}>Delete</button>
-          {modalIsOpen && <ModalComp open={modalIsOpen} children={<DeleteQuote sentQuote={quote}/>} stayOpen={setIsOpen} />}
+          <button onClick={editModal}>Edit</button>
+          {modalEditIsOpen && <ModalComp open={modalEditIsOpen} children={<EditQuote sentQuote={quote}/>} stayOpen={setEditIsOpen} />}
+          <button onClick={deleteModal}>Delete</button>
+          {modalDeleteIsOpen && <ModalComp open={modalDeleteIsOpen} children={<DeleteQuote sentQuote={quote}/>} stayOpen={setDeleteIsOpen} />}
         </div>}
     </div>
     

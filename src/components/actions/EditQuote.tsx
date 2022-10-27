@@ -42,7 +42,7 @@ const EditQuote = (props: any) => {
     <div>
         <h1>Edit your quote</h1>
         <form onSubmit={submit}>
-            <input type="quote" className="form-control" placeholder={props.sentQuote.quote} required onChange={e => setQuote(e.target.value)}/>
+            <input type="quote" className="form-control" value={props.sentQuote.quote} required onChange={e => setQuote(e.target.value)}/>
             
             <button className="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
         </form>
