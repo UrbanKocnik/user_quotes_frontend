@@ -57,12 +57,14 @@ const BestQuotes = (props: any) => {
                       }
                     });                    
                 }
-                
-                return(
-                    <div key={q.id}>
-                        <QuoteCard quote={q} rating={state} />
-                    </div>
-                )
+                if(state != "" || votes.length === 0){
+                    return(
+                    
+                        <div key={q.id}>
+                            <QuoteCard quote={q} rating={state} />
+                        </div>
+                    )
+                }
             })}
         </div>
         <div>
