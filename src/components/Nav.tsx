@@ -7,12 +7,13 @@ import { Link } from 'react-router-dom'
 import Modal from 'react-modal';
 import ModalComp from './ModalComp';
 import RandomQuote from './RandomQuote';
+import AddQuote from './actions/AddQuote';
 
 const Nav = () => {
     const location = useLocation()
     const[guest, setGuest] = useState(false);
     const[user, setUser] = useState(new User())
-    const [modalIsOpen, setIsOpen] = React.useState(false);
+    const [modalIsOpen, setIsOpen] = useState(false);
 
     function openModal() {
       setIsOpen(true);      
@@ -102,7 +103,9 @@ else{
                     <Link to={`/profile`}>
                     {user.image}
                     </Link>
-                    <button>Add quote</button>
+                    <a onClick={openModal}>+</a>
+                    {/* if state is true, then it render modal component, with the passed component as prop*/}
+                    {modalIsOpen && <ModalComp open={modalIsOpen} children={<AddQuote user={user} />} stayOpen={setIsOpen}></ModalComp>}
                 </div>
             </div>
           )

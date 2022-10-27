@@ -10,6 +10,7 @@ import WelcomeGuest from './components/WelcomeGuest';
 import ProfileData from './components/profile/ProfileData';
 import User from './models/user';
 import Profile from './pages/Profile';
+import AddQuote from './components/actions/AddQuote';
 
 function App() {
   return (
@@ -20,10 +21,6 @@ function App() {
             <Route path={'/'} element={<Landing />} />
             <Route path={'/login'} element={<Login />} />
             <Route path={'/register'} element={<Register />} />
-            <Route path={'/random'} element={<RandomQuote />} />
-            <Route path={'/best'} element={<BestQuotes />} />
-            <Route path={'/recent'} element={<RecentQuotes />} />
-            <Route path={'/welcome'} element={<WelcomeGuest />} />
             <Route path={'/profile'} element={<Profile />} />
         </Routes>
       </BrowserRouter>
