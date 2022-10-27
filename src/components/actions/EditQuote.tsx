@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { SyntheticEvent, useEffect, useState } from 'react'
 import Quote from '../../models/quote';
-import ConfirmModal from '../modals/ConfirmModal';
+import ResultModal from '../modals/ResultModal';
 
 const EditQuote = (props: any) => {
     const [quote, setQuote] = useState('');
@@ -34,7 +34,7 @@ const EditQuote = (props: any) => {
 
     if(confirm){
       return(
-        <ConfirmModal open={true} message={"Your quote was edited"} />
+        <ResultModal open={true} message={"Your quote was edited"} />
       )
     }
 

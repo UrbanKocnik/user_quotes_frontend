@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import Modal from 'react-modal'
 
 
-const ConfirmModal = (props:{
+const ResultModal = (props:{
   message: string,
   open: boolean
 }) => {
@@ -24,4 +24,4 @@ const ConfirmModal = (props:{
   )
 }
 
-export default ConfirmModal
+export default ResultModal

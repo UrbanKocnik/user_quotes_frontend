@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { SyntheticEvent, useEffect, useState } from 'react'
 import Quote from '../../models/quote';
-import ConfirmModal from '../modals/ConfirmModal';
+import ResultModal from '../modals/ResultModal';
 
 const DeleteQuote = (props: any) => {
     const [oldQuote, setOldQuote] = useState(new Quote());
@@ -30,7 +30,7 @@ const DeleteQuote = (props: any) => {
 
     if(confirm){
       return(
-        <ConfirmModal open={true} message={"Your quote was deleted"} />
+        <ResultModal open={true} message={"Your quote was deleted"} />
       )
     }
 
