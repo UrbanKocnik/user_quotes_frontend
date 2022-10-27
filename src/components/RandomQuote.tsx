@@ -5,12 +5,13 @@ import QuoteCard from './QuoteCard'
 
 const RandomQuote = () => {
     const[quote, setQuote] = useState(new Quote())
+    const[state, setState] = useState("")
     
     useEffect(() => {
         const getQuote = async () =>{
+          const {data} = await axios.get('quotes/random')
           try{
-            const {data} = await axios.get('quotes/random')
-
+          
             setQuote(new Quote(
                 data[0].id,
                 data[0].quote,
@@ -23,6 +24,18 @@ const RandomQuote = () => {
           catch(e){
               console.log('error')            
           }
+          const response = await axios.get(`quotes/random/rating/${data[0].id}`)
+          if(response.data.length > 0){
+            if(response.data[0].rating){
+              setState("liked")
+            }
+            else{
+              setState("disliked")
+            }            
+          }
+          else{
+            setState("no rating")
+          }
         }
         getQuote()
       }, []);
@@ -34,7 +47,7 @@ const RandomQuote = () => {
         </div>
         <div>
              
-            <QuoteCard quote={quote} rating={"liked"}/>
+            <QuoteCard quote={quote} rating={state}/>
         </div>
     </div>
   )
