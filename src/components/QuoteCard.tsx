@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react"
 import Quote from "../models/quote"
 import '../styles/quoteCard.css'
+import Modal from 'react-modal';
+import ModalComp from './modals/ModalComp';
+import EditQuote from "./actions/EditQuote";
+import DeleteQuote from "./actions/DeleteQuote";
 
 interface QuoteProps {
   quote: Quote,
@@ -13,6 +17,13 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
   const [liked, setLiked] = useState(false)
   const [disliked, setDisliked] = useState(false)
   const [isAuthor, setIsAuthor] = useState(false)
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  function openModal(){
+    setIsOpen(true)  
+  }
+
+  Modal.setAppElement('#root');
 
   useEffect(() => {
     (
@@ -47,9 +58,11 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
             <p>{quote.user.first_name} {quote.user.last_name}</p>
         </div>
         {isAuthor && 
-        <div>
-          <button>Edit</button>
-          <button>Delete</button>
+        <div id="root">
+          <button onClick={openModal}>Edit</button>
+          {modalIsOpen && <ModalComp open={modalIsOpen} children={<EditQuote sentQuote={quote}/>} stayOpen={setIsOpen} />}
+          <button onClick={openModal}>Delete</button>
+          {modalIsOpen && <ModalComp open={modalIsOpen} children={<DeleteQuote sentQuote={quote}/>} stayOpen={setIsOpen} />}
         </div>}
     </div>
     
