@@ -68,7 +68,7 @@ const RecentQuotes = (props: any) => {
             
         </div>
         <div>
-            <Paginator lastPage={lastPage} currPage={page} multiplier={multiplier} pageChanged={setMultiplier}/>
+            <Paginator lastPage={lastPage} multiplier={multiplier} pageChanged={setMultiplier}/>
         </div>
     </div>
   )

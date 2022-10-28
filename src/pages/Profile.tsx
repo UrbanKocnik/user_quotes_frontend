@@ -51,11 +51,11 @@ const Profile = () => {
               setLiked(1) //da se pokaze pagination ceprav ni likanih quotov
             }        
             if(liked > quoteCount){
-              const lp = Math.ceil((quoteCount / (multiplier * 4)))
+              const lp = Math.ceil((quoteCount /  4))
               setLastPage(lp)
             }   
             else{
-              const lp = Math.ceil((quoteCount / (multiplier * 4)))
+              const lp = Math.ceil((quoteCount / 4))
               setLastPage(lp) // to hide load more button when all 3 options are out of quotes
             }
         }
@@ -81,7 +81,7 @@ const Profile = () => {
           <div>{loaded && <UserLikedQuotes page={multiplier}/>}</div>          
         </div>
         <div>
-          {liked > 0 && <Paginator lastPage={lastPage} currPage={page} multiplier={multiplier} pageChanged={setMultiplier}/>}
+          {liked > 0 && <Paginator lastPage={lastPage} multiplier={multiplier} pageChanged={setMultiplier}/>}
         </div>
     </div>
   )

@@ -5,6 +5,7 @@ import Modal from 'react-modal';
 import ModalComp from './modals/ModalComp';
 import EditQuote from "./actions/EditQuote";
 import DeleteQuote from "./actions/DeleteQuote";
+import axios from "axios";
 
 interface QuoteProps {
   quote: Quote,
@@ -28,6 +29,24 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
     setDeleteIsOpen(true)  
   }
 
+  async function likeQuote(){
+    await axios.post(`quotes/${quote.id}/upvote`,
+    {
+        quote
+    }); 
+    setLiked(true)
+    setDisliked(false)
+  }
+
+  async function dislikeQuote(){
+    await axios.post(`quotes/${quote.id}/downvote`,
+    {
+        quote
+    }); 
+    setDisliked(true)
+    setLiked(false)
+  }
+
   Modal.setAppElement('#root');
 
   useEffect(() => {
@@ -44,16 +63,16 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
         }
       }
     )()
-  })
+  }, [liked, disliked])
 
   return (
     <div className="quoteCard">
         <div className='rating'>
-            {liked && <button>LIKED</button>}
-            {!liked && <button>Like</button>}
+            {liked && <button onClick={likeQuote}>LIKED</button>}
+            {!liked && <button onClick={likeQuote}>Like</button>}
             <h4>{quote.rating}</h4>
-            {disliked && <button>DISLIKED</button>}
-            {!disliked && <button>Dislike</button>}
+            {disliked && <button onClick={dislikeQuote}>DISLIKED</button>}
+            {!disliked && <button onClick={dislikeQuote}>Dislike</button>}
         </div>
         <div className='quote'>
             <p>{quote.quote}</p>
