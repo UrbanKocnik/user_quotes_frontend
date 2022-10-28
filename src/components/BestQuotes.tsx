@@ -68,7 +68,7 @@ const BestQuotes = (props: any) => {
             })}
         </div>
         <div>
-            {signedIn && <Paginator lastPage={lastPage} currPage={page} multiplier={multiplier} pageChanged={setMultiplier}/>}
+            {signedIn && <Paginator lastPage={lastPage} multiplier={multiplier} pageChanged={setMultiplier}/>}
             {!signedIn && <Link to={`/register`}>Sign up to see more</Link>}
         </div>
     </div>
