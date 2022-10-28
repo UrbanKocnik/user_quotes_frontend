@@ -78,7 +78,7 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
             <p>{quote.quote}</p>
         </div>
         <div className='author'>
-            <p>{quote.user.image}</p>
+            <img src={quote.user.image} width="50" />
             <p>{quote.user.first_name} {quote.user.last_name}</p>
         </div>
         {isAuthor && 

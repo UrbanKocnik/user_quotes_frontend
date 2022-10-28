@@ -107,7 +107,7 @@ else{
                         onClick={logout}>Sign out
                     </Link>
                     <Link to={`/profile`}>
-                    {user.image}
+                    <img src={user.image} width="50" />
                     </Link>
                     <a onClick={openModalAdd}>+</a>
                     {/* if state is true, then it render modal component, with the passed component as prop*/}

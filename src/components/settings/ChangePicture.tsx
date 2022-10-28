@@ -11,8 +11,6 @@ const ChangePicture = (props:{
  
   const [confirm, setConfirm] = useState(false);
   const [profilePicture, setProfilePicture] = useState('');
-  const [image, setImage] = useState('');
-
 
   const submit = async (e: SyntheticEvent) => {
     e.preventDefault();
@@ -32,7 +30,7 @@ const ChangePicture = (props:{
         setProfilePicture(props.sentImage)
       }
     )()
-  }, [])
+  }, [profilePicture])
 
   Modal.setAppElement('#root');
 
@@ -45,16 +43,18 @@ const ChangePicture = (props:{
   return (
 
     <div>
+        
         <h1>Profile settings</h1>
         <h3>Change your profile photo</h3>
-        <div>{profilePicture}</div>
+        <div>
+        <img src={profilePicture} width="50" />
+        </div>
         <form onSubmit={submit}>
             <div className="mb-3">
                 <div className="input-group">
-                    <input type="text" value={image} className="form-control" required 
-                    onChange={e => setImage(e.target.value)}/>
-                    
-                    <ImageUpload uploaded={setImage}/>
+                    <input type="text" value={profilePicture} className="form-control" required 
+                    onChange={e => setProfilePicture(e.target.value)}/>
+                    <ImageUpload uploaded={setProfilePicture}/>
                 </div>                  
             </div>
 
