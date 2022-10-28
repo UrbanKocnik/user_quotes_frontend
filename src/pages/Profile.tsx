@@ -22,6 +22,7 @@ const Profile = () => {
     const [multiplier, setMultiplier] = useState(1)
     const [prevMultiplier, setPrevMultiplier] = useState(1)
     const [liked, setLiked] = useState(0)
+    const [base, setBase] = useState(4)
 
     useEffect(() => {
       const getUser = async () =>{
@@ -46,17 +47,16 @@ const Profile = () => {
               setPrevMultiplier(multiplier)
               setLoaded(false)
             }
-            const response = await axios.get(`me/liked?page=${page}`)
-            setLiked(response.data.data.length)
+            const response = await axios.get(`me/liked?page=${page}&base=${base}`)
+            setLiked(response.data.meta.last_page * base)
             if(liked === 0 && quoteCount > 0){
               setLiked(1) //da se pokaze pagination ceprav ni likanih quotov
             }        
             if(liked > quoteCount){
-              const lp = Math.ceil((quoteCount /  4))
-              setLastPage(lp)
+              setLastPage(response.data.meta.last_page)
             }   
             else{
-              const lp = Math.ceil((quoteCount / 4))
+              const lp = Math.ceil((quoteCount / base))
               setLastPage(lp) // to hide load more button when all 3 options are out of quotes
             }
         }

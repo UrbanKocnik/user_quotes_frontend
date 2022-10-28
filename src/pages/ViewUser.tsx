@@ -24,6 +24,7 @@ const ViewUser = () => {
     const [prevMultiplier, setPrevMultiplier] = useState(1)
     const [liked, setLiked] = useState(0)
     const [owner, setOwner] = useState(false)
+    const [base, setBase] = useState(4)
 
     const { id } = useParams();
 
@@ -66,17 +67,16 @@ const ViewUser = () => {
               setPrevMultiplier(multiplier)
               setLoaded(false)
             }
-            const response = await axios.get(`me/${user.id}/liked?page=${page}`)
-            setLiked(response.data.data.length)// checking which array is longer, to properly set load more last page
+            const response = await axios.get(`me/${user.id}/liked?page=${page}&base=${base}`)
+            setLiked(response.data.meta.last_page * base)
             if(liked === 0 && quoteCount > 0){
-              setLiked(1) //da se pokaze pagination ceprav ni likanih quotov
+              setLiked(1) //da se pokaze pagination ceprav ni likanih quotov, ker je pagination show na liked quotes > 0
             }        
             if(liked > quoteCount){
-              const lp = Math.ceil((quoteCount /  4))
-              setLastPage(lp)
+              setLastPage(response.data.meta.last_page)
             }   
             else{
-              const lp = Math.ceil((quoteCount / 4))
+              const lp = Math.ceil((quoteCount / base))
               setLastPage(lp) // to hide load more button when all 3 options are out of quotes
             }
         }
