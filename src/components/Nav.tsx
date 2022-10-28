@@ -8,15 +8,21 @@ import Modal from 'react-modal';
 import ModalComp from './modals/ModalComp';
 import RandomQuote from './RandomQuote';
 import AddQuote from './actions/AddQuote';
+import Settings from './settings/Settings';
 
 const Nav = () => {
     const location = useLocation()
     const[guest, setGuest] = useState(false);
     const[user, setUser] = useState(new User())
-    const [modalIsOpen, setIsOpen] = useState(false);
+    const [addIsOpen, setAddIsOpen] = useState(false);
+    const [settingsIsOpen, setSettingsIsOpen] = useState(false);
 
-    function openModal() {
-      setIsOpen(true);      
+    function openModalSettings() {
+        setSettingsIsOpen(true)  
+    }
+
+    function openModalAdd() {
+        setAddIsOpen(true) 
     }
 
     Modal.setAppElement('#root');
@@ -93,9 +99,9 @@ else{
                         Home
                     </Link>
 
-                    <a onClick={openModal}>Settings</a>
+                    <a onClick={openModalSettings}>Settings</a>
                     {/* if state is true, then it render modal component, with the passed component as prop*/}
-                    {modalIsOpen && <ModalComp open={modalIsOpen} children={<RandomQuote />} stayOpen={setIsOpen}></ModalComp>}
+                    {settingsIsOpen && <ModalComp open={settingsIsOpen} children={<Settings loggedUser={user}/>} stayOpen={setSettingsIsOpen}></ModalComp>}
 
                     <Link className="" to="/"
                         onClick={logout}>Sign out
@@ -103,9 +109,9 @@ else{
                     <Link to={`/profile`}>
                     {user.image}
                     </Link>
-                    <a onClick={openModal}>+</a>
+                    <a onClick={openModalAdd}>+</a>
                     {/* if state is true, then it render modal component, with the passed component as prop*/}
-                    {modalIsOpen && <ModalComp open={modalIsOpen} children={<AddQuote />} stayOpen={setIsOpen}></ModalComp>}
+                    {addIsOpen && <ModalComp open={addIsOpen} children={<AddQuote />} stayOpen={setAddIsOpen}></ModalComp>}
                 </div>
             </div>
           )
