@@ -2,10 +2,6 @@ import { SyntheticEvent, useEffect, useState } from "react"
 import '../../styles/quoteCard.css'
 import Modal from 'react-modal';
 import axios from "axios";
-import User from "../../models/user";
-import Quote from "../../models/quote";
-import ModalComp from "../modals/ModalComp";
-import AddQuote from "../actions/AddQuote";
 import ResultModal from "../modals/ResultModal";
 
 const ChangePassword = () => {
