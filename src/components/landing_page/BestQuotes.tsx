@@ -16,30 +16,29 @@ const BestQuotes = (props: any) => {
     const [noVotes, setNoVotes] = useState(false)
 
     useEffect(() => {
-      (
-        async () => {
-
-        if(retry === 0){
-            const {data} = await axios.get(`quotes?page=${multiplier}&condition=likes`)
-            setQuotes(data.data)   
-            setQuotes(data.data) 
-            setLastPage(data.meta.last_page)
-
-            setSignedIn(props.loggedIn)          
-            if(signedIn){            
-                const response = await axios.get(`quotes/votes`)
-                setVotes(response.data)
-            }       
-            }             
-            if(retry < 3){ //if votes arent loaded yet, wait and rerender
-            setRetry(retry+1)             
-            }     
-            else{
-            setNoVotes(true)
-            } 
-        }
-      )()
-    }, [multiplier, retry])
+        (
+          async () => {
+          const {data} = await axios.get(`quotes?page=${multiplier}&condition=likes`)
+          setQuotes(data.data)   
+          setQuotes(data.data) 
+          setLastPage(data.meta.last_page)
+  
+          if(retry === 0){
+              setSignedIn(props.loggedIn)          
+              if(signedIn){            
+                  const response = await axios.get(`quotes/votes`)
+                  setVotes(response.data)
+              }       
+              }             
+              if(retry < 3){ //if votes arent loaded yet, wait and rerender
+              setRetry(retry+1)             
+              }     
+              else{
+              setNoVotes(true)
+              } 
+          }
+        )()
+      }, [multiplier])
       
   return (
     <div>

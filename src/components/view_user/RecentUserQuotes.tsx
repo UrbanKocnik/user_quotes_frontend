@@ -16,10 +16,9 @@ const RecentUserQuotes = (props: {
     useEffect(() => {
         (
           async () => {
-            if(retry === 0){
-              const {data} = await axios.get(`me/usersquotes/${props.user.id}?page=${props.page}&condition=created_at`)
-              setQuotes(data.data)   
-  
+            const {data} = await axios.get(`me/usersquotes/${props.user.id}?page=${props.page}&condition=created_at`)
+            setQuotes(data.data)   
+            if(retry === 0){  
               const response = await axios.get(`quotes/votes`)
               setVotes(response.data)
             }

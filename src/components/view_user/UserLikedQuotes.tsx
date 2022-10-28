@@ -16,10 +16,10 @@ const UserLikedQuotes = (props: {
     useEffect(() => {
         (
           async () => {
+            const {data} = await axios.get(`quotes/user/liked/${props.user.id}?page=${props.page}`)
+            setQuotes(data.data) 
+
             if(retry === 0){
-              const {data} = await axios.get(`quotes/user/liked/${props.user.id}?page=${props.page}`)
-              setQuotes(data.data)   
-  
               const response = await axios.get(`quotes/votes`)
               setVotes(response.data)
             }
@@ -32,7 +32,7 @@ const UserLikedQuotes = (props: {
             }  
           }
         )()
-      }, [retry])
+      }, [])
       if(quotes.length === 0){
         return (
           <div>

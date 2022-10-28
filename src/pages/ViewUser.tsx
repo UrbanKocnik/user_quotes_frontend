@@ -23,6 +23,7 @@ const ViewUser = () => {
     const [multiplier, setMultiplier] = useState(1)
     const [prevMultiplier, setPrevMultiplier] = useState(1)
     const [liked, setLiked] = useState(0)
+    const [owner, setOwner] = useState(false)
 
     const { id } = useParams();
 
@@ -49,6 +50,9 @@ const ViewUser = () => {
               loggedUser.data[0].email,
               loggedUser.data[0].image
               ))
+            if(loggedUser.data[0].id === data[0].id){
+              setOwner(true)
+            }
 
             setSignedIn(true)
             setQuoteCount(data[0].quotes.length) //counts user quotes
@@ -82,10 +86,13 @@ const ViewUser = () => {
         }
       }
       getUser();
-    }, [loaded, multiplier]);
+    }, [loaded, multiplier, owner]);
 
     if(!signedIn){
         return <Navigate to={'/'} />
+    }
+    else if(owner){
+      return <Navigate to={'/profile'} />
     }
   return (
     <div>
