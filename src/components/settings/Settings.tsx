@@ -7,12 +7,7 @@ import Quote from "../../models/quote";
 import ModalComp from "../modals/ModalComp";
 import AddQuote from "../actions/AddQuote";
 import ResultModal from "../modals/ResultModal";
-
-interface QuoteProps {
-  quote: Quote,
-  rating: string,
-  author?: boolean
-}
+import ChangePassword from "./ChangePassword";
 
 const Settings = (props: {
     loggedUser: User
@@ -60,6 +55,10 @@ const Settings = (props: {
                     props.loggedUser.email,
                     props.loggedUser.image
                 ))
+
+                setEmail(user.email)
+                setFirstName(user.first_name)
+                setLastName(user.last_name)
             }
           }
     )()
@@ -81,12 +80,12 @@ const Settings = (props: {
             <input type="first_name" className="form-control" defaultValue={user.first_name} required onChange={e => setFirstName(e.target.value)}/>
             <input type="last_name" className="form-control" defaultValue={user.last_name} required onChange={e => setLastName(e.target.value)}/>
             <div id="root">
-                <button onClick={ChangePfpModal}>Changee password</button>
-                {pictureIsOpen && <ModalComp open={pictureIsOpen} children={<AddQuote />} stayOpen={setPictureIsOpen} />}
-                <button onClick={changePwModal}>Change profile picture</button>
-                {passwordIsOpen && <ModalComp open={passwordIsOpen} children={<AddQuote />} stayOpen={setPasswordIsOpen} />}
+                <a onClick={changePwModal}>Change password</a>
+                {passwordIsOpen && <ModalComp open={passwordIsOpen} children={<ChangePassword />} stayOpen={setPasswordIsOpen} />}
+                <a onClick={ChangePfpModal}>Change profile picture</a>
+                {pictureIsOpen && <ModalComp open={pictureIsOpen} children={<ChangePassword />} stayOpen={setPictureIsOpen} />}
             </div>
-
+            <br />
             <button className="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
         </form>
     </div>
