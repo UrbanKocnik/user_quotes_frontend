@@ -2,6 +2,7 @@ import React, { SyntheticEvent, useState } from 'react'
 import axios from 'axios';
 import { Link, Navigate } from 'react-router-dom';
 import Nav from '../../components/Nav';
+import Footer from '../../components/Footer';
 
 function Register() {
     const [first_name, setFirstName] = useState('');
@@ -51,6 +52,7 @@ function Register() {
             <p>Already have an account?</p>
             <Link to={'/login'}>Sign in</Link>
         </div>
+        <Footer />
     </main>
   )
 }
