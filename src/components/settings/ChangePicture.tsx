@@ -1,38 +1,45 @@
-import { SyntheticEvent, useEffect, useState } from "react"
+import { SyntheticEvent, useEffect, useRef, useState } from "react"
 import '../../styles/quoteCard.css'
 import Modal from 'react-modal';
 import axios from "axios";
 import ResultModal from "../modals/ResultModal";
 import ImageUpload from "./ImageUpload";
 
+
 const ChangePicture = (props:{
     sentImage: string
 }) => {
  
   const [confirm, setConfirm] = useState(false);
-  const [profilePicture, setProfilePicture] = useState('');
+  const [image, setImage] = useState('');
+  const ref = useRef<HTMLInputElement>(null)
 
   const submit = async (e: SyntheticEvent) => {
     e.preventDefault();
-/*
-    await axios.put(`me/update-password`,
+    await axios.put(`me/update-image`,
     {
-        current_password: currentPassword,
-        password: newPassword,
-        password_confirm: confirmNewPassword
-    });*/
+        image
+    });
+
     setConfirm(true)
   }
 
   useEffect(() => {
     (
       async () => {
-        setProfilePicture(props.sentImage)
+        setImage(props.sentImage)
       }
     )()
-  }, [profilePicture])
+  }, [])
 
   Modal.setAppElement('#root');
+
+  const updateImage = (url: string) => {
+    if(ref.current){
+      ref.current.value = url;
+    }
+    setImage(url);
+  }
 
   if(confirm){
     return(
@@ -47,14 +54,14 @@ const ChangePicture = (props:{
         <h1>Profile settings</h1>
         <h3>Change your profile photo</h3>
         <div>
-        <img src={profilePicture} width="50" />
+        <img src={image} width="50" />
         </div>
         <form onSubmit={submit}>
             <div className="mb-3">
                 <div className="input-group">
-                    <input type="text" value={profilePicture} className="form-control" required 
-                    onChange={e => setProfilePicture(e.target.value)}/>
-                    <ImageUpload uploaded={setProfilePicture}/>
+                    <input ref={ref} value={image} className="form-control" required 
+                    onChange={e => setImage(e.target.value)}/>
+                    <ImageUpload uploaded={updateImage}/>
                 </div>                  
             </div>
 

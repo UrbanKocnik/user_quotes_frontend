@@ -1,10 +1,10 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import BestQuotes from '../components/landing page/BestQuotes'
+import BestQuotes from '../components/landing_page/BestQuotes'
 import Nav from '../components/Nav'
-import RandomQuote from '../components/landing page/RandomQuote'
-import RecentQuotes from '../components/landing page/RecentQuotes'
-import WelcomeGuest from '../components/landing page/WelcomeGuest'
+import RandomQuote from '../components/landing_page/RandomQuote'
+import RecentQuotes from '../components/landing_page/RecentQuotes'
+import WelcomeGuest from '../components/landing_page/WelcomeGuest'
 import User from '../models/user'
 import Footer from '../components/Footer'
 
@@ -16,7 +16,7 @@ const Landing = () => {
   useEffect(() => {
     const getUser = async () =>{
       try{
-        const {data} = await axios.get('user')
+        const {data} = await axios.get('me')
 
         setUser(new User(
           data[0].id,
