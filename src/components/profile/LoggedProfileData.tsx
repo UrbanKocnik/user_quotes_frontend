@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import User from '../../models/user'
 
-const ProfileData = (props:{
+const LoggedProfileData = (props:{
     loggedUser: User
     quotes: number
     karma: number
@@ -31,7 +31,7 @@ const ProfileData = (props:{
       }, [loading])
   return (
     <div>
-        <div>{user.image}</div>
+        <img src={user.image} width="50" />
         <div>{user.first_name} {user.last_name}</div>
         <div>
             <div>
@@ -48,4 +48,4 @@ const ProfileData = (props:{
   )
 }
 
-export default ProfileData
+export default LoggedProfileData

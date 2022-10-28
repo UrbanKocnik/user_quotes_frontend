@@ -1,10 +1,10 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import BestQuotes from '../components/BestQuotes'
+import BestQuotes from '../components/landing page/BestQuotes'
 import Nav from '../components/Nav'
-import RandomQuote from '../components/RandomQuote'
-import RecentQuotes from '../components/RecentQuotes'
-import WelcomeGuest from '../components/WelcomeGuest'
+import RandomQuote from '../components/landing page/RandomQuote'
+import RecentQuotes from '../components/landing page/RecentQuotes'
+import WelcomeGuest from '../components/landing page/WelcomeGuest'
 import User from '../models/user'
 
 const Landing = () => {

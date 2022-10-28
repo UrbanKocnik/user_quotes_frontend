@@ -3,37 +3,39 @@ import React, { useEffect, useState } from 'react'
 import Quote from '../../models/quote'
 import QuoteCard from '../QuoteCard'
 
-const UserLikedQuotes = (props: {
-  page: number
+const RecentLoggedUserQuotes = (props: {
+  page:number
 }) => {
-    const [quotes, setQuotes] = useState<Quote[]>([])
+    const [quotes, setQuotes] = useState([])
 
     useEffect(() => {
         (
           async () => {
-            const {data} = await axios.get(`me/liked?page=${props.page}`)
-            setQuotes(data.data)
+            const {data} = await axios.get(`me/usersquotes?page=${props.page}&condition=created_at`)
+            setQuotes(data.data)   
           }
         )()
       }, [])
+    
       if(quotes.length === 0){
         return (
           <div>
-            <h1>Your liked quotes</h1>
+            <h1>Most recent quotes</h1>
             <div>
-              <p>You have no liked quotes!</p>
+              <p>You have no quotes!</p>
             </div>
           </div>
         )
       }
+      
   return (
     <div>
-        <h1>Your liked quotes</h1>
+        <h1>Most recent quotes</h1>
         <div>
             {quotes.map((q: Quote) => {
                 return(                   
                     <div key={q.id}>
-                        <QuoteCard quote={q} rating={"liked"}/>
+                        <QuoteCard quote={q} rating={"no rating"} author={true}/>
                     </div>
                 )
             })}
@@ -42,4 +44,4 @@ const UserLikedQuotes = (props: {
   )
 }
 
-export default UserLikedQuotes
+export default RecentLoggedUserQuotes

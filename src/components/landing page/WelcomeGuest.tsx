@@ -1,8 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import Quote from '../models/quote'
-import QuoteCard from './QuoteCard'
+import Quote from '../../models/quote'
+import QuoteCard from '../QuoteCard'
 
 const WelcomeGuest = () => {
     const [quotes, setQuotes] = useState([])

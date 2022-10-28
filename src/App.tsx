@@ -3,14 +3,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Landing from './pages/Landing';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
-import RandomQuote from './components/RandomQuote';
-import BestQuotes from './components/BestQuotes';
-import RecentQuotes from './components/RecentQuotes';
-import WelcomeGuest from './components/WelcomeGuest';
-import ProfileData from './components/profile/ProfileData';
-import User from './models/user';
 import Profile from './pages/Profile';
-import AddQuote from './components/actions/AddQuote';
+import ViewUser from './pages/ViewUser';
 
 function App() {
   return (
@@ -22,6 +16,7 @@ function App() {
             <Route path={'/login'} element={<Login />} />
             <Route path={'/register'} element={<Register />} />
             <Route path={'/profile'} element={<Profile />} />
+            <Route path={'/user/:id/view'} element={<ViewUser />} />
         </Routes>
       </BrowserRouter>
     </div>

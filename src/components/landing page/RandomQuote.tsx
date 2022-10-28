@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { Quote } from '../models/quote';
-import QuoteCard from './QuoteCard'
+import { Quote } from '../../models/quote';
+import QuoteCard from '../QuoteCard'
 
 const RandomQuote = () => {
     const[quote, setQuote] = useState(new Quote())

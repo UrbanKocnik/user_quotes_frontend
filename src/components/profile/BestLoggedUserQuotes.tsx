@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Quote from '../../models/quote'
 import QuoteCard from '../QuoteCard'
 
-const BestUserQuotes = (props: {
+const BestLoggedUserQuotes = (props: {
   page: number
 }) => {
     const [quotes, setQuotes] = useState([])
@@ -42,4 +42,4 @@ const BestUserQuotes = (props: {
   )
 }
 
-export default BestUserQuotes
+export default BestLoggedUserQuotes

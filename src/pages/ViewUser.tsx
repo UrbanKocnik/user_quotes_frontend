@@ -1,17 +1,18 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { Navigate } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 import Nav from '../components/Nav'
 import Paginator from '../components/Paginator'
-import BestLoggedUserQuotes from '../components/profile/BestLoggedUserQuotes'
-import RecentLoggedUserQuotes from '../components/profile/RecentLoggedUserQuotes'
-import LoggedProfileData from '../components/profile/LoggedProfileData'
+import BestUserQuotes from '../components/view_user/BestUserQuotes'
+import ProfileData from '../components/view_user/ProfileData'
+import RecentUserQuotes from '../components/view_user/RecentUserQuotes'
+import UserLikedQuotes from '../components/view_user/UserLikedQuotes'
 import Quote from '../models/quote'
 import User from '../models/user'
-import LoggedUserLikedQuotes from '../components/profile/LoggedUserLikedQuotes'
 
-const Profile = () => {
+const ViewUser = () => {
     const [user, setUser] = useState(new User())
+    const [signedUser, setSignedUser] = useState(new User())
     const [signedIn, setSignedIn] = useState(true)
     const [loaded, setLoaded] = useState(false)
     const [quoteCount, setQuoteCount] = useState(0)
@@ -22,10 +23,13 @@ const Profile = () => {
     const [prevMultiplier, setPrevMultiplier] = useState(1)
     const [liked, setLiked] = useState(0)
 
+    const { id } = useParams();
+
     useEffect(() => {
       const getUser = async () =>{
         try{
-          const {data} = await axios.get('me')
+        
+          const {data} = await axios.get(`me/user/${id}`)
   
           setUser(new User(
             data[0].id,
@@ -34,6 +38,18 @@ const Profile = () => {
             data[0].email,
             data[0].image
             ))
+
+            const loggedUser = await axios.get('me')
+  
+            setSignedUser(new User(
+              loggedUser.data[0].id,
+              loggedUser.data[0].first_name,
+              loggedUser.data[0].last_name,
+              loggedUser.data[0].email,
+              loggedUser.data[0].image
+              ))
+
+            setSignedIn(true)
             setQuoteCount(data[0].quotes.length) //counts user quotes
             const karmaSum = data[0].quotes.reduce((sum: number, quote: Quote) => {
                 return sum + quote.rating;
@@ -45,8 +61,8 @@ const Profile = () => {
               setPrevMultiplier(multiplier)
               setLoaded(false)
             }
-            const response = await axios.get(`me/liked?page=${page}`)
-            setLiked(response.data.data.length)
+            const response = await axios.get(`me/${user.id}/liked?page=${page}`)
+            setLiked(response.data.data.length)// checking which array is longer, to properly set load more last page
             if(liked === 0 && quoteCount > 0){
               setLiked(1) //da se pokaze pagination ceprav ni likanih quotov
             }        
@@ -60,6 +76,7 @@ const Profile = () => {
             }
         }
         catch(e){
+          window.alert("To view user profiles please sign in")
           setSignedIn(false);
         }
       }
@@ -73,12 +90,12 @@ const Profile = () => {
     <div>
         <Nav />
         <div>
-            {loaded && <LoggedProfileData loggedUser={user} quotes={quoteCount} karma={karma}/>}
+            {loaded && <ProfileData loggedUser={user} quotes={quoteCount} karma={karma}/>}
         </div>
         <div>
-          <div>{loaded && <BestLoggedUserQuotes page={multiplier}/>}</div>
-          <div>{loaded && <RecentLoggedUserQuotes page={multiplier}/>}</div>          
-          <div>{loaded && <LoggedUserLikedQuotes page={multiplier}/>}</div>          
+          <div>{loaded && <BestUserQuotes page={multiplier} user={user}/>}</div>
+          <div>{loaded && <RecentUserQuotes page={multiplier} user={user}/>}</div>
+          <div>{loaded && <UserLikedQuotes page={multiplier} user={user}/>}</div> 
         </div>
         <div>
           {liked > 0 && <Paginator lastPage={lastPage} multiplier={multiplier} pageChanged={setMultiplier}/>}
@@ -87,4 +104,4 @@ const Profile = () => {
   )
 }
 
-export default Profile
+export default ViewUser
