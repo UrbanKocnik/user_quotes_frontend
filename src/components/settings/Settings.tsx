@@ -8,6 +8,7 @@ import ModalComp from "../modals/ModalComp";
 import AddQuote from "../actions/AddQuote";
 import ResultModal from "../modals/ResultModal";
 import ChangePassword from "./ChangePassword";
+import ChangePicture from "./ChangePicture";
 
 const Settings = (props: {
     loggedUser: User
@@ -83,7 +84,7 @@ const Settings = (props: {
                 <a onClick={changePwModal}>Change password</a>
                 {passwordIsOpen && <ModalComp open={passwordIsOpen} children={<ChangePassword />} stayOpen={setPasswordIsOpen} />}
                 <a onClick={ChangePfpModal}>Change profile picture</a>
-                {pictureIsOpen && <ModalComp open={pictureIsOpen} children={<ChangePassword />} stayOpen={setPictureIsOpen} />}
+                {pictureIsOpen && <ModalComp open={pictureIsOpen} children={<ChangePicture sentImage={user.image} />} stayOpen={setPictureIsOpen} />}
             </div>
             <br />
             <button className="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
