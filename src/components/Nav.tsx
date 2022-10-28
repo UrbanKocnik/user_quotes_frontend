@@ -6,7 +6,6 @@ import User from '../models/user';
 import { Link } from 'react-router-dom'
 import Modal from 'react-modal';
 import ModalComp from './modals/ModalComp';
-import RandomQuote from './RandomQuote';
 import AddQuote from './actions/AddQuote';
 import Settings from './settings/Settings';
 

@@ -6,6 +6,7 @@ import ModalComp from './modals/ModalComp';
 import EditQuote from "./actions/EditQuote";
 import DeleteQuote from "./actions/DeleteQuote";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 interface QuoteProps {
   quote: Quote,
@@ -20,6 +21,8 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
   const [isAuthor, setIsAuthor] = useState(false)
   const [modalEditIsOpen, setEditIsOpen] = useState(false);
   const [modalDeleteIsOpen, setDeleteIsOpen] = useState(false);
+  const [score, setScore] = useState(0);
+  const [padding, setPadding] = useState(0);
 
   function editModal(){
     setEditIsOpen(true)  
@@ -34,8 +37,9 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
     {
         quote
     }); 
-    setLiked(true)
     setDisliked(false)
+    setLiked(true)
+    setScore(score + 1 + padding)
   }
 
   async function dislikeQuote(){
@@ -43,8 +47,10 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
     {
         quote
     }); 
+    
     setDisliked(true)
-    setLiked(false)
+    setLiked(false) 
+    setScore(score - 1 - padding)
   }
 
   Modal.setAppElement('#root');
@@ -52,25 +58,29 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
   useEffect(() => {
     (
       async () => {
+
         if(rating === "liked"){
           setLiked(true)
+          setPadding(1)
         }
         else if(rating === "disliked"){
           setDisliked(true)
+          setPadding(1) // to add/subtract correctly 
         }       
         if(author){
           setIsAuthor(true)
         }
+        setScore(quote.rating)       
       }
     )()
-  }, [liked, disliked])
+  }, [])
 
   return (
     <div className="quoteCard">
         <div className='rating'>
             {liked && <button onClick={likeQuote}>LIKED</button>}
             {!liked && <button onClick={likeQuote}>Like</button>}
-            <h4>{quote.rating}</h4>
+            <h4>{score}</h4>
             {disliked && <button onClick={dislikeQuote}>DISLIKED</button>}
             {!disliked && <button onClick={dislikeQuote}>Dislike</button>}
         </div>
@@ -78,8 +88,10 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
             <p>{quote.quote}</p>
         </div>
         <div className='author'>
+          <Link to={`/user/${quote.user.id}/view`}>
             <img src={quote.user.image} width="50" />
             <p>{quote.user.first_name} {quote.user.last_name}</p>
+          </Link>
         </div>
         {isAuthor && 
         <div id="root">
