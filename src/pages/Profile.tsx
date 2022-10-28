@@ -9,6 +9,7 @@ import LoggedProfileData from '../components/profile/LoggedProfileData'
 import Quote from '../models/quote'
 import User from '../models/user'
 import LoggedUserLikedQuotes from '../components/profile/LoggedUserLikedQuotes'
+import Footer from '../components/Footer'
 
 const Profile = () => {
     const [user, setUser] = useState(new User())
@@ -83,6 +84,7 @@ const Profile = () => {
         <div>
           {liked > 0 && <Paginator lastPage={lastPage} multiplier={multiplier} pageChanged={setMultiplier}/>}
         </div>
+        <Footer />
     </div>
   )
 }

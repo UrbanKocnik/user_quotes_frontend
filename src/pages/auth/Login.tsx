@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { SyntheticEvent, useState } from 'react'
 import { Navigate } from 'react-router-dom';
+import Footer from '../../components/Footer';
 import Nav from '../../components/Nav';
 
 
@@ -36,6 +37,7 @@ function Login() {
 
             <button className="w-100 btn btn-lg btn-primary" type="submit">Login</button>
         </form>
+        <Footer />
     </main>
   )
 }

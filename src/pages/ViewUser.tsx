@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
+import Footer from '../components/Footer'
 import Nav from '../components/Nav'
 import Paginator from '../components/Paginator'
 import BestUserQuotes from '../components/view_user/BestUserQuotes'
@@ -100,6 +101,7 @@ const ViewUser = () => {
         <div>
           {liked > 0 && <Paginator lastPage={lastPage} multiplier={multiplier} pageChanged={setMultiplier}/>}
         </div>
+        <Footer />
     </div>
   )
 }

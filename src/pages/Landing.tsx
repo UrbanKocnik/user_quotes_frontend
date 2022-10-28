@@ -6,6 +6,7 @@ import RandomQuote from '../components/landing page/RandomQuote'
 import RecentQuotes from '../components/landing page/RecentQuotes'
 import WelcomeGuest from '../components/landing page/WelcomeGuest'
 import User from '../models/user'
+import Footer from '../components/Footer'
 
 const Landing = () => {
 
@@ -44,6 +45,7 @@ const Landing = () => {
         <div>
           {signedIn && <RecentQuotes loggedIn={signedIn}/>}
         </div>
+        <Footer />
       </>
   )
 }
