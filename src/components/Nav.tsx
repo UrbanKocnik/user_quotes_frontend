@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import '../styles/nav.css'
+import '../styles/styles.js'
 import axios from 'axios';
 import User from '../models/user';
 import { Link } from 'react-router-dom'

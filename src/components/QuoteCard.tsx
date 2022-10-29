@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import Quote from "../models/quote"
-import '../styles/quoteCard.css'
+import '../styles/styles.js'
 import Modal from 'react-modal';
 import ModalComp from './modals/ModalComp';
 import EditQuote from "./actions/EditQuote";

@@ -1,5 +1,5 @@
 import { SyntheticEvent, useEffect, useRef, useState } from "react"
-import '../../styles/quoteCard.css'
+import '../../styles/styles'
 import Modal from 'react-modal';
 import axios from "axios";
 import ResultModal from "../modals/ResultModal";
