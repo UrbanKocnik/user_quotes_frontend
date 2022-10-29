@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { SyntheticEvent, useState } from 'react'
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import Nav from '../../components/Nav';
 
@@ -27,18 +27,32 @@ function Login() {
   }
 
   return (
-    <main className="form-signin w-100 m-auto">
-        <Nav />
-        <form onSubmit={submit}>
-            <h1 className="h3 mb-3 fw-normal">Please login</h1>
-            <input type="email" className="form-control" placeholder="name@example.com" required onChange={e => setEmail(e.target.value)}/>
+    <>
+      <Nav />
+      <main className="login-page">  
+        <form onSubmit={submit} className="register-form">
+          <div className='register-text-container'>
+            <h1>Welcome <span>back</span></h1>
+            <p>Thank you for coing back. Hope you have a good day and inspire others</p>
+          </div>    
+          <div className="one-input ">
+            <label>Email</label>      
+            <input type="email" className='stretch auth-input' placeholder="name@example.com" required onChange={e => setEmail(e.target.value)}/>
+          </div>
+          <div className="one-input ">
+            <label>Password</label>
+            <input type="password" placeholder="Password" className='stretch auth-input' required onChange={e => setPassword(e.target.value)}/>               
+          </div>
+          <button className="login-button stretch" type="submit">Login</button>
+        </form>       
+        <div className='register-below-form'>
+                <p>Don't have an account?</p>
+                <Link className='orange' to={'/login'}>Sign up</Link>
+            </div>    
+      </main>
+      <Footer />
+    </>
 
-            <input type="password" className="form-control" placeholder="Password" required onChange={e => setPassword(e.target.value)}/>
-
-            <button className="w-100 btn btn-lg btn-primary" type="submit">Login</button>
-        </form>
-        <Footer />
-    </main>
   )
 }
 

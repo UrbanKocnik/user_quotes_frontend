@@ -1,3 +1,16 @@
+$orange: #DE8667;
+$light_orange: #EFB467;
+$font-stack: 'Raleway';
+
+body{
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+
+color: #322D38;
+}
+
 .footer{
     display: flex;
     flex-direction: column;
@@ -20,6 +33,56 @@
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
     border-radius: 0px;
 }
+.nav-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    padding: 40px;
+}
+    
+
+.login_button_nav{
+    color: $orange;
+    background-color: white;
+    border-radius: 55px;
+    border: 2px solid $orange;
+    text-decoration: none;
+    height: 40px;
+    width: 120px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+}
+
+.register_button_nav{
+    
+    color: white;
+    background-color: $orange;
+    border-radius: 55px;
+    border: 2px solid $orange;
+    text-decoration: none;
+    height: 40px;
+    width: 120px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+}
+
+.footer-items{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 72px;
+    gap: 82px;
+    color: white;
+    width: 1440px;
+    height: 25px;
+}
+
+
 
 .nav{
 display: flex;
@@ -35,3 +98,15 @@ left: 70px;
 right: 70px;
 top: calc(50% - 40px/2 - 446px);
 }
+
+img{
+    width: 65px;
+    height: 65px;
+    border-radius: 50%
+}
+
+span{
+    color: $orange;
+    text-decoration: none 
+}
+

@@ -37,42 +37,41 @@ function Register() {
     <Nav />
         <main className="register-page">        
             <div className='register-text-container'>
-                <h2>What is your name?</h2>
+                <h1>What is your <span>name?</span></h1>
                 <p>Your name will appear on quotes and your public profile</p>
-                <img src='http://localhost:4000/api/uploads/default.png' width="50" />
+                <img src='http://localhost:4000/api/uploads/default.png' />
             </div>
             <form onSubmit={submit} className="register-form">
-                <h1>Please register</h1>
                 <div className='one-input'>
                     <label>Email</label>
-                    <input type="email" className='stretch' placeholder="name@example.com" required onChange={e => setEmail(e.target.value)}/>
+                    <input type="email" className='stretch auth-input' placeholder="name@example.com" required onChange={e => setEmail(e.target.value)}/>
                 </div>
                 <div className="two-input">                
                     <div className="one-input">
                         <label>First name</label>
-                        <input placeholder="First name" required onChange={e => setFirstName(e.target.value)}/>                   
+                        <input placeholder="First name" className='auth-input' required onChange={e => setFirstName(e.target.value)}/>                   
                     </div>
                     <div className="one-input">
                         <label>Last name</label>
-                        <input placeholder= "Last name" required onChange={e => setLastName(e.target.value)}/>
+                        <input placeholder= "Last name" className='auth-input' required onChange={e => setLastName(e.target.value)}/>
                     </div>                
                 </div>
 
 
                 <div className="one-input ">
                     <label>Password</label>
-                    <input type="password" placeholder="Password" className='stretch' required onChange={e => setPassword(e.target.value)}/>               
+                    <input type="password" placeholder="Password" className='stretch auth-input' required onChange={e => setPassword(e.target.value)}/>               
                 </div>
                 <div className="one-input">
                     <label>Confirm password</label>
-                    <input type="password" className='stretch' placeholder="Password confirm" required 
+                    <input type="password" className='stretch auth-input' placeholder="Password confirm" required 
                     onChange={e => setPasswordConfirm(e.target.value)}/>
                 </div>
                 <button className="register-button stretch" type="submit">Register</button>
             </form>
             <div className='register-below-form'>
                 <p>Already have an account?</p>
-                <Link to={'/login'}>Sign in</Link>
+                <Link className='orange' to={'/login'}>Sign in</Link>
             </div>        
         </main>
     <Footer />

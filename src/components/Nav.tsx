@@ -55,10 +55,8 @@ if(location.pathname === '/register')
   return (
     <div className="nav" id='root'>
         <img src='http://localhost:4000/api/uploads/default.png' width="50" />
-        <div className="button">
-            <div className="">
-                <Link to={`/login`}>Login</Link>
-            </div>
+        <div className="">
+            <Link className="login_button_nav" to={`/login`}>Login</Link>
         </div>
     </div>
   )
@@ -67,9 +65,7 @@ else if(location.pathname === '/login')
     <div className="nav" id='root'>
         <img src='http://localhost:4000/api/uploads/default.png' width="50" />
         <div className="button">
-            <div className="">
-                <Link to={`/register`}>Register</Link>
-            </div>
+          <Link className="register_button_nav" to={`/register`}>Register</Link>
         </div>
     </div>
   )
@@ -78,14 +74,14 @@ else{
         return (
             <div className="nav" id='root'>
                 <img src='http://localhost:4000/api/uploads/default.png' width="50" />
-                <div className="button">
-                <div className="">
-                    <Link to={`/login`}>Login</Link>
-                </div>
-                <div className="">
-                    <Link to={`/register`}>Register</Link>
-                </div>
-                </div>
+                <div className="nav-buttons">
+                  <div>
+                    <Link className="login_button_nav nav_buttons" to={`/login`}>Login</Link>
+                  </div>
+                  <div>
+                    <Link className="register_button_nav nav_buttons" to={`/register`}>Register</Link>
+                  </div>                  
+                </div>          
             </div>
           )
     }
