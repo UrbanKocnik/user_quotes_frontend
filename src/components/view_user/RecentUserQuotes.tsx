@@ -10,44 +10,54 @@ const RecentUserQuotes = (props: {
 }) => {
     const [quotes, setQuotes] = useState([])
     const [votes, setVotes] = useState<any[]>([])
-    const [retry, setRetry] = useState(0)
-    const [noVotes, setNoVotes] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
         (
           async () => {
-            const {data} = await axios.get(`me/usersquotes/${props.user.id}?page=${props.page}&condition=created_at`)
-            setQuotes(data.data)   
-            if(retry === 0){  
+            
+            if(!isLoading){  
+              setIsLoading(true)
               const response = await axios.get(`quotes/votes`)
               setVotes(response.data)
+      
+              const {data} = await axios.get(`me/usersquotes/${props.user.id}?page=${props.page}&condition=created_at`)
+              setQuotes(data.data)  
+
+              setIsLoading(false)
             }
-            
-            if(retry < 3){ //if votes arent loaded yet, wait and rerender
-              setRetry(retry+1)             
-            }     
-            else{
-              setNoVotes(true)
-            }  
           }
         )()
-      }, [retry])
-      if(quotes.length === 0){
-        return (
+      }, [])
+
+    if(isLoading){
+      return (
+        <div>
+          <h1>Most recent quotes</h1>
           <div>
+            <p>Loading</p>
+          </div>
+        </div>
+      )
+    }
+    else {
+      if(quotes.length === 0){
+      return (
+        <div>
+          <h1>Most recent quotes</h1>
+          <div>
+            <p>You have no quotes!</p>
+          </div>
+        </div>
+      )
+    }
+      return (
+        <div>
             <h1>Most recent quotes</h1>
             <div>
-              <p>You have no quotes!</p>
-            </div>
-          </div>
-        )
-      }
-  return (
-    <div>
-        <h1>Most recent quotes</h1>
-        <div>
-        {quotes.map((q: Quote) => {
-              let state = ""                         
+              
+            {quotes.map((q: Quote) => {
+              let state = ""                     
                   votes.every((vote) => {
                       if(vote.quote_id === q.id){
                           if(vote.rating){
@@ -64,17 +74,17 @@ const RecentUserQuotes = (props: {
                         return true;
                     }
                   });                    
-                if(state != "" || noVotes){
                     return(                    
                         <div key={q.id}>
                             <QuoteCard quote={q} rating={state} />
                         </div>
                     )
-                }
-            })}
+                })}
+            </div>
         </div>
-    </div>
-  )
+      )
+    }
+
 }
 
 export default RecentUserQuotes

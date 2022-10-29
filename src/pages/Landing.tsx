@@ -11,27 +11,34 @@ import Footer from '../components/Footer'
 const Landing = () => {
 
   const [user, setUser] = useState(new User())
-  const [signedIn, setSignedIn] = useState(true)
-
+  const [signedIn, setSignedIn] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   useEffect(() => {
     const getUser = async () =>{
-      try{
-        const {data} = await axios.get('me')
+      
+        if(!isLoading){
+        setIsLoading(true)
+        try{
+          const {data} = await axios.get('me')
 
-        setUser(new User(
-          data[0].id,
-          data[0].first_name,
-          data[0].last_name,
-          data[0].email,
-          data[0].image
-          ))
-      }
-      catch(e){
-        setSignedIn(false);
+          setUser(new User(
+            data[0].id,
+            data[0].first_name,
+            data[0].last_name,
+            data[0].email,
+            data[0].image
+            ))
+            setSignedIn(true)
+            setIsLoading(false)
+        }
+        catch(e){
+          setSignedIn(false);
+          setIsLoading(false)
+        }
       }
     }
     getUser();
-  }, []);
+  }, [signedIn]);
   return (
       <>
         <Nav />
@@ -40,7 +47,7 @@ const Landing = () => {
           {signedIn && <RandomQuote />}
         </div>
         <div>
-          <BestQuotes loggedIn={signedIn}/>
+          {!isLoading && <BestQuotes loggedIn={signedIn}/>}
         </div>
         <div>
           {signedIn && <RecentQuotes loggedIn={signedIn}/>}

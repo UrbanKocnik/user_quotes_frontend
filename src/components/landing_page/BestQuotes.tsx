@@ -5,78 +5,93 @@ import Quote from '../../models/quote'
 import Paginator from '../Paginator'
 import QuoteCard from '../QuoteCard'
 
-const BestQuotes = (props: any) => {
+const BestQuotes = (props:{
+    loggedIn: boolean
+}) => {
     
     const [quotes, setQuotes] = useState([])
     const [votes, setVotes] = useState<any[]>([])
     const [lastPage, setLastPage] = useState(0)
     const [multiplier, setMultiplier] = useState(1)
-    const [signedIn, setSignedIn] = useState(true) //send logged in state from page so you dont call twice (render welcome or random)
-    const [retry, setRetry] = useState(0)
-    const [noVotes, setNoVotes] = useState(false)
+    const [signedIn, setSignedIn] = useState(false) //send logged in state from page so you dont call twice (render welcome or random)
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
         (
-          async () => {
-          const {data} = await axios.get(`quotes?page=${multiplier}&condition=likes`)
-          setQuotes(data.data)   
-          setQuotes(data.data) 
-          setLastPage(data.meta.last_page)
-  
-          if(retry === 0){
-              setSignedIn(props.loggedIn)          
-              if(signedIn){            
-                  const response = await axios.get(`quotes/votes`)
-                  setVotes(response.data)
-              }       
-              }             
-              if(retry < 3){ //if votes arent loaded yet, wait and rerender
-              setRetry(retry+1)             
-              }     
-              else{
-              setNoVotes(true)
-              } 
+          async () => {           
+            if(!isLoading){  
+              setIsLoading(true)
+              setSignedIn(props.loggedIn)
+              if(props.loggedIn){
+                const response = await axios.get(`quotes/votes`)
+                setVotes(response.data)
+              }    
+              const {data} = await axios.get(`quotes?page=${multiplier}&condition=likes`)
+              setQuotes(data.data)  
+              setLastPage(data.meta.last_page)
+              setIsLoading(false)
+            }
           }
         )()
-      }, [multiplier])
+      }, [multiplier, signedIn])
       
+      if(isLoading){
+        return (
+          <div>
+            <h1>Most upvoted quotes</h1>
+            <p>Most upvoted quotes on the platform. Give a like to the ones you like to keep them in your profile</p>
+            <div>
+              <p>Loading</p>
+            </div>
+          </div>
+        )
+      }
+      else {
+        if(quotes.length === 0){
+        return (
+          <div>
+            <h1>Most upvoted quotes</h1>
+            <p>Most upvoted quotes on the platform. Give a like to the ones you like to keep them in your profile</p>
+            <div>
+              <p>There are no quotes!</p>
+            </div>
+          </div>
+        )
+      }
+    }
+
   return (
     <div>
         <div>
             <h1>Most upvoted quotes</h1>
             <p>Most upvoted quotes on the platform. Give a like to the ones you like to keep them in your profile</p>
         </div>
-        <div>
-        {quotes.map((q: Quote) => {
-                let state = "" 
-                if(signedIn){                                     
-                    votes.every(vote => {
-                        if(vote.quote_id === q.id){
-                            if(vote.rating){
-                                state = "liked"
-                                return false
-                            }
-                            else{
-                                state = "disliked"
-                                return false
-                            }
-                        }
-                        else{
-                          state = "no rating"
-                          return true;
+        <div>           
+            {quotes.map((q: Quote) => {
+              let state = ""                     
+                  votes.every((vote) => {
+                      if(vote.quote_id === q.id){
+                          if(vote.rating){
+                              state = "liked"
+                              return false
+                          }
+                          else{
+                              state = "disliked"
+                              return false
+                          }
                       }
-                    });                    
-                }
-                if(state != "" || noVotes){
-                    return(
-                    
+                      else{
+                        state = "no rating"
+                        return true;
+                    }
+                  });                    
+                    return(                    
                         <div key={q.id}>
                             <QuoteCard quote={q} rating={state} />
                         </div>
                     )
-                }
-            })}
-        </div>
+                })}
+            </div>
         <div>
             {signedIn && <Paginator lastPage={lastPage} multiplier={multiplier} pageChanged={setMultiplier}/>}
             {!signedIn && <Link to={`/register`}>Sign up to see more</Link>}
