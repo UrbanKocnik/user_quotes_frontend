@@ -54,7 +54,7 @@ const Nav = () => {
 if(location.pathname === '/register')
   return (
     <div className="nav" id='root'>
-        <div className='logo'>Logo</div>
+        <img src='http://localhost:4000/api/uploads/default.png' width="50" />
         <div className="button">
             <div className="">
                 <Link to={`/login`}>Login</Link>
@@ -65,7 +65,7 @@ if(location.pathname === '/register')
 else if(location.pathname === '/login')
   return (
     <div className="nav" id='root'>
-        <div className='logo'>Logo</div>
+        <img src='http://localhost:4000/api/uploads/default.png' width="50" />
         <div className="button">
             <div className="">
                 <Link to={`/register`}>Register</Link>
@@ -77,7 +77,7 @@ else{
     if(guest){
         return (
             <div className="nav" id='root'>
-                <div className='logo'>Logo</div>
+                <img src='http://localhost:4000/api/uploads/default.png' width="50" />
                 <div className="button">
                 <div className="">
                     <Link to={`/login`}>Login</Link>
@@ -92,7 +92,7 @@ else{
     else{
         return (
             <div className="nav" id='root'>
-                <div className='logo'>Logo</div>
+                <img src='http://localhost:4000/api/uploads/default.png' width="50" />
                 <div className="button">
                     <Link className="" to="/">
                         Home

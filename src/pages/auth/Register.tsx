@@ -33,27 +33,51 @@ function Register() {
     }
     
   return (
-    <main className="form-signin w-100 m-auto">
-        <Nav />
-        <form onSubmit={submit}>
-            <h1 className="h3 mb-3 fw-normal">Please register</h1>
+    <>
+    <Nav />
+        <main className="register-page">        
+            <div className='register-text-container'>
+                <h2>What is your name?</h2>
+                <p>Your name will appear on quotes and your public profile</p>
+                <img src='http://localhost:4000/api/uploads/default.png' width="50" />
+            </div>
+            <form onSubmit={submit} className="register-form">
+                <h1>Please register</h1>
+                <div className='one-input'>
+                    <label>Email</label>
+                    <input type="email" className='stretch' placeholder="name@example.com" required onChange={e => setEmail(e.target.value)}/>
+                </div>
+                <div className="two-input">                
+                    <div className="one-input">
+                        <label>First name</label>
+                        <input placeholder="First name" required onChange={e => setFirstName(e.target.value)}/>                   
+                    </div>
+                    <div className="one-input">
+                        <label>Last name</label>
+                        <input placeholder= "Last name" required onChange={e => setLastName(e.target.value)}/>
+                    </div>                
+                </div>
 
-            <input className="form-control"placeholder="First name" required onChange={e => setFirstName(e.target.value)}/>
-            <input className="form-control"placeholder= "Last name" required onChange={e => setLastName(e.target.value)}/>
-            <input type="email" className="form-control"placeholder="name@example.com" required onChange={e => setEmail(e.target.value)}/>
 
-            <input type="password" className="form-control" placeholder="Password" required onChange={e => setPassword(e.target.value)}/>
-            <input type="password" className="form-control" placeholder="Password confirm" required 
-            onChange={e => setPasswordConfirm(e.target.value)}/>
-
-            <button className="w-100 btn btn-lg btn-primary" type="submit">Register</button>
-        </form>
-        <div>
-            <p>Already have an account?</p>
-            <Link to={'/login'}>Sign in</Link>
-        </div>
-        <Footer />
-    </main>
+                <div className="one-input ">
+                    <label>Password</label>
+                    <input type="password" placeholder="Password" className='stretch' required onChange={e => setPassword(e.target.value)}/>               
+                </div>
+                <div className="one-input">
+                    <label>Confirm password</label>
+                    <input type="password" className='stretch' placeholder="Password confirm" required 
+                    onChange={e => setPasswordConfirm(e.target.value)}/>
+                </div>
+                <button className="register-button stretch" type="submit">Register</button>
+            </form>
+            <div className='register-below-form'>
+                <p>Already have an account?</p>
+                <Link to={'/login'}>Sign in</Link>
+            </div>        
+        </main>
+    <Footer />
+    
+    </>
   )
 }
 
