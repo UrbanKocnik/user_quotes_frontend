@@ -12,7 +12,7 @@ const ChangePassword = () => {
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
 
 
-  const submit = async (e: SyntheticEvent) => {
+  const submitPassword = async (e: SyntheticEvent) => {
     e.preventDefault();
 
     await axios.put(`me/update-password`,
@@ -38,7 +38,7 @@ const ChangePassword = () => {
     <div>
         <h1>Profile settings</h1>
         <h3>Change your password</h3>
-        <form onSubmit={submit}>
+        <form onSubmit={submitPassword}>
             <label>Current password</label>
             <input type="current_password" className="form-control" placeholder="Current password" required onChange={e => setCurrentPassword(e.target.value)}/>
             <label>New password</label>
