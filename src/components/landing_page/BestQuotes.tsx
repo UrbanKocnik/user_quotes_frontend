@@ -13,27 +13,27 @@ const BestQuotes = (props:{
     const [votes, setVotes] = useState<any[]>([])
     const [lastPage, setLastPage] = useState(0)
     const [multiplier, setMultiplier] = useState(1)
-    const [signedIn, setSignedIn] = useState(true) //send logged in state from page so you dont call twice (render welcome or random)
+    const [signedIn, setSignedIn] = useState(false) //send logged in state from page so you dont call twice (render welcome or random)
     const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
         (
-          async () => {
-            setSignedIn(props.loggedIn)
+          async () => {           
             if(!isLoading){  
               setIsLoading(true)
-              const response = await axios.get(`quotes/votes`)
-              setVotes(response.data)
-      
+              setSignedIn(props.loggedIn)
+              if(props.loggedIn){
+                const response = await axios.get(`quotes/votes`)
+                setVotes(response.data)
+              }    
               const {data} = await axios.get(`quotes?page=${multiplier}&condition=likes`)
               setQuotes(data.data)  
               setLastPage(data.meta.last_page)
-  
               setIsLoading(false)
             }
           }
         )()
-      }, [multiplier])
+      }, [multiplier, signedIn])
       
       if(isLoading){
         return (
@@ -68,8 +68,7 @@ const BestQuotes = (props:{
         </div>
         <div>           
             {quotes.map((q: Quote) => {
-              let state = ""      
-                  console.log(votes)                   
+              let state = ""                     
                   votes.every((vote) => {
                       if(vote.quote_id === q.id){
                           if(vote.rating){

@@ -68,8 +68,7 @@ const BestQuotes = (props:{
         </div>
         <div>           
             {quotes.map((q: Quote) => {
-              let state = ""      
-                  console.log(votes)                   
+              let state = ""              
                   votes.every((vote) => {
                       if(vote.quote_id === q.id){
                           if(vote.rating){
