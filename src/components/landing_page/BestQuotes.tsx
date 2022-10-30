@@ -37,8 +37,8 @@ const BestQuotes = (props:{
       
       if(isLoading){
         return (
-          <div>
-            <h1>Most upvoted quotes</h1>
+          <div className='best-landing-page'>
+            <h1><span>Most upvoted quotes</span></h1>
             <p>Most upvoted quotes on the platform. Give a like to the ones you like to keep them in your profile</p>
             <div>
               <p>Loading</p>
@@ -49,8 +49,8 @@ const BestQuotes = (props:{
       else {
         if(quotes.length === 0){
         return (
-          <div>
-            <h1>Most upvoted quotes</h1>
+          <div className='best-landing-page'>
+            <h1><span>Most upvoted quotes</span></h1>
             <p>Most upvoted quotes on the platform. Give a like to the ones you like to keep them in your profile</p>
             <div>
               <p>There are no quotes!</p>
@@ -61,9 +61,9 @@ const BestQuotes = (props:{
     }
 
   return (
-    <div>
-        <div>
-            <h1>Most upvoted quotes</h1>
+    <div className='best-landing-page'>
+        <div className='best-landing-first-row'>
+            <h1><span>Most upvoted quotes</span></h1>
             <p>Most upvoted quotes on the platform. Give a like to the ones you like to keep them in your profile</p>
         </div>
         <div>           
@@ -94,7 +94,7 @@ const BestQuotes = (props:{
             </div>
         <div>
             {signedIn && <Paginator lastPage={lastPage} multiplier={multiplier} pageChanged={setMultiplier}/>}
-            {!signedIn && <Link to={`/register`}>Sign up to see more</Link>}
+            {!signedIn && <Link to={`/register`} className='register_button_landing'>Sign up to see more</Link>}
         </div>
     </div>
   )

@@ -1,0 +1,92 @@
+$orange: #DE8667;
+
+.landing-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 16px;
+    
+    position: absolute;
+    height: 540px;
+    left: 35.42%;
+    right: 35.42%;
+    top: 45%;
+}
+
+.welcome-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-first-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vh;
+    height: 1000px;
+    margin-top: 400px;
+}
+
+h1{
+    margin-bottom: 0px;
+}
+
+
+.welcome-text{
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items:flex-start;
+}
+
+.text-xlg{
+    font-size: 80px;
+}
+
+.text-md{
+    font-size: 32px;
+}
+
+.explore-text{
+    font-size: 32px;
+    width: 600px;
+    text-align: center;
+}
+
+.best-landing-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.register_button_landing{
+    
+    color: $orange;
+    background-color: white;
+    border-radius: 55px;
+    border: 2px solid $orange;
+    text-decoration: none;
+    height: 40px;
+    width: 160px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    font-size: 18px;
+    margin-top: 30px;
+}
+
+
+.best-landing-first-row{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

@@ -75,12 +75,8 @@ else{
             <div className="nav" id='root'>
                 <img src='http://localhost:4000/api/uploads/default.png' width="50" />
                 <div className="nav-buttons">
-                  <div>
-                    <Link className="login_button_nav nav_buttons" to={`/login`}>Login</Link>
-                  </div>
-                  <div>
-                    <Link className="register_button_nav nav_buttons" to={`/register`}>Register</Link>
-                  </div>                  
+                  <Link className="login_button_nav" to={`/login`}>Login</Link>
+                  <Link className="register_button_nav" to={`/register`}>Register</Link>                
                 </div>          
             </div>
           )

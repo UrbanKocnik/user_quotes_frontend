@@ -22,7 +22,7 @@ color: #322D38;
     position: absolute;
     left: 0px;
     right: 0px;
-    top: 94.53%;
+    top: 100%;
     bottom: 0%;
     
     /* Orange */
@@ -36,8 +36,7 @@ color: #322D38;
 .nav-buttons{
     display: flex;
     flex-direction: row;
-    justify-content:space-evenly;
-    padding: 40px;
+    justify-content:space-around;
 }
     
 
@@ -53,6 +52,8 @@ color: #322D38;
     display: flex;
     flex-direction: row;
     justify-content:center;
+    margin-right: 40px;
+    font-size: 18px;
 }
 
 .register_button_nav{
@@ -68,6 +69,7 @@ color: #322D38;
     display: flex;
     flex-direction: row;
     justify-content:center;
+    font-size: 18px;
 }
 
 .footer-items{
@@ -89,7 +91,7 @@ display: flex;
 flex-direction: row;
 justify-content: space-between;
 align-items: center;
-padding: 0px;
+padding-top: 40px;
 gap: 645px;
 
 position: absolute;

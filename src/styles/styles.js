@@ -1,5 +1,4 @@
-import './nav.scss'
 import './quoteCard.scss'
-import './index.scss'
+import './landing.scss'
 import './App.scss'
 import './auth.scss'
