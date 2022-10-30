@@ -7,6 +7,7 @@ import EditQuote from "./actions/EditQuote";
 import DeleteQuote from "./actions/DeleteQuote";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Icon } from '@iconify/react';
 
 interface QuoteProps {
   quote: Quote,
@@ -78,26 +79,31 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
   return (
     <div className="quoteCard">
         <div className='rating'>
-            {liked && <button onClick={likeQuote}>LIKED</button>}
-            {!liked && <button onClick={likeQuote}>Like</button>}
+            {liked && <Icon icon="akar-icons:chevron-up" onClick={likeQuote} className="orange-block pointer"/>}
+            {!liked && <Icon icon="akar-icons:chevron-up" onClick={likeQuote} className="pointer"/>}
             <h4>{score}</h4>
-            {disliked && <button onClick={dislikeQuote}>DISLIKED</button>}
-            {!disliked && <button onClick={dislikeQuote}>Dislike</button>}
+            {disliked && <Icon icon="akar-icons:chevron-up" rotate={2} onClick={dislikeQuote} className="blue-block pointer"/>}
+            {!disliked && <Icon icon="akar-icons:chevron-up" rotate={2} onClick={dislikeQuote} className="pointer"/>}
         </div>
-        <div className='quote'>
-            <p>{quote.quote}</p>
+        <div className="quote-card-mid-colum">
+          <div className='quote'>
+                <p>{quote.quote}</p>
+            </div>
+            <div className='author'>
+              <Link to={`/user/${quote.user.id}/view`}>
+                <img src={quote.user.image} width="20" />               
+              </Link>
+              <Link className="author" to={`/user/${quote.user.id}/view`}>
+                <p>{quote.user.first_name} {quote.user.last_name}</p>               
+              </Link>            
+            </div>
         </div>
-        <div className='author'>
-          <Link to={`/user/${quote.user.id}/view`}>
-            <img src={quote.user.image} width="50" />
-            <p>{quote.user.first_name} {quote.user.last_name}</p>
-          </Link>
-        </div>
+        {!isAuthor && <div></div>}
         {isAuthor && 
-        <div id="root">
-          <button onClick={editModal}>Edit</button>
+        <div id="root" className="quote-action-buttons orange-block">
+          <Icon icon="bytesize:settings" onClick={editModal} className="pointer"/>
           {modalEditIsOpen && <ModalComp open={modalEditIsOpen} children={<EditQuote sentQuote={quote}/>} stayOpen={setEditIsOpen} />}
-          <button onClick={deleteModal}>Delete</button>
+          <Icon icon="bi:x-lg" onClick={deleteModal} className="pointer"/>
           {modalDeleteIsOpen && <ModalComp open={modalDeleteIsOpen} children={<DeleteQuote sentQuote={quote}/>} stayOpen={setDeleteIsOpen} />}
         </div>}
     </div>

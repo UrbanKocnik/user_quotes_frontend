@@ -66,7 +66,7 @@ const BestQuotes = (props:{
             <h1><span>Most upvoted quotes</span></h1>
             <p>Most upvoted quotes on the platform. Give a like to the ones you like to keep them in your profile</p>
         </div>
-        <div>           
+        <div className='best-landing-quotes'>           
             {quotes.map((q: Quote) => {
               let state = ""                     
                   votes.every((vote) => {

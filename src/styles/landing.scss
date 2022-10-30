@@ -6,7 +6,7 @@ $orange: #DE8667;
     justify-content: center;
     align-items: center;
     padding: 0px;
-    gap: 16px;
+    //gap: 16px;
     
     position: absolute;
     height: 540px;
@@ -27,6 +27,7 @@ $orange: #DE8667;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     width: 100vh;
     height: 1000px;
     margin-top: 400px;
@@ -63,12 +64,25 @@ h1{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 1250px;
+    margin-top: 00px;
 }
+
+.best-landing-quotes{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 20px;
+    flex-basis: 33.333%;
+    flex-wrap: wrap;
+}
+
 
 .register_button_landing{
     
-    color: $orange;
-    background-color: white;
+    color: white;
+    background-color: $orange;
     border-radius: 55px;
     border: 2px solid $orange;
     text-decoration: none;

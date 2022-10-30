@@ -11,6 +11,17 @@ font-size: 18px;
 color: #322D38;
 }
 
+.orange-block{
+    color: $orange;
+}
+
+.blue-block{
+    color: #3F0FB7;
+}
+
+.pointer{
+    cursor: pointer
+}
 .footer{
     display: flex;
     flex-direction: column;
@@ -72,6 +83,22 @@ color: #322D38;
     font-size: 18px;
 }
 
+.pagination-button{
+    color: $orange;
+    background-color: white;
+    border-radius: 55px;
+    border: 2px solid $orange;
+    text-decoration: none;
+    height: 40px;
+    width: 120px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
 .footer-items{
     display: flex;
     flex-direction: row;
@@ -100,12 +127,12 @@ left: 70px;
 right: 70px;
 top: calc(50% - 40px/2 - 446px);
 }
-
+/*
 img{
     width: 65px;
     height: 65px;
     border-radius: 50%
-}
+}*/
 
 span{
     color: $orange;

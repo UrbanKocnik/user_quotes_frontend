@@ -21,7 +21,7 @@ const Paginator = (props:
 
   return (
     <div className="pagination">
-        {visible && <button className='page-link' onClick={nextPage}>Load more</button>}
+        {visible && <button className='pagination-button' onClick={nextPage}>Load more</button>}
     </div>
   )
 }

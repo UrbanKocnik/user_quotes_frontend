@@ -46,9 +46,9 @@ function Login() {
           <button className="login-button stretch" type="submit">Login</button>
         </form>       
         <div className='register-below-form'>
-                <p>Don't have an account?</p>
-                <Link className='orange' to={'/login'}>Sign up</Link>
-            </div>    
+            <p>Don't have an account?</p>
+            <Link className='orange' to={'/register'}>Sign up</Link>
+        </div>    
       </main>
       <Footer />
     </>

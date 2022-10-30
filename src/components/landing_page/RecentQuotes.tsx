@@ -37,8 +37,8 @@ const BestQuotes = (props:{
       
       if(isLoading){
         return (
-          <div>
-            <h1>Most recent quotes</h1>
+          <div className='best-landing-page'>
+            <h1><span>Most recent quotes</span></h1>
             <p>Recent quotes updates as soon user adds new quote. Go ahead and show them that you have seen the new quote and like the ones you like.</p>
             <div>
               <p>Loading</p>
@@ -49,8 +49,8 @@ const BestQuotes = (props:{
       else {
         if(quotes.length === 0){
         return (
-          <div>
-            <h1>Most recent quotes</h1>
+          <div className='best-landing-page'>
+            <h1><span>Most recent quotes</span></h1>
             <p>Recent quotes updates as soon user adds new quote. Go ahead and show them that you have seen the new quote and like the ones you like.</p>
             <div>
               <p>There are no quotes!</p>
@@ -61,12 +61,12 @@ const BestQuotes = (props:{
     }
 
   return (
-    <div>
-        <div>
-        <h1>Most recent quotes</h1>
+    <div className='best-landing-page'>
+        <div className="best-landing-first-row">
+        <h1><span>Most recent quotes</span></h1>
             <p>Recent quotes updates as soon user adds new quote. Go ahead and show them that you have seen the new quote and like the ones you like.</p>
         </div>
-        <div>           
+        <div className='best-landing-quotes'>           
             {quotes.map((q: Quote) => {
               let state = ""              
                   votes.every((vote) => {
