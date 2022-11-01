@@ -41,7 +41,7 @@ const Landing = () => {
   }, [signedIn]);
   return (
       <>
-        <Nav />
+      <Nav />
         <div className="landing-page">
           <div>
             {!signedIn && <WelcomeGuest />}
@@ -53,8 +53,10 @@ const Landing = () => {
           <div>
             {signedIn && <RecentQuotes loggedIn={signedIn}/>}
           </div>
+          
         </div>
-        <Footer />
+      <Footer />
+        
       </>
   )
 }

@@ -71,21 +71,26 @@ const Profile = () => {
         return <Navigate to={'/'} />
     }
   return (
-    <div>
-        <Nav />
-        <div>
-            {loaded && <LoggedProfileData loggedUser={user} quotes={quoteCount} karma={karma}/>}
-        </div>
-        <div>
-          <div>{loaded && <BestLoggedUserQuotes page={multiplier}/>}</div>
-          <div>{loaded && <RecentLoggedUserQuotes page={multiplier}/>}</div>          
-          <div>{loaded && <LoggedUserLikedQuotes page={multiplier}/>}</div>          
-        </div>
-        <div>
-          {liked > 0 && <Paginator lastPage={lastPage} multiplier={multiplier} pageChanged={setMultiplier}/>}
-        </div>
-        <Footer />
-    </div>
+    <>
+      <Nav />
+      <div className='profile-page'>  
+      
+          <div className='orange-background'></div>       
+          <div>
+              {loaded && <LoggedProfileData loggedUser={user} quotes={quoteCount} karma={karma}/>}
+          </div>
+          <div className='profile-quotes'>
+            <div>{loaded && <BestLoggedUserQuotes page={multiplier}/>}</div>
+            <div>{loaded && <RecentLoggedUserQuotes page={multiplier}/>}</div>          
+            <div>{loaded && <LoggedUserLikedQuotes page={multiplier}/>}</div>          
+          </div>
+          <div>
+            {liked > 0 && <Paginator lastPage={lastPage} multiplier={multiplier} pageChanged={setMultiplier}/>}
+          </div>        
+      </div>
+      <Footer />
+    </>
+
   )
 }
 

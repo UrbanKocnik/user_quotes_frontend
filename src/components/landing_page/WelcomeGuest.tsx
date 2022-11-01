@@ -30,14 +30,14 @@ const WelcomeGuest = () => {
         </div>
         <div>
           {quoteNr && 
-          <div>
-            <div>
+          <div className='display-quotes'>
+            <div className='top-quote'>
               <QuoteCard quote={quotes[0]} rating={"no rating"} />
             </div>
-            <div>
+            <div className='center-quote'>
                 <QuoteCard quote={quotes[1]} rating={"no rating"} />
             </div>
-            <div>
+            <div className='bottom-quote'>
                 <QuoteCard quote={quotes[2]} rating={"no rating"} />
             </div>
           </div>

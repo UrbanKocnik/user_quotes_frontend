@@ -34,24 +34,34 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
   }
 
   async function likeQuote(){
-    await axios.post(`quotes/${quote.id}/upvote`,
-    {
-        quote
-    }); 
-    setDisliked(false)
-    setLiked(true)
-    setScore(score + 1 + padding)
+    if(!liked){
+      await axios.post(`quotes/${quote.id}/upvote`,
+      {
+          quote
+      }); 
+      setDisliked(false)
+      setLiked(true)
+      setScore(score + 1 + padding)
+    }
+    else{
+      window.alert('You have already liked this quote.')
+    }
   }
 
   async function dislikeQuote(){
-    await axios.post(`quotes/${quote.id}/downvote`,
-    {
-        quote
-    }); 
-    
-    setDisliked(true)
-    setLiked(false) 
-    setScore(score - 1 - padding)
+    if(!disliked){
+      await axios.post(`quotes/${quote.id}/downvote`,
+      {
+          quote
+      }); 
+      
+      setDisliked(true)
+      setLiked(false) 
+      setScore(score - 1 - padding)
+    }
+    else{
+      window.alert('You have already disliked this quote.')
+    }
   }
 
   Modal.setAppElement('#root');

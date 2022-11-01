@@ -25,14 +25,10 @@ top: 15%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0px;
+    padding-top: 150px;
+    padding-bottom: 33%;
     gap: 16px;
-    
-    position: absolute;
-    height: 300px;
-    left: 35.42%;
-    right: 35.42%;
-    top: 20%;
+    //display: inline-block;
 }
 
 .auth-input{
@@ -67,7 +63,8 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-display:inline-flex
+display:inline-block;
+flex-wrap: wrap;
 }
 
 .register-text-container{
@@ -75,29 +72,6 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-}
-
-.footer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 32px 0px;
-    gap: 16px;
-    
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    top: 94.53%;
-    bottom: 0%;
-    
-    /* Orange */
-    
-    background: $orange;
-    /* Shadow */
-    
-    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
-    border-radius: 0px;
 }
 
 .one-input{
@@ -142,9 +116,4 @@ flex-grow: 0;
     align-items: center;
     flex: none;
     flex-grow: 0;
-}
-
-.orange{
-    color: $light_orange;
-    text-decoration: none 
 }
