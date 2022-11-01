@@ -43,7 +43,7 @@ function Login() {
             <label>Password</label>
             <input type="password" placeholder="Password" className='stretch auth-input' required onChange={e => setPassword(e.target.value)}/>               
           </div>
-          <button className="login-button stretch" type="submit">Login</button>
+          <button className="login-button stretch pointer" type="submit">Login</button>
         </form>       
         <div className='register-below-form'>
             <p>Don't have an account?</p>

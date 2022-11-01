@@ -99,6 +99,18 @@ color: #322D38;
     font-size: 18px;
 }
 
+.logged-in{
+    margin: 5px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    gap:20px
+}
+
+.bold{
+    font-weight: bold;
+}
 .footer-items{
     display: flex;
     flex-direction: row;

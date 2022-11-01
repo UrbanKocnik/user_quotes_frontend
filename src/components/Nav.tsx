@@ -8,6 +8,7 @@ import Modal from 'react-modal';
 import ModalComp from './modals/ModalComp';
 import AddQuote from './actions/AddQuote';
 import Settings from './settings/Settings';
+import { Icon } from '@iconify/react';
 
 const Nav = () => {
     const location = useLocation()
@@ -83,24 +84,24 @@ else{
     }
     else{
         return (
-            <div className="nav" id='root'>
+            <div className="nav bold" id='root'>
                 <img src='http://localhost:4000/api/uploads/default.png' width="50" />
-                <div className="button">
-                    <Link className="" to="/">
+                <div className="button orange logged-in">
+                    <Link className="orange" to="/">
                         Home
                     </Link>
 
-                    <a onClick={openModalSettings}>Settings</a>
+                    <a onClick={openModalSettings} className="pointer">Settings</a>
                     {/* if state is true, then it render modal component, with the passed component as prop*/}
                     {settingsIsOpen && <ModalComp open={settingsIsOpen} children={<Settings loggedUser={user}/>} stayOpen={setSettingsIsOpen}></ModalComp>}
 
-                    <Link className="" to="/"
+                    <Link className="orange" to="/"
                         onClick={logout}>Sign out
                     </Link>
                     <Link to={`/profile`}>
                     <img src={user.image} width="50" />
                     </Link>
-                    <a onClick={openModalAdd}>+</a>
+                    <Icon icon="carbon:add" onClick={openModalAdd} className="orange-block pointer" width={30}/>
                     {/* if state is true, then it render modal component, with the passed component as prop*/}
                     {addIsOpen && <ModalComp open={addIsOpen} children={<AddQuote />} stayOpen={setAddIsOpen}></ModalComp>}
                 </div>
