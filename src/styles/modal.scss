@@ -1,0 +1,76 @@
+$orange: #DE8667;
+$light_orange: #EFB467;
+
+.modal-window{
+height: 400px;
+flex-wrap: wrap;
+position: absolute;
+left: 50%;
+top: 40%;
+transform: translate(-50%, -50%);
+background-color: white;
+display: flex;
+flex-direction: column;
+justify-content:flex-start;
+align-items:flex-start;
+padding: 30px;
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
+border-radius: 16px;
+
+    h1{
+        font-weight: lighter;
+    }
+    border: 1px solid black;
+}
+
+.add-quote-form{
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items:flex-start;
+}
+
+.modal-cancel-button{
+    position: absolute;
+    left: 35%;
+    bottom: 10%;
+}
+
+.modal-submit-button{
+background: $orange;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+//border-radius: 32px;
+height: 40px;
+width: 150px;
+color: $orange;
+border-radius: 55px;
+border: 2px solid $orange;
+position: absolute;
+color: white;
+bottom: 8%;
+
+}
+
+.add-quote-input{
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 16px 24px;
+gap: 8px;
+text-align:start;
+width: 529px;
+height: 150px;
+resize: none;
+background: #FFFFFF;
+border: 2px solid #DE8667;
+border-radius: 16px;
+}
+
+.padding-below{
+    padding-bottom: 50px;
+}

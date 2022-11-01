@@ -16,12 +16,12 @@ const AddQuote = () => {
 
   return (
     <div>
-        <h1>Are you feeling inspired?</h1>
-        <h3>You can post quotes. You can delete them on your profile.</h3>
-        <form onSubmit={submit}>
-            <input type="quote" className="form-control" placeholder="Write your quote here" required onChange={e => setQuote(e.target.value)}/>
+        <h1 className='text-lg padding-below'>Are you feeling <span>inspired?</span></h1>
+        <p>You can post quotes. You can delete them on your profile.</p>
+        <form onSubmit={submit} className="add-quote-form">
+            <textarea className="add-quote-input" placeholder="Write your quote here" required onChange={e => setQuote(e.target.value)}/>
             
-            <button className="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+            <button className="modal-submit-button" type="submit">Submit</button>
         </form>
     </div>
   )
