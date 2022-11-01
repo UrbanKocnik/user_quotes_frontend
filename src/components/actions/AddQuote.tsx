@@ -21,7 +21,7 @@ const AddQuote = () => {
         <form onSubmit={submit} className="add-quote-form">
             <textarea className="add-quote-input" placeholder="Write your quote here" required onChange={e => setQuote(e.target.value)}/>
             
-            <button className="modal-submit-button" type="submit">Submit</button>
+            <button className="modal-submit-button pointer" type="submit">Submit</button>
         </form>
     </div>
   )

@@ -44,7 +44,7 @@ const EditQuote = (props: any) => {
         <form onSubmit={submit} className="add-quote-form">
         <textarea className="add-quote-input" defaultValue={props.sentQuote.quote} required onChange={e => setQuote(e.target.value)}/>
             
-            <button className="modal-submit-button" type="submit">Submit</button>
+            <button className="modal-submit-button pointer" type="submit">Submit</button>
         </form>
     </div>
   )

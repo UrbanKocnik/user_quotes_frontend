@@ -51,7 +51,7 @@ const ChangePassword = () => {
             <label>Confirm new password</label>
             <input type="password" className="modal-email-input" placeholder="Confirm new password" required onChange={e => setConfirmNewPassword(e.target.value)}/>
           </div>           
-          <button className="modal-submit-button" type="submit">Submit</button>
+          <button className="modal-submit-button pointer" type="submit">Submit</button>
         </form>
     </div>
   )
