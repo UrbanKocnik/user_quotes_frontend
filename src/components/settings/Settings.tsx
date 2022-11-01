@@ -57,9 +57,9 @@ const Settings = (props: {
                     props.loggedUser.image
                 ))
 
-                setEmail(user.email)
-                setFirstName(user.first_name)
-                setLastName(user.last_name)
+                setEmail(props.loggedUser.email)
+                setFirstName(props.loggedUser.first_name)
+                setLastName(props.loggedUser.last_name)
             }
           }
     )()

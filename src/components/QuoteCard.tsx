@@ -34,6 +34,9 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
   }
 
   async function likeQuote(){
+    if(isAuthor){
+      return window.alert('Cannot like your own quote!')
+    }
     if(!liked){
       await axios.post(`quotes/${quote.id}/upvote`,
       {
@@ -49,6 +52,9 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
   }
 
   async function dislikeQuote(){
+    if(isAuthor){
+      return window.alert('Cannot like your own quote!')
+    }
     if(!disliked){
       await axios.post(`quotes/${quote.id}/downvote`,
       {
