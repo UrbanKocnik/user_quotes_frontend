@@ -2,11 +2,13 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Quote from '../../models/quote'
+import User from '../../models/user'
 import Paginator from '../Paginator'
 import QuoteCard from '../QuoteCard'
 
 const BestQuotes = (props:{
     loggedIn: boolean
+    user: User
 }) => {
     
     const [quotes, setQuotes] = useState([])
@@ -68,6 +70,10 @@ const BestQuotes = (props:{
         </div>
         <div className='best-landing-quotes'>           
             {quotes.map((q: Quote) => {
+              let author = false;
+              if(q.user.id === props.user.id){
+                author = true;
+              }
               let state = ""                     
                   votes.every((vote) => {
                       if(vote.quote_id === q.id){
@@ -87,7 +93,7 @@ const BestQuotes = (props:{
                   });                    
                     return(                    
                         <div key={q.id}>
-                            <QuoteCard quote={q} rating={state} />
+                            <QuoteCard quote={q} rating={state} author={author} />
                         </div>
                     )
                 })}

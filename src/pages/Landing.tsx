@@ -48,10 +48,10 @@ const Landing = () => {
             {signedIn && <RandomQuote />}
           </div>
           <div>
-            {!isLoading && <BestQuotes loggedIn={signedIn}/>}
+            {!isLoading && <BestQuotes loggedIn={signedIn} user={user}/>}
           </div>
           <div>
-            {signedIn && <RecentQuotes loggedIn={signedIn}/>}
+            {signedIn && <RecentQuotes loggedIn={signedIn} user={user}/>}
           </div>
           
         </div>

@@ -48,26 +48,22 @@ const ChangePicture = (props:{
   }
 
   return (
-
-    <div>
+    <div className="padding-right">
+      <div className="picture-settings">
+          <h1 className="text-lg">Profile <span>settings</span></h1>
+          <h3>Change your profile photo</h3>
+      </div>
+      <div className="picture-content">
+      <img src={image} />
+      <form onSubmit={submit}>
+        <ImageUpload uploaded={updateImage}/>
+        <input hidden ref={ref} value={image} className="form-control" required 
+        onChange={e => setImage(e.target.value)}/>                
         
-        <h1>Profile settings</h1>
-        <h3>Change your profile photo</h3>
-        <div>
-        <img src={image} width="50" />
-        </div>
-        <form onSubmit={submit}>
-            <div className="mb-3">
-                <div className="input-group">
-                    <input ref={ref} value={image} className="form-control" required 
-                    onChange={e => setImage(e.target.value)}/>
-                    <ImageUpload uploaded={updateImage}/>
-                </div>                  
-            </div>
-
-            <button className="modal-submit-button pointer" type="submit">Submit</button>
-        </form>
-    </div>
+      </form>
+      <button className="picture-submit-button pointer" type="submit">Submit</button>
+      </div>
+  </div>
   )
 }
 

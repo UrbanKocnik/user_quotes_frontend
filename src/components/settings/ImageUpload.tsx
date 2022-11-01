@@ -17,8 +17,9 @@ const ImageUpload = (props: {uploaded: (url: string) => void}) => {
     }
 
   return (
-    <label htmlFor="" className="btn btn-primary">
-        Upload <input type="file" onChange={e => upload(e.target.files)} />
+    <label htmlFor="" className="file-button">
+      Upload
+         <input type="file" onChange={e => upload(e.target.files)} />
     </label>
   )
 }

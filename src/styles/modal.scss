@@ -40,6 +40,51 @@ border-radius: 16px;
     bottom: 10%;
 }
 
+.picture-settings{
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 24px;
+}
+
+.padding-right{
+    padding-right: 200px;
+}
+.picture-content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 24px;   
+    margin-bottom: 100px;
+}
+/*
+input[type="file"] {
+    display: none;
+}*/
+
+.file-button{
+background: $orange;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+height: 40px;
+width: 150px;
+color: $orange;
+border-radius: 55px;
+border: 2px solid $orange;
+color: white;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+.input-group{
+    display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
 .modal-submit-button{
 background: $orange;
 box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -52,6 +97,22 @@ position: absolute;
 color: white;
 bottom: 8%;
 }
+
+.picture-submit-button{
+    background: $orange;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    height: 40px;
+    width: 150px;
+    color: $orange;
+    border-radius: 55px;
+    border: 2px solid $orange;
+    position: absolute;
+    color: white;
+    bottom: 8%;
+    margin-left: 20px;
+    left: 0%;
+}
+
 
 .add-quote-input{
 display: flex;
