@@ -25,7 +25,7 @@ const BestQuotes = (props:{
               const response = await axios.get(`quotes/votes`)
               setVotes(response.data)
       
-              const {data} = await axios.get(`quotes?page=${multiplier}&condition=created_at`)
+              const {data} = await axios.get(`quotes?page=${multiplier}&condition=created_at&base=9`)
               setQuotes(data.data)  
               setLastPage(data.meta.last_page)
   

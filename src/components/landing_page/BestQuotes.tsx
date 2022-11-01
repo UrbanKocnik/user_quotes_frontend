@@ -26,7 +26,7 @@ const BestQuotes = (props:{
                 const response = await axios.get(`quotes/votes`)
                 setVotes(response.data)
               }    
-              const {data} = await axios.get(`quotes?page=${multiplier}&condition=likes`)
+              const {data} = await axios.get(`quotes?page=${multiplier}&condition=likes&base=9`)
               setQuotes(data.data)  
               setLastPage(data.meta.last_page)
               setIsLoading(false)

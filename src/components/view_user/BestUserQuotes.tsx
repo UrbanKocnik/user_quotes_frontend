@@ -33,7 +33,7 @@ const BestUserQuotes = (props: {
   if(isLoading){
     return (
       <div>
-        <h1>Best users' quotes</h1>
+        <h1><span>Best users' quotes</span></h1>
         <div>
           <p>Loading</p>
         </div>
@@ -44,7 +44,7 @@ const BestUserQuotes = (props: {
     if(quotes.length === 0){
     return (
       <div>
-        <h1>Best users' quotes</h1>
+        <h1><span>Best users' quotes</span></h1>
         <div>
           <p>User has no quotes!</p>
         </div>
@@ -53,7 +53,7 @@ const BestUserQuotes = (props: {
   }
     return (
       <div>
-          <h1>Best users' quotes</h1>
+          <h1><span>Best users' quotes</span></h1>
           <div>
             
           {quotes.map((q: Quote) => {

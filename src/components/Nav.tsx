@@ -84,7 +84,8 @@ else{
     }
     else{
         let white_class = false
-        if(location.pathname === '/profile'){
+        let curr_address = location.pathname.slice(0,6)
+        if(location.pathname === '/profile' || curr_address == '/user/'){
           white_class = true;
         }
         return (

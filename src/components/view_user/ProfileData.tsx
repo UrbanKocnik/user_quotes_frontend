@@ -29,23 +29,23 @@ const ProfileData = (props:{
           }
         )()
       }, [loading])
-  return (
-    <div>
-        <img src={user.image} width="50" />
-        <div>{user.first_name} {user.last_name}</div>
-        <div>
-            <div>
-                <p>Quotes</p>
-                <p>{quoteCount}</p>
-            </div>
-            <div>
-                <p>User karma</p>
-                <p>{karmaCount}</p>
+      return (
+        <div className='profile-data'>
+            <img src={user.image} width="50" />
+            <div className='profile-name'>{user.first_name} {user.last_name}</div>
+            <div className='user-stats'>
+                <div className='quote-number'>
+                    <p>Quotes</p>
+                    <p className='orange text-md'>{quoteCount}</p>
+                </div>
+                <div className='user-karma'>
+                    <p>Quotastic karma</p>
+                    <p className='text-md'>{karmaCount}</p>
+                </div>
             </div>
         </div>
-    </div>
-
-  )
+    
+      )
 }
 
 export default ProfileData

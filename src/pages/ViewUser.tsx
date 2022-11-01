@@ -95,12 +95,14 @@ const ViewUser = () => {
       return <Navigate to={'/profile'} />
     }
   return (
-    <div>
-        <Nav />
+    <>
+      <Nav />
+      <div className='profile-page'>  
+        <div className='orange-background'></div>        
         <div>
             {loaded && <ProfileData loggedUser={user} quotes={quoteCount} karma={karma}/>}
         </div>
-        <div>
+        <div className='profile-quotes'>
           <div>{loaded && <BestUserQuotes page={multiplier} user={user}/>}</div>
           <div>{loaded && <RecentUserQuotes page={multiplier} user={user}/>}</div>
           <div>{loaded && <UserLikedQuotes page={multiplier} user={user}/>}</div> 
@@ -108,8 +110,11 @@ const ViewUser = () => {
         <div>
           {liked > 0 && <Paginator lastPage={lastPage} multiplier={multiplier} pageChanged={setMultiplier}/>}
         </div>
-        <Footer />
-    </div>
+      
+      </div>
+      <Footer />
+    </>
+
   )
 }
 
