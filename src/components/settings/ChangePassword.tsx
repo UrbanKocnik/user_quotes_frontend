@@ -35,18 +35,23 @@ const ChangePassword = () => {
 
   return (
 
-    <div>
-        <h1>Profile settings</h1>
+    <div className="profile-settings">
+        <h1 className="text-lg">Profile <span>settings</span></h1>
         <h3>Change your password</h3>
-        <form onSubmit={submitPassword}>
+        <form onSubmit={submitPassword} className="password-form">
+          <div className="">
             <label>Current password</label>
-            <input type="current_password" className="form-control" placeholder="Current password" required onChange={e => setCurrentPassword(e.target.value)}/>
+            <input type="password" className="modal-email-input" placeholder="Current password" required onChange={e => setCurrentPassword(e.target.value)}/>
+          </div>
+          <div>
             <label>New password</label>
-            <input type="password" className="form-control" placeholder="New password" required onChange={e => setNewPassword(e.target.value)}/>
+            <input type="password" className="modal-email-input" placeholder="New password" required onChange={e => setNewPassword(e.target.value)}/>  
+          </div>
+          <div>
             <label>Confirm new password</label>
-            <input type="password_confirm" className="form-control" placeholder="Confirm new password" required onChange={e => setConfirmNewPassword(e.target.value)}/>
-
-            <button className="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+            <input type="password" className="modal-email-input" placeholder="Confirm new password" required onChange={e => setConfirmNewPassword(e.target.value)}/>
+          </div>           
+          <button className="modal-submit-button" type="submit">Submit</button>
         </form>
     </div>
   )

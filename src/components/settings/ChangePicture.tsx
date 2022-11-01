@@ -65,7 +65,7 @@ const ChangePicture = (props:{
                 </div>                  
             </div>
 
-            <button className="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+            <button className="modal-submit-button" type="submit">Submit</button>
         </form>
     </div>
   )

@@ -2,7 +2,6 @@ $orange: #DE8667;
 $light_orange: #EFB467;
 
 .modal-window{
-height:450px;
 flex-wrap: wrap;
 position: absolute;
 left: 50%;
@@ -13,7 +12,7 @@ display: flex;
 flex-direction: column;
 justify-content:flex-start;
 align-items:flex-start;
-padding: 30px 30px 400px 30px;
+padding: 30px 30px 40px 30px;
 font-family: 'Raleway';
 font-style: normal;
 font-weight: 400;
@@ -44,7 +43,6 @@ border-radius: 16px;
 .modal-submit-button{
 background: $orange;
 box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-//border-radius: 32px;
 height: 40px;
 width: 150px;
 color: $orange;
@@ -69,6 +67,7 @@ resize: none;
 background: #FFFFFF;
 border: 2px solid #DE8667;
 border-radius: 16px;
+margin-bottom: 50px;
 }
 
 .padding-below{
@@ -81,11 +80,27 @@ flex-direction: column;
 align-items: flex-start;
 }
 
+.delete-settings{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    width: 550px;
+}
+
 .settings-form{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
+}
+
+.password-form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 55px;
 }
 
 .modal-email-input{
@@ -133,7 +148,7 @@ border-radius: 32px;
     align-items: flex-start;
     padding: 0px;
     gap: 16px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     width: 529px;
     height: 40px;
 }
