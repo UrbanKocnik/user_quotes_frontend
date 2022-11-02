@@ -17,6 +17,7 @@ const BestQuotes = (props:{
     const [multiplier, setMultiplier] = useState(1)
     const [signedIn, setSignedIn] = useState(true) //send logged in state from page so you dont call twice (render welcome or random)
     const [isLoading, setIsLoading] = useState(false)
+    const [isVisible, setIsVisible] = useState(true)
 
     useEffect(() => {
         (
@@ -32,7 +33,10 @@ const BestQuotes = (props:{
               setLastPage(data.meta.last_page)
   
               setIsLoading(false)
-            }
+              if(multiplier === data.meta.last_page){
+                setIsVisible(false)
+              }
+            }          
           }
         )()
       }, [multiplier])
@@ -99,7 +103,7 @@ const BestQuotes = (props:{
                 })}
             </div>
         <div>
-            {signedIn && <Paginator lastPage={lastPage} multiplier={multiplier} pageChanged={setMultiplier}/>}
+            {isVisible && <Paginator lastPage={lastPage} multiplier={multiplier} pageChanged={setMultiplier}/>}
         </div>
     </div>
   )

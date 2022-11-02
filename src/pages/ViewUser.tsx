@@ -25,6 +25,7 @@ const ViewUser = () => {
     const [liked, setLiked] = useState(0)
     const [owner, setOwner] = useState(false)
     const [base, setBase] = useState(4)
+    const [isVisible, setIsVisible] = useState(true)
 
     const { id } = useParams();
 
@@ -79,6 +80,9 @@ const ViewUser = () => {
               const lp = Math.ceil((quoteCount / base))
               setLastPage(lp) // to hide load more button when all 3 options are out of quotes
             }
+            if(multiplier === lastPage){
+              setIsVisible(false)
+            }
         }
         catch(e){
           window.alert("To view user profiles please sign in")
@@ -108,7 +112,7 @@ const ViewUser = () => {
           <div>{loaded && <UserLikedQuotes page={multiplier} user={user}/>}</div> 
         </div>
         <div>
-          {liked > 0 && <Paginator lastPage={lastPage} multiplier={multiplier} pageChanged={setMultiplier}/>}
+          { isVisible && liked > 0 && <Paginator lastPage={lastPage} multiplier={multiplier} pageChanged={setMultiplier}/>}
         </div>
       
       </div>

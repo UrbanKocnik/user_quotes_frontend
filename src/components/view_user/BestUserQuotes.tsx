@@ -57,6 +57,10 @@ const BestUserQuotes = (props: {
           <div>
             
           {quotes.map((q: Quote) => {
+            let author = false;
+            if(q.user.id === props.user.id){
+              author = true;
+            }
             let state = ""                       
                 votes.every((vote) => {
                     if(vote.quote_id === q.id){
@@ -76,7 +80,7 @@ const BestUserQuotes = (props: {
                 });                    
                   return(                    
                       <div key={q.id}>
-                          <QuoteCard quote={q} rating={state} />
+                          <QuoteCard quote={q} rating={state} author={author} />
                       </div>
                   )
               })}

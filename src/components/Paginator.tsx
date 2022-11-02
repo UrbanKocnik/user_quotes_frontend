@@ -15,7 +15,7 @@ const Paginator = (props:
           props.pageChanged(next) 
         }
         else{
-          window.alert("No more quotes to load")
+          window.alert("All quotes have been loaded now.")
           setVisible(false)
           props.pageChanged(next)     
         } 
