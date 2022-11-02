@@ -9,9 +9,6 @@ top: 40%;
 transform: translate(-50%, -50%);
 background-color: white;
 display: flex;
-flex-direction: column;
-justify-content:flex-start;
-align-items:flex-start;
 padding: 30px 30px 40px 30px;
 font-family: 'Raleway';
 font-style: normal;
@@ -63,19 +60,23 @@ input[type="file"] {
     display: none;
 }*/
 
-.file-button{
-background: $orange;
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-height: 40px;
-width: 150px;
-color: $orange;
-border-radius: 55px;
-border: 2px solid $orange;
-color: white;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
+#file-upload {
+    display: none;
+}
+.custom-file-upload {
+    background: $orange;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        padding: 12px 36px;
+        border-radius: 55px;
+        border: 2px solid $orange;
+        color: white;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+}
+
+.image-input {
+    visibility: hidden;
 }
 
 .input-group{

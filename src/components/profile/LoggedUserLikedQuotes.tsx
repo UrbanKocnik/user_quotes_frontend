@@ -29,7 +29,7 @@ const LoggedUserLikedQuotes = (props: {
   return (
     <div>
         <h1>Your liked quotes</h1>
-        <div>
+        <div className='profile-quotecards'>
             {quotes.map((q: Quote) => {
                 return(                   
                     <div key={q.id}>

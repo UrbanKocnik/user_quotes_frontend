@@ -32,12 +32,20 @@ $font-stack: 'Raleway';
     }
 }
 
+.profile-quotecards{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
 .profile-data{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
+    margin-top: -50px;
     img{
         height: 100px;
         width: 100px;

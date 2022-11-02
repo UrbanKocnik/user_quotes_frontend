@@ -54,7 +54,7 @@ const BestUserQuotes = (props: {
     return (
       <div>
           <h1><span>Best users' quotes</span></h1>
-          <div>
+          <div className='profile-quotecards'>
             
           {quotes.map((q: Quote) => {
             let author = false;

@@ -6,7 +6,7 @@ import ModalComp from './modals/ModalComp';
 import EditQuote from "./actions/EditQuote";
 import DeleteQuote from "./actions/DeleteQuote";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Icon } from '@iconify/react';
 
 interface QuoteProps {
@@ -17,6 +17,7 @@ interface QuoteProps {
 
 const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: QuoteProps) => {
  
+  const location = useLocation()
   const [liked, setLiked] = useState(false)
   const [disliked, setDisliked] = useState(false)
   const [isAuthor, setIsAuthor] = useState(false)
@@ -24,6 +25,7 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
   const [modalDeleteIsOpen, setDeleteIsOpen] = useState(false);
   const [score, setScore] = useState(0);
   const [padding, setPadding] = useState(0);
+  const [isProfile, setIsProfile] = useState(false);
 
   function editModal(){
     setEditIsOpen(true)  
@@ -87,7 +89,10 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
         if(author){
           setIsAuthor(true)
         }
-        setScore(quote.rating)       
+        setScore(quote.rating)   
+        if(location.pathname === '/profile'){
+          setIsProfile(true)
+        }    
       }
     )()
   }, [])
@@ -115,7 +120,7 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
             </div>
         </div>
         {!isAuthor && <div></div>}
-        {isAuthor && 
+        {isAuthor && isProfile &&
         <div id="root" className="quote-action-buttons orange-block">
           <Icon icon="bytesize:settings" onClick={editModal} className="pointer"/>
           {modalEditIsOpen && <ModalComp open={modalEditIsOpen} children={<EditQuote sentQuote={quote}/>} stayOpen={setEditIsOpen} />}

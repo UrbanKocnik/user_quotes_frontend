@@ -31,7 +31,7 @@ const RecentLoggedUserQuotes = (props: {
   return (
     <div>
         <h1>Most recent quotes</h1>
-        <div>
+        <div className='profile-quotecards'>
             {quotes.map((q: Quote) => {
                 return(                   
                     <div key={q.id}>

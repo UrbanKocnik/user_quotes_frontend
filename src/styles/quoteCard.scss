@@ -54,3 +54,10 @@ $orange: #DE8667;
     align-items: center;
     padding: 20px;
 }
+
+.quote {
+    p {
+        word-break: break-all;
+        padding-right: 30px;
+    }
+}
