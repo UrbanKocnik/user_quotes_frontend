@@ -1,0 +1,249 @@
+$orange: #DE8667;
+$light_orange: #EFB467;
+
+.modal-window{
+flex-wrap: wrap;
+position: absolute;
+left: 50%;
+top: 40%;
+transform: translate(-50%, -50%);
+background-color: white;
+display: flex;
+padding: 30px 30px 40px 30px;
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
+border-radius: 16px;
+
+    h1, h3{
+        font-weight: lighter;
+    }
+    border: 1px solid black;
+}
+
+.add-quote-form{
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items:flex-start;
+}
+
+.modal-cancel-button{
+    position: absolute;
+    left: 35%;
+    bottom: 10%;
+}
+
+.picture-settings{
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 24px;
+}
+
+.padding-right{
+    padding-right: 200px;
+}
+.picture-content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 24px;   
+    margin-bottom: 100px;
+    img{
+        margin-right:20px;
+    }
+}
+/*
+input[type="file"] {
+    display: none;
+}*/
+
+#file-upload {
+    display: none;
+}
+.custom-file-upload {
+    background: $orange;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        padding: 12px 36px;
+        border-radius: 55px;
+        border: 2px solid $orange;
+        color: white;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+}
+
+.image-input {
+    visibility: hidden;
+}
+
+.input-group{
+    display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+.modal-submit-button{
+background: $orange;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+height: 40px;
+width: 150px;
+color: $orange;
+border-radius: 55px;
+border: 2px solid $orange;
+position: absolute;
+color: white;
+bottom: 8%;
+}
+
+.picture-submit-button{
+    background: $orange;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    height: 40px;
+    width: 150px;
+    color: $orange;
+    border-radius: 55px;
+    border: 2px solid $orange;
+    position: absolute;
+    color: white;
+    bottom: 8%;
+    margin-left: 20px;
+    left: 0%;
+}
+
+
+.add-quote-input{
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 16px 24px;
+gap: 8px;
+text-align:start;
+width: 529px;
+height: 150px;
+resize: none;
+background: #FFFFFF;
+border: 2px solid #DE8667;
+border-radius: 16px;
+margin-bottom: 50px;
+}
+
+.padding-below{
+    padding-bottom: 50px;
+}
+
+.profile-settings{
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+}
+
+.delete-settings{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    width: 550px;
+}
+
+.settings-form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.password-form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 55px;
+}
+
+.modal-email-input{
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+width: 529px;
+height: 40px;
+border: 2px solid #DE8667;
+border-radius: 32px;
+padding: 8px 30px 8px 24px;
+margin: 10px 0px 0px 0px
+}
+
+.settings-name{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.first-name{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.settings-name-input{
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 8px 30px 8px 24px;
+gap: 8px;
+width: 256.5px;
+height: 40px;
+background: #FFFFFF;
+border: 2px solid #DE8667;
+border-radius: 32px;
+}
+
+.settings-buttons{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 16px;
+    margin-bottom: 20px;
+    width: 529px;
+    height: 40px;
+}
+
+.change-pw-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px;
+    gap: 10px;
+    color: white;
+    width: 256.5px;
+    height: 40px;
+    
+    background: #EFB467;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 32px;
+}
+
+.change-pfp-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px;
+    gap: 10px;
+    width: 256.5px;
+    height: 40px;
+    color: white;    
+    background: #DE8667;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 32px;
+}

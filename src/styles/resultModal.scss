@@ -1,0 +1,38 @@
+$orange: #DE8667;
+.result-modal{
+    flex-wrap: wrap;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items:flex-start;
+    padding: 30px 30px 40px 30px;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+    padding: 40px;
+    
+        h1{
+            font-weight: lighter;
+        }
+        border: 1px solid black;
+    }
+
+.result-cancel-button{
+background: $orange;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+height: 40px;
+width: 150px;
+color: $orange;
+border-radius: 55px;
+border: 2px solid $orange;
+color: white;
+}

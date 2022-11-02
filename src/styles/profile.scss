@@ -1,0 +1,99 @@
+$orange: #DE8667;
+$light_orange: #EFB467;
+$font-stack: 'Raleway';
+
+.profile-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.orange-background{
+    position: absolute;
+    height: 400px;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    background-color: $orange;
+    z-index: -1;
+    }
+    
+.profile-quotes{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 30px;
+    h1{
+        margin-bottom: 30px;
+        font-weight: lighter;
+    }
+}
+
+.profile-quotecards{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile-data{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -50px;
+    img{
+        height: 100px;
+        width: 100px;
+        margin-bottom: 20px;
+    }
+}
+
+.profile-name{
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 400;
+font-size: 35px;
+line-height: 41px;
+margin-bottom: 20px;
+text-align: center;
+letter-spacing: 0.25px;
+color: #FFFFFF;
+}
+
+.user-stats{
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+padding: 16px 48px;
+gap: 32px;
+background: #FFFFFF;
+box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
+border-radius: 16px;
+margin-top: 20px;
+p{
+    margin: 0px;
+}
+}
+
+
+
+.quote-number{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+.user-karma{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+

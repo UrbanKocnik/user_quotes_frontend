@@ -6,6 +6,8 @@ const Paginator = (props:
     pageChanged: (page: number) => void
     }) => {
       const [visible, setVisible] = useState(true)
+
+
     const nextPage = () => {
         const next = props.multiplier + 1;
         const diff = props.lastPage - next;
@@ -13,15 +15,15 @@ const Paginator = (props:
           props.pageChanged(next) 
         }
         else{
-          window.alert("No more quotes to load")
-          props.pageChanged(next)
+          window.alert("All quotes have been loaded now.")
           setVisible(false)
+          props.pageChanged(next)     
         } 
       }
 
   return (
     <div className="pagination">
-        {visible && <button className='page-link' onClick={nextPage}>Load more</button>}
+        {visible && <button className='pagination-button' onClick={nextPage}>Load more</button>}
     </div>
   )
 }

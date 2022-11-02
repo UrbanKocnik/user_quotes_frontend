@@ -1,5 +1,5 @@
 import { SyntheticEvent, useEffect, useState } from "react"
-import '../../styles/quoteCard.css'
+import '../../styles/styles'
 import Modal from 'react-modal';
 import axios from "axios";
 import User from "../../models/user";
@@ -57,9 +57,9 @@ const Settings = (props: {
                     props.loggedUser.image
                 ))
 
-                setEmail(user.email)
-                setFirstName(user.first_name)
-                setLastName(user.last_name)
+                setEmail(props.loggedUser.email)
+                setFirstName(props.loggedUser.first_name)
+                setLastName(props.loggedUser.last_name)
             }
           }
     )()
@@ -73,21 +73,36 @@ const Settings = (props: {
 
   return (
 
-    <div>
-        <h1>Profile settings</h1>
+    <div className="profile-settings">
+        <h1 className="text-lg">Profile <span>settings</span></h1>
         <h3>Change your profile settings</h3>
-        <form onSubmit={submit}>
-            <input type="email" className="form-control" defaultValue={user.email} required onChange={e => setEmail(e.target.value)}/>
-            <input type="first_name" className="form-control" defaultValue={user.first_name} required onChange={e => setFirstName(e.target.value)}/>
-            <input type="last_name" className="form-control" defaultValue={user.last_name} required onChange={e => setLastName(e.target.value)}/>
-            <div id="root">
-                <a onClick={changePwModal}>Change password</a>
-                {passwordIsOpen && <ModalComp open={passwordIsOpen} children={<ChangePassword />} stayOpen={setPasswordIsOpen} />}
-                <a onClick={ChangePfpModal}>Change profile picture</a>
-                {pictureIsOpen && <ModalComp open={pictureIsOpen} children={<ChangePicture sentImage={user.image} />} stayOpen={setPictureIsOpen} />}
+        <form onSubmit={submit} className="settings-form">
+          <div>
+            <label>Email</label>
+            <input type="email" className="modal-email-input" defaultValue={user.email} required onChange={e => setEmail(e.target.value)}/>
+          </div>
+          <div className="settings-name">
+            <div className="first-name">
+              <label>First name</label>
+              <input type="first_name" className="settings-name-input" defaultValue={user.first_name} required onChange={e => setFirstName(e.target.value)}/>
             </div>
+            <div className="first-name">
+              <label>Last name</label>
+              <input type="last_name" className="settings-name-input" defaultValue={user.last_name} required onChange={e => setLastName(e.target.value)}/>
+            </div>
+          </div>
+          <div id="root" className="settings-buttons">
+            <div>
+              <a onClick={changePwModal} className="pointer change-pw-button" >Change password</a>
+              {passwordIsOpen && <ModalComp open={passwordIsOpen} children={<ChangePassword />} stayOpen={setPasswordIsOpen} />}
+            </div>
+            <div>
+              <a onClick={ChangePfpModal} className="pointer change-pfp-button">Change profile picture</a>
+              {pictureIsOpen && <ModalComp open={pictureIsOpen} children={<ChangePicture sentImage={user.image} />} stayOpen={setPictureIsOpen} />}
+            </div>
+          </div>
             <br />
-            <button className="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+            <button className="modal-submit-button pointer" type="submit">Submit</button>
         </form>
     </div>
   )

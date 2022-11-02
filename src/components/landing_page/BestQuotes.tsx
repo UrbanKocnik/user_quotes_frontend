@@ -2,11 +2,13 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Quote from '../../models/quote'
+import User from '../../models/user'
 import Paginator from '../Paginator'
 import QuoteCard from '../QuoteCard'
 
 const BestQuotes = (props:{
     loggedIn: boolean
+    user: User
 }) => {
     
     const [quotes, setQuotes] = useState([])
@@ -15,6 +17,7 @@ const BestQuotes = (props:{
     const [multiplier, setMultiplier] = useState(1)
     const [signedIn, setSignedIn] = useState(false) //send logged in state from page so you dont call twice (render welcome or random)
     const [isLoading, setIsLoading] = useState(false)
+    const [isVisible, setIsVisible] = useState(true)
 
     useEffect(() => {
         (
@@ -26,10 +29,13 @@ const BestQuotes = (props:{
                 const response = await axios.get(`quotes/votes`)
                 setVotes(response.data)
               }    
-              const {data} = await axios.get(`quotes?page=${multiplier}&condition=likes`)
+              const {data} = await axios.get(`quotes?page=${multiplier}&condition=likes&base=9`)
               setQuotes(data.data)  
               setLastPage(data.meta.last_page)
               setIsLoading(false)
+              if(multiplier === data.meta.last_page){
+                setIsVisible(false)
+              }
             }
           }
         )()
@@ -37,8 +43,8 @@ const BestQuotes = (props:{
       
       if(isLoading){
         return (
-          <div>
-            <h1>Most upvoted quotes</h1>
+          <div className='best-landing-page'>
+            <h1><span>Most upvoted quotes</span></h1>
             <p>Most upvoted quotes on the platform. Give a like to the ones you like to keep them in your profile</p>
             <div>
               <p>Loading</p>
@@ -49,8 +55,8 @@ const BestQuotes = (props:{
       else {
         if(quotes.length === 0){
         return (
-          <div>
-            <h1>Most upvoted quotes</h1>
+          <div className='best-landing-page'>
+            <h1><span>Most upvoted quotes</span></h1>
             <p>Most upvoted quotes on the platform. Give a like to the ones you like to keep them in your profile</p>
             <div>
               <p>There are no quotes!</p>
@@ -61,13 +67,17 @@ const BestQuotes = (props:{
     }
 
   return (
-    <div>
-        <div>
-            <h1>Most upvoted quotes</h1>
+    <div className='best-landing-page'>
+        <div className='best-landing-first-row'>
+            <h1><span>Most upvoted quotes</span></h1>
             <p>Most upvoted quotes on the platform. Give a like to the ones you like to keep them in your profile</p>
         </div>
-        <div>           
+        <div className='best-landing-quotes'>           
             {quotes.map((q: Quote) => {
+              let author = false;
+              if(q.user.id === props.user.id){
+                author = true;
+              }
               let state = ""                     
                   votes.every((vote) => {
                       if(vote.quote_id === q.id){
@@ -87,14 +97,14 @@ const BestQuotes = (props:{
                   });                    
                     return(                    
                         <div key={q.id}>
-                            <QuoteCard quote={q} rating={state} />
+                            <QuoteCard quote={q} rating={state} author={author} />
                         </div>
                     )
                 })}
             </div>
         <div>
-            {signedIn && <Paginator lastPage={lastPage} multiplier={multiplier} pageChanged={setMultiplier}/>}
-            {!signedIn && <Link to={`/register`}>Sign up to see more</Link>}
+            {signedIn && isVisible && <Paginator lastPage={lastPage} multiplier={multiplier} pageChanged={setMultiplier}/>}
+            {!signedIn && <Link to={`/register`} className='register_button_landing'>Sign up to see more</Link>}
         </div>
     </div>
   )

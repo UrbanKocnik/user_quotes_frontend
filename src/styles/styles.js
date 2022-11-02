@@ -1,0 +1,7 @@
+import './quoteCard.scss'
+import './landing.scss'
+import './App.scss'
+import './auth.scss'
+import './profile.scss'
+import './modal.scss'
+import './resultModal.scss'

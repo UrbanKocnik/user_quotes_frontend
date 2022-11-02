@@ -48,10 +48,10 @@ const RandomQuote = () => {
         getQuote()
       }, []);
   return (
-    <div>
-        <div>
-            <h1>Quote of the day</h1>
-            <h2>Quote of the day is a randomly chosen quote.</h2>
+    <div className='best-landing-page'>
+        <div className='best-landing-first-row'>
+            <h1><span>Quote of the day</span></h1>
+            <p>Quote of the day is a randomly chosen quote.</p>
         </div>
         <div>            
             {loaded &&<QuoteCard quote={quote} rating={state}/>}

@@ -15,10 +15,11 @@ const ResultModal = (props:{
   return (
     <div>
       <Modal
+        className='result-modal'
         isOpen={modalIsOpen}
         onRequestClose={()=> window.location.reload()}>
-          {props.message}
-        <button onClick={()=> window.location.reload()}>Close</button>
+        <h1 className='text-lg padding-below'>{props.message}</h1>
+        <button className='result-cancel-button pointer' onClick={()=> window.location.reload()}>Close</button>
       </Modal>
     </div>
   )

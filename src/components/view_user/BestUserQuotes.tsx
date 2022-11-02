@@ -33,7 +33,7 @@ const BestUserQuotes = (props: {
   if(isLoading){
     return (
       <div>
-        <h1>Best users' quotes</h1>
+        <h1><span>Best users' quotes</span></h1>
         <div>
           <p>Loading</p>
         </div>
@@ -44,7 +44,7 @@ const BestUserQuotes = (props: {
     if(quotes.length === 0){
     return (
       <div>
-        <h1>Best users' quotes</h1>
+        <h1><span>Best users' quotes</span></h1>
         <div>
           <p>User has no quotes!</p>
         </div>
@@ -53,10 +53,14 @@ const BestUserQuotes = (props: {
   }
     return (
       <div>
-          <h1>Best users' quotes</h1>
-          <div>
+          <h1><span>Best users' quotes</span></h1>
+          <div className='profile-quotecards'>
             
           {quotes.map((q: Quote) => {
+            let author = false;
+            if(q.user.id === props.user.id){
+              author = true;
+            }
             let state = ""                       
                 votes.every((vote) => {
                     if(vote.quote_id === q.id){
@@ -76,7 +80,7 @@ const BestUserQuotes = (props: {
                 });                    
                   return(                    
                       <div key={q.id}>
-                          <QuoteCard quote={q} rating={state} />
+                          <QuoteCard quote={q} rating={state} author={author} />
                       </div>
                   )
               })}

@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import Quote from "../models/quote"
-import '../styles/quoteCard.css'
+import '../styles/styles.js'
 import Modal from 'react-modal';
 import ModalComp from './modals/ModalComp';
 import EditQuote from "./actions/EditQuote";
 import DeleteQuote from "./actions/DeleteQuote";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { Icon } from '@iconify/react';
 
 interface QuoteProps {
   quote: Quote,
@@ -16,6 +17,7 @@ interface QuoteProps {
 
 const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: QuoteProps) => {
  
+  const location = useLocation()
   const [liked, setLiked] = useState(false)
   const [disliked, setDisliked] = useState(false)
   const [isAuthor, setIsAuthor] = useState(false)
@@ -23,6 +25,7 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
   const [modalDeleteIsOpen, setDeleteIsOpen] = useState(false);
   const [score, setScore] = useState(0);
   const [padding, setPadding] = useState(0);
+  const [isProfile, setIsProfile] = useState(false);
 
   function editModal(){
     setEditIsOpen(true)  
@@ -33,24 +36,40 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
   }
 
   async function likeQuote(){
-    await axios.post(`quotes/${quote.id}/upvote`,
-    {
-        quote
-    }); 
-    setDisliked(false)
-    setLiked(true)
-    setScore(score + 1 + padding)
+    if(isAuthor){
+      return window.alert('Cannot like your own quote!')
+    }
+    if(!liked){
+      await axios.post(`quotes/${quote.id}/upvote`,
+      {
+          quote
+      }); 
+      setDisliked(false)
+      setLiked(true)
+      setScore(score + 1 + padding)
+    }
+    else{
+      window.alert('You have already liked this quote.')
+    }
   }
 
   async function dislikeQuote(){
-    await axios.post(`quotes/${quote.id}/downvote`,
-    {
-        quote
-    }); 
-    
-    setDisliked(true)
-    setLiked(false) 
-    setScore(score - 1 - padding)
+    if(isAuthor){
+      return window.alert('Cannot like your own quote!')
+    }
+    if(!disliked){
+      await axios.post(`quotes/${quote.id}/downvote`,
+      {
+          quote
+      }); 
+      
+      setDisliked(true)
+      setLiked(false) 
+      setScore(score - 1 - padding)
+    }
+    else{
+      window.alert('You have already disliked this quote.')
+    }
   }
 
   Modal.setAppElement('#root');
@@ -70,7 +89,10 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
         if(author){
           setIsAuthor(true)
         }
-        setScore(quote.rating)       
+        setScore(quote.rating)   
+        if(location.pathname === '/profile'){
+          setIsProfile(true)
+        }    
       }
     )()
   }, [])
@@ -78,26 +100,31 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
   return (
     <div className="quoteCard">
         <div className='rating'>
-            {liked && <button onClick={likeQuote}>LIKED</button>}
-            {!liked && <button onClick={likeQuote}>Like</button>}
+            {liked && <Icon icon="akar-icons:chevron-up" onClick={likeQuote} className="orange-block pointer"/>}
+            {!liked && <Icon icon="akar-icons:chevron-up" onClick={likeQuote} className="pointer"/>}
             <h4>{score}</h4>
-            {disliked && <button onClick={dislikeQuote}>DISLIKED</button>}
-            {!disliked && <button onClick={dislikeQuote}>Dislike</button>}
+            {disliked && <Icon icon="akar-icons:chevron-up" rotate={2} onClick={dislikeQuote} className="blue-block pointer"/>}
+            {!disliked && <Icon icon="akar-icons:chevron-up" rotate={2} onClick={dislikeQuote} className="pointer"/>}
         </div>
-        <div className='quote'>
-            <p>{quote.quote}</p>
+        <div className="quote-card-mid-colum">
+          <div className='quote'>
+                <p>{quote.quote}</p>
+            </div>
+            <div className='author'>
+              <Link to={`/user/${quote.user.id}/view`}>
+                <img src={quote.user.image} width="20" />               
+              </Link>
+              <Link className="author" to={`/user/${quote.user.id}/view`}>
+                <p>{quote.user.first_name} {quote.user.last_name}</p>               
+              </Link>            
+            </div>
         </div>
-        <div className='author'>
-          <Link to={`/user/${quote.user.id}/view`}>
-            <img src={quote.user.image} width="50" />
-            <p>{quote.user.first_name} {quote.user.last_name}</p>
-          </Link>
-        </div>
-        {isAuthor && 
-        <div id="root">
-          <button onClick={editModal}>Edit</button>
+        {!isAuthor && <div></div>}
+        {isAuthor && isProfile &&
+        <div id="root" className="quote-action-buttons orange-block">
+          <Icon icon="bytesize:settings" onClick={editModal} className="pointer"/>
           {modalEditIsOpen && <ModalComp open={modalEditIsOpen} children={<EditQuote sentQuote={quote}/>} stayOpen={setEditIsOpen} />}
-          <button onClick={deleteModal}>Delete</button>
+          <Icon icon="bi:x-lg" onClick={deleteModal} className="pointer"/>
           {modalDeleteIsOpen && <ModalComp open={modalDeleteIsOpen} children={<DeleteQuote sentQuote={quote}/>} stayOpen={setDeleteIsOpen} />}
         </div>}
     </div>

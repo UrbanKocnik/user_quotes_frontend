@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import '../styles/nav.css'
+import '../styles/styles.js'
 import axios from 'axios';
 import User from '../models/user';
 import { Link } from 'react-router-dom'
@@ -8,6 +8,7 @@ import Modal from 'react-modal';
 import ModalComp from './modals/ModalComp';
 import AddQuote from './actions/AddQuote';
 import Settings from './settings/Settings';
+import { Icon } from '@iconify/react';
 
 const Nav = () => {
     const location = useLocation()
@@ -54,22 +55,18 @@ const Nav = () => {
 if(location.pathname === '/register')
   return (
     <div className="nav" id='root'>
-        <div className='logo'>Logo</div>
-        <div className="button">
-            <div className="">
-                <Link to={`/login`}>Login</Link>
-            </div>
+        <img src='http://localhost:4000/api/uploads/nav_black_logo.png' width="150" />
+        <div className="">
+            <Link className="login_button_nav" to={`/login`}>Login</Link>
         </div>
     </div>
   )
 else if(location.pathname === '/login')
   return (
     <div className="nav" id='root'>
-        <div className='logo'>Logo</div>
+        <img src='http://localhost:4000/api/uploads/nav_black_logo.png' width="150" />
         <div className="button">
-            <div className="">
-                <Link to={`/register`}>Register</Link>
-            </div>
+          <Link className="register_button_nav" to={`/register`}>Register</Link>
         </div>
     </div>
   )
@@ -77,38 +74,41 @@ else{
     if(guest){
         return (
             <div className="nav" id='root'>
-                <div className='logo'>Logo</div>
-                <div className="button">
-                <div className="">
-                    <Link to={`/login`}>Login</Link>
-                </div>
-                <div className="">
-                    <Link to={`/register`}>Register</Link>
-                </div>
-                </div>
+                <img src='http://localhost:4000/api/uploads/nav_black_logo.png' width="150" />
+                <div className="nav-buttons">
+                  <Link className="login_button_nav" to={`/login`}>Login</Link>
+                  <Link className="register_button_nav" to={`/register`}>Register</Link>                
+                </div>          
             </div>
           )
     }
     else{
+        let white_class = false
+        let curr_address = location.pathname.slice(0,6)
+        if(location.pathname === '/profile' || curr_address == '/user/'){
+          white_class = true;
+        }
         return (
             <div className="nav" id='root'>
-                <div className='logo'>Logo</div>
-                <div className="button">
-                    <Link className="" to="/">
+
+                {!white_class && <img src='http://localhost:4000/api/uploads/nav_black_logo.png' width="150" />}
+                {white_class && <img src='http://localhost:4000/api/uploads/nav_white_logo.png' width="150" />}
+                <div className="button logged-in">
+                    <Link className={`${white_class ? "white" : "orange"}`} to="/">
                         Home
                     </Link>
 
-                    <a onClick={openModalSettings}>Settings</a>
+                    <a onClick={openModalSettings} className={`pointer ${white_class ? "white" : "orange"}`}>Settings</a>
                     {/* if state is true, then it render modal component, with the passed component as prop*/}
                     {settingsIsOpen && <ModalComp open={settingsIsOpen} children={<Settings loggedUser={user}/>} stayOpen={setSettingsIsOpen}></ModalComp>}
 
-                    <Link className="" to="/"
+                    <Link className={`${white_class ? "white" : "orange"}`} to="/"
                         onClick={logout}>Sign out
                     </Link>
                     <Link to={`/profile`}>
                     <img src={user.image} width="50" />
                     </Link>
-                    <a onClick={openModalAdd}>+</a>
+                    <Icon icon="carbon:add" onClick={openModalAdd} className={`pointer ${white_class ? "white-icon" : "orange"}`}  width={30}/>
                     {/* if state is true, then it render modal component, with the passed component as prop*/}
                     {addIsOpen && <ModalComp open={addIsOpen} children={<AddQuote />} stayOpen={setAddIsOpen}></ModalComp>}
                 </div>

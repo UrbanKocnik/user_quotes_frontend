@@ -12,10 +12,11 @@ const ModalComp = (props: any) => {
   return (
     <div>
       <Modal
+        className='modal-window'
         isOpen={modalIsOpen}
         onRequestClose={()=> props.stayOpen(false)}>
         {props.children}
-        <button onClick={()=> props.stayOpen(false)}>Cancel</button>
+        <a className='modal-cancel-button pointer' onClick={()=> props.stayOpen(false)}>Cancel</a>
       </Modal>
     </div>
   )

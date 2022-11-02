@@ -30,17 +30,17 @@ const LoggedProfileData = (props:{
         )()
       }, [loading])
   return (
-    <div>
+    <div className='profile-data'>
         <img src={user.image} width="50" />
-        <div>{user.first_name} {user.last_name}</div>
-        <div>
-            <div>
+        <div className='profile-name'>{user.first_name} {user.last_name}</div>
+        <div className='user-stats'>
+            <div className='quote-number'>
                 <p>Quotes</p>
-                <p>{quoteCount}</p>
+                <p className='orange text-md'>{quoteCount}</p>
             </div>
-            <div>
-                <p>User karma</p>
-                <p>{karmaCount}</p>
+            <div className='user-karma'>
+                <p>Quotastic karma</p>
+                <p className='text-md'>{karmaCount}</p>
             </div>
         </div>
     </div>

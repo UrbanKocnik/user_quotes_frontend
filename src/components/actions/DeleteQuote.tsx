@@ -35,11 +35,11 @@ const DeleteQuote = (props: any) => {
     }
 
   return (
-    <div>
-        <h1>Are you sure?</h1>
+    <div className="delete-settings">
+        <h1 className='text-lg'>Are you sure?</h1>
         <h3>This quote will be deleted. There is no undo of this action.</h3>
         <form onSubmit={submit}>
-            <button className="w-100 btn btn-lg btn-primary" type="submit">Delete</button>
+            <button className="modal-submit-button pointer" type="submit">Delete</button>
         </form>
     </div>
   )

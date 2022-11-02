@@ -41,18 +41,22 @@ const Landing = () => {
   }, [signedIn]);
   return (
       <>
-        <Nav />
-        <div>
-          {!signedIn && <WelcomeGuest />}
-          {signedIn && <RandomQuote />}
+      <Nav />
+        <div className="landing-page">
+          <div>
+            {!signedIn && <WelcomeGuest />}
+            {signedIn && <RandomQuote />}
+          </div>
+          <div>
+            {!isLoading && <BestQuotes loggedIn={signedIn} user={user}/>}
+          </div>
+          <div>
+            {signedIn && <RecentQuotes loggedIn={signedIn} user={user}/>}
+          </div>
+          
         </div>
-        <div>
-          {!isLoading && <BestQuotes loggedIn={signedIn}/>}
-        </div>
-        <div>
-          {signedIn && <RecentQuotes loggedIn={signedIn}/>}
-        </div>
-        <Footer />
+      <Footer />
+        
       </>
   )
 }

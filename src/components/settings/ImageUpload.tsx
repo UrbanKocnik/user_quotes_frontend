@@ -17,9 +17,12 @@ const ImageUpload = (props: {uploaded: (url: string) => void}) => {
     }
 
   return (
-    <label htmlFor="" className="btn btn-primary">
-        Upload <input type="file" onChange={e => upload(e.target.files)} />
-    </label>
+    <>
+      <label htmlFor="file-upload" className="custom-file-upload pointer">
+        Upload
+      </label>
+      <input id="file-upload" type="file" onChange={e => upload(e.target.files)}/>
+    </>
   )
 }
 
