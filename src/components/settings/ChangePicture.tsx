@@ -16,6 +16,7 @@ const ChangePicture = (props:{
 
   const submit = async (e: SyntheticEvent) => {
     e.preventDefault();
+    console.log(image)
     await axios.put(`me/update-image`,
     {
         image
@@ -59,9 +60,9 @@ const ChangePicture = (props:{
         <ImageUpload uploaded={updateImage}/>
         <input hidden ref={ref} value={image} className="form-control" required 
         onChange={e => setImage(e.target.value)}/>                
-        
+        <button className="picture-submit-button pointer" type="submit">Submit</button>
       </form>
-      <button className="picture-submit-button pointer" type="submit">Submit</button>
+      
       </div>
   </div>
   )
