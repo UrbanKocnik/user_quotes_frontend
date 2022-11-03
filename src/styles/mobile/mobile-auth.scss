@@ -1,4 +1,4 @@
-@media screen and (min-width: 769px) {
+@media only screen and (max-width: 768px){
 $orange: #DE8667;
 $light_orange: #EFB467;
 * {
@@ -7,18 +7,17 @@ $light_orange: #EFB467;
 
 
 .register-page{
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-padding: 0px;
-gap: 16px;
-
-position: absolute;
-height: 540px;
-left: 35.42%;
-right: 35.42%;
-top: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 16px;
+    
+    position: absolute;
+    left: 7.73%;
+    right: 7.97%;
+    top: 15%;    
 }
 
 .login-page{
@@ -26,13 +25,10 @@ top: 15%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 150px;
-    position: absolute;
-    height: 300px;
-    left: 35.42%;
-    right: 35.42%;
-    top: 20%;
+    padding: 0px;
     gap: 16px;
+    text-align: center;
+    margin-top: 15%;
 }
 
 .auth-input{
@@ -41,6 +37,7 @@ top: 15%;
     border: 2px solid $orange;
     height: 40px;
     padding-left: 20px;
+    align-self: stretch;
 }
 
 .register-button{
@@ -62,29 +59,39 @@ border:none
     border: 2px solid $orange;
 }
 
-.register-form{
+.login-form{
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-display:inline-block;
-flex-wrap: wrap;
+gap: 16px;
+width: 80%;
 }
 
-.login-form{
+.register-form{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    display:inline-block;
-    flex-wrap: wrap;
+    width: 80%;
+    gap: 8px;
 }
 
 .register-text-container{
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+    text-align: center;
+    h1{
+        margin: 0px;
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 35px;
+        line-height: 41px;
+    }
 }
 
 .one-input{
@@ -94,11 +101,7 @@ justify-content: center;
 align-items: flex-start;
 padding: 0px;
 gap: 8px;
-
-
-flex: none;
 align-self: stretch;
-flex-grow: 0;
 }
 
 .two-input{
@@ -107,10 +110,10 @@ flex-direction: row;
 align-items: flex-start;
 padding: 0px;
 gap: 16px;
-
-flex: none;
 align-self: stretch;
-flex-grow: 0;
+input{
+    width: 100%;
+}
 }
 
 .stretch{
@@ -118,6 +121,19 @@ flex-grow: 0;
 }
 
 .register-below-form{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    padding: 0px;
+    gap: 0px;
+    height: 20px;
+    width: 100%;
+    align-items: center;
+    flex: none;
+    flex-grow: 0;
+}
+
+.login-below-form{
     display: flex;
     flex-direction: row;
     justify-content:space-between;
@@ -131,16 +147,4 @@ flex-grow: 0;
     flex-grow: 0;
 }
 
-.login-below-form{
-    display: flex;
-    flex-direction: row;
-    justify-content:space-between;
-    padding-top: 20px;
-    
-    width: 100%;
-    height: 19px;
-    align-items: center;
-    flex: none;
-    flex-grow: 0;
-}
 }

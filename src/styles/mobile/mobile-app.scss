@@ -1,5 +1,5 @@
-@media screen and (min-width: 769px) {
-$orange: #DE8667;
+@media only screen and (max-width: 768px){
+    $orange: #DE8667;
 $light_orange: #EFB467;
 $font-stack: 'Raleway';
 
@@ -120,17 +120,26 @@ padding: 0px;
 .bold{
     font-weight: bold;
 }
+
 .footer-items{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    padding: 0px 72px;
-    gap: 82px;
+    
+    padding: 0px 0px;
     color: white;
-    width: 1440px;
     height: 25px;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    gap: 80px;
+    img{
+        width: 35px;
+    }
 }
+
 
 
 
@@ -163,5 +172,6 @@ span{
     background-color: white;  
     border-radius: 25px;
 }
+
 
 }

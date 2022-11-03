@@ -68,11 +68,12 @@ function Register() {
                     onChange={e => setPasswordConfirm(e.target.value)}/>
                 </div>
                 <button className="register-button stretch pointer" type="submit">Register</button>
-            </form>
-            <div className='register-below-form'>
+                <div className='register-below-form'>
                 <p>Already have an account?</p>
                 <Link className='orange' to={'/login'}>Sign in</Link>
-            </div>        
+            </div> 
+            </form>
+       
         </main>
     <Footer />
     

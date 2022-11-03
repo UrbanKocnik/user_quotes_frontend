@@ -55,16 +55,19 @@ const Nav = () => {
 if(location.pathname === '/register')
   return (
     <div className="nav" id='root'>
+      <Link to={`/`}>
         <img src='http://localhost:4000/api/uploads/nav_black_logo.png' width="150" />
-        <div className="">
-            <Link className="login_button_nav" to={`/login`}>Login</Link>
-        </div>
+      </Link>
+      <Link className="login_button_nav" to={`/login`}>Login</Link>
+
     </div>
   )
 else if(location.pathname === '/login')
   return (
     <div className="nav" id='root'>
+      <Link to={`/`}>
         <img src='http://localhost:4000/api/uploads/nav_black_logo.png' width="150" />
+      </Link>
         <div className="button">
           <Link className="register_button_nav" to={`/register`}>Register</Link>
         </div>
@@ -74,7 +77,9 @@ else{
     if(guest){
         return (
             <div className="nav" id='root'>
+              <Link to={`/`}>
                 <img src='http://localhost:4000/api/uploads/nav_black_logo.png' width="150" />
+              </Link>
                 <div className="nav-buttons">
                   <Link className="login_button_nav" to={`/login`}>Login</Link>
                   <Link className="register_button_nav" to={`/register`}>Register</Link>                
@@ -91,8 +96,14 @@ else{
         return (
             <div className="nav" id='root'>
 
-                {!white_class && <img src='http://localhost:4000/api/uploads/nav_black_logo.png' width="150" />}
-                {white_class && <img src='http://localhost:4000/api/uploads/nav_white_logo.png' width="150" />}
+                {!white_class &&       
+                <Link to={`/`}>
+                  <img src='http://localhost:4000/api/uploads/nav_black_logo.png' width="150" />
+                </Link>}
+                {white_class &&       
+                <Link to={`/`}>
+                  <img src='http://localhost:4000/api/uploads/nav_black_logo.png' width="150" />
+                </Link>}
                 <div className="button logged-in">
                     <Link className={`${white_class ? "white" : "orange"}`} to="/">
                         Home

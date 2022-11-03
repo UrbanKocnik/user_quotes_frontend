@@ -30,7 +30,7 @@ function Login() {
     <>
       <Nav />
       <main className="login-page">  
-        <form onSubmit={submit} className="register-form">
+        <form onSubmit={submit} className="login-form">
           <div className='register-text-container'>
             <h1>Welcome <span>back</span></h1>
             <p>Thank you for coing back. Hope you have a good day and inspire others</p>
@@ -45,11 +45,12 @@ function Login() {
             <input type="password" placeholder="Password" className='stretch auth-input' required onChange={e => setPassword(e.target.value)}/>               
           </div>
           <button className="login-button stretch pointer" type="submit">Login</button>
-        </form>       
-        <div className='register-below-form'>
+          <div className='login-below-form'>
             <p>Don't have an account?</p>
             <Link className='orange' to={'/register'}>Sign up</Link>
-        </div>    
+        </div>  
+        </form>       
+  
       </main>
       <Footer />
     </>

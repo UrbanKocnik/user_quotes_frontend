@@ -1,3 +1,4 @@
+@media screen and (min-width: 769px) {
 $orange: #DE8667;
 .result-modal{
     flex-wrap: wrap;
@@ -35,4 +36,5 @@ color: $orange;
 border-radius: 55px;
 border: 2px solid $orange;
 color: white;
+}
 }
