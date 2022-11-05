@@ -1,5 +1,7 @@
 import './quoteCard.scss'
+import './mobile/mobile-quoteCard.scss'
 import './landing.scss'
+import './mobile/mobile-landing.scss'
 import './App.scss'
 import './mobile/mobile-app.scss'
 import './auth.scss'

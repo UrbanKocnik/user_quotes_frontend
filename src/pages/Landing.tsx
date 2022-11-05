@@ -41,7 +41,6 @@ const Landing = () => {
   }, [signedIn]);
   return (
       <>
-      <Nav />
         <div className="landing-page">
           <div>
             {!signedIn && <WelcomeGuest />}

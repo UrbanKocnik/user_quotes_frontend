@@ -28,7 +28,6 @@ const WelcomeGuest = () => {
           <h3 className='text-md'>Quotastic is free online platform for you <br />to explore the quips, quotes, and proverbs. Sign <br />up and express yourself</h3>
           <Link to={'/register'} className="register_button_nav">Sign up</Link>
         </div>
-        <div>
           {quoteNr && 
           <div className='display-quotes'>
             <div className='top-quote'>
@@ -42,7 +41,6 @@ const WelcomeGuest = () => {
             </div>
           </div>
           }
-        </div>
       </div>
 
       <div className='explore-text'>
