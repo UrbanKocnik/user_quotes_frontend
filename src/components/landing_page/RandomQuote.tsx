@@ -53,7 +53,7 @@ const RandomQuote = () => {
             <h1><span>Quote of the day</span></h1>
             <p>Quote of the day is a randomly chosen quote.</p>
         </div>
-        <div>            
+        <div className='random-quote'>            
             {loaded &&<QuoteCard quote={quote} rating={state}/>}
         </div>
     </div>
