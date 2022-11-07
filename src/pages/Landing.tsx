@@ -45,7 +45,7 @@ const Landing = () => {
         <div className="landing-page">
           <div>
             {!signedIn && <WelcomeGuest />}
-            {signedIn && <RandomQuote />}
+            {signedIn && <RandomQuote user={user}/>}
           </div>
           <div>
             {!isLoading && <BestQuotes loggedIn={signedIn} user={user}/>}
