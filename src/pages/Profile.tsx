@@ -72,7 +72,6 @@ const Profile = () => {
     }
   return (
     <>
-      <Nav />
       <div className='profile-page'>  
       
           <div className='orange-background'></div>       
@@ -86,9 +85,8 @@ const Profile = () => {
           </div>
           <div>
             {liked > 0 && <Paginator lastPage={lastPage} multiplier={multiplier} pageChanged={setMultiplier}/>}
-          </div>        
+          </div>  
       </div>
-      <Footer />
     </>
 
   )

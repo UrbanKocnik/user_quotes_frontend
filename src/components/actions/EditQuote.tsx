@@ -39,7 +39,7 @@ const EditQuote = (props: any) => {
     }
 
   return (
-    <div>
+    <div className='add-modal'>
         <h1 className='text-lg padding-below'>Edit your <span>quote</span></h1>
         <form onSubmit={submit} className="add-quote-form">
         <textarea className="add-quote-input" defaultValue={props.sentQuote.quote} required onChange={e => setQuote(e.target.value)}/>
