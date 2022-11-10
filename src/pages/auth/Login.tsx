@@ -35,7 +35,6 @@ function Login() {
             <h1>Welcome <span>back</span></h1>
             <p>Thank you for coing back. Hope you have a good day and inspire others</p>
           </div>    
-          <div className='wrapper'></div>
           <div className="one-input ">
             <label>Email</label>      
             <input type="email" className='stretch auth-input' placeholder="name@example.com" required onChange={e => setEmail(e.target.value)}/>

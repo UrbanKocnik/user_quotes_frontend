@@ -179,4 +179,11 @@ h1{
     bottom: 0;
     z-index: 5;
 }
+
+.random-quote {
+    .quoteCard {
+        max-width: 380px; 
+        width: 100%;
+    }
+}
 }

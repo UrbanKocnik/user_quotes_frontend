@@ -15,6 +15,16 @@ width: 100%;
 height: 100%;
 }
 
+.nav {
+    .desktop {
+        display: flex;
+
+    }
+    .mobile {
+        display: none;
+    }
+}
+
 .orange-block{
     color: $orange;
 }
@@ -58,7 +68,10 @@ height: 100%;
     flex-direction: row;
     justify-content:space-around;
 }
-    
+
+.link-no-decor{
+    text-decoration: none;
+}
 
 .login_button_nav{
     color: $orange;
@@ -105,6 +118,7 @@ height: 100%;
     flex-direction: row;
     justify-content:center;
     margin-top: 20px;
+    margin-bottom: 20px;
     font-size: 18px;
     cursor: pointer;
 }
@@ -134,13 +148,16 @@ height: 100%;
 }
 
 
+.margin-bottom{
+    margin-bottom: 20px;
+}
 
-.nav{
+.nav div {
 display: flex;
 flex-direction: row;
 justify-content: space-between;
 align-items: center;
-padding: 40px 20px 0px 20px;
+padding: 10px 20px 0px 20px;
 }
 
 span{

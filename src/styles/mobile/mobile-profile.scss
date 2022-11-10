@@ -8,12 +8,12 @@ $font-stack: 'Raleway';
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 140px;
 }
 
 .orange-background{
     position: absolute;
-    height: 400px;
+    height: 370px;
     left: 0px;
     right: 0px;
     top: 0px;
@@ -23,11 +23,8 @@ $font-stack: 'Raleway';
 }
     
 .profile-quotes{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 30px;
-    margin: 0px;
+    
+    margin: 0 20px;
     h1{
         margin-bottom: 30px;
         font-weight: lighter;
@@ -37,7 +34,6 @@ $font-stack: 'Raleway';
 .profile-quotecards{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     padding: 0px;
     gap: 19px;
 }

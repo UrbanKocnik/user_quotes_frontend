@@ -1,6 +1,13 @@
 @media screen and (min-width: 769px) {
 $orange: #DE8667;
 
+.nav {
+
+    .side-menu {
+        display: none;
+    }
+}
+
 .landing-page{
     display: flex;
     flex-direction: column;
@@ -139,4 +146,13 @@ h1{
     bottom: 0;
     z-index: 5;
 }
+
+.random-quote {
+    .quoteCard {
+        max-width: none;
+        width: 380px; 
+    }
+}
+
+
 }

@@ -40,7 +40,7 @@ const Landing = () => {
     getUser();
   }, [signedIn]);
   return (
-      <>
+      <div>
       <Nav />
         <div className="landing-page">
           <div>
@@ -57,7 +57,7 @@ const Landing = () => {
         </div>
       <Footer />
         
-      </>
+      </div>
   )
 }
 

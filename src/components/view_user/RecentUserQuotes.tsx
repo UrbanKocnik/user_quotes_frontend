@@ -33,7 +33,7 @@ const RecentUserQuotes = (props: {
     if(isLoading){
       return (
         <div>
-          <h1>Most recent quotes</h1>
+          <h1>Most recent</h1>
           <div>
             <p>Loading</p>
           </div>
@@ -44,7 +44,7 @@ const RecentUserQuotes = (props: {
       if(quotes.length === 0){
       return (
         <div>
-          <h1>Most recent quotes</h1>
+          <h1>Most recent</h1>
           <div>
             <p>You have no quotes!</p>
           </div>
@@ -53,7 +53,7 @@ const RecentUserQuotes = (props: {
     }
       return (
         <div>
-            <h1>Most recent quotes</h1>
+            <h1>Most recent</h1>
             <div className='profile-quotecards'>
               
             {quotes.map((q: Quote) => {
