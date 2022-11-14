@@ -14,7 +14,7 @@ $light_orange: #EFB467;
     position: absolute;
     left: 7.73%;
     right: 7.97%;
-    top: 15%;    
+    top: 10%;    
 }
 
 .login-page{
@@ -106,11 +106,13 @@ align-self: stretch;
 .two-input{
 display: flex;
 flex-direction: row;
-align-items: flex-start;
+justify-content: space-between;
+margin: 0;
 padding: 0px;
 gap: 24px;
+align-self: stretch;
 input{
-    width: 90%;
+    width: 100%;
 }
 }
 
@@ -123,6 +125,7 @@ input{
     flex-direction: row;
     justify-content:space-between;
     padding: 0px;
+    margin: 10px 0;
     gap: 0px;
     height: 20px;
     width: 100%;

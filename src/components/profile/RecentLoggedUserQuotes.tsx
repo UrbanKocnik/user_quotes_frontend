@@ -19,7 +19,7 @@ const RecentLoggedUserQuotes = (props: {
     
       if(quotes.length === 0){
         return (
-          <div>
+          <div className='profile-quotes-column'>
             <h1>Most recent</h1>
             <div>
               <p>You have no quotes!</p>
@@ -29,7 +29,7 @@ const RecentLoggedUserQuotes = (props: {
       }
       
   return (
-    <div>
+    <div className='profile-quotes-column'>
         <h1>Most recent</h1>
         <div className='profile-quotecards'>
             {quotes.map((q: Quote) => {

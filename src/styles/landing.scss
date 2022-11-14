@@ -21,6 +21,7 @@ $orange: #DE8667;
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
+    margin: 0 20px;
 }
 
 .welcome-first-row{
@@ -36,11 +37,9 @@ $orange: #DE8667;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 25%;
 }
 
-.top-quote{
-
-}
 
 h1{
     margin-bottom: 0px;
@@ -134,17 +133,20 @@ h1{
     position: absolute;
     top: 0;
     z-index: 5;
+    width: 100%;
 }
 
 .center-quote {
     position: absolute;
     z-index: 10;
+    width: 100%;
 }
 
 .bottom-quote {
     position: absolute;
     bottom: 0;
     z-index: 5;
+    width: 100%;
 }
 
 .random-quote {

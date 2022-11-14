@@ -107,9 +107,9 @@ const ViewUser = () => {
             {loaded && <ProfileData loggedUser={user} quotes={quoteCount} karma={karma}/>}
         </div>
         <div className='profile-quotes'>
-          <div>{loaded && <BestUserQuotes page={multiplier} user={user}/>}</div>
-          <div>{loaded && <RecentUserQuotes page={multiplier} user={user}/>}</div>
-          <div>{loaded && <UserLikedQuotes page={multiplier} user={user}/>}</div> 
+          {loaded && <BestUserQuotes page={multiplier} user={user}/>}
+          {loaded && <RecentUserQuotes page={multiplier} user={user}/>}
+          {loaded && <UserLikedQuotes page={multiplier} user={user}/>} 
         </div>
         <div>
           { isVisible && liked > 0 && <Paginator lastPage={lastPage} multiplier={multiplier} pageChanged={setMultiplier}/>}

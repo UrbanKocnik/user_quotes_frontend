@@ -24,16 +24,19 @@ $font-stack: 'Raleway';
     
 .profile-quotes{
     display: flex;
+    justify-content: center;    
     gap: 30px;
     margin-bottom: 10px;
-    > div {
-        flex: 1;
-    }
+    width: 90%;
 
     h1{
         margin-bottom: 30px;
         font-weight: lighter;
     }
+}
+
+.profile-quotes-column{
+    width: 33%;
 }
 
 .profile-quotecards{
@@ -42,6 +45,7 @@ $font-stack: 'Raleway';
     justify-content: center;
     align-items: stretch;
     gap: 20px;
+    width: 100%;
 }
 
 .profile-data{

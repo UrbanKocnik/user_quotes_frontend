@@ -32,7 +32,7 @@ const RecentUserQuotes = (props: {
 
     if(isLoading){
       return (
-        <div>
+        <div className='profile-quotes-column'>
           <h1>Most recent</h1>
           <div>
             <p>Loading</p>
@@ -43,7 +43,7 @@ const RecentUserQuotes = (props: {
     else {
       if(quotes.length === 0){
       return (
-        <div>
+        <div className='profile-quotes-column'>
           <h1>Most recent</h1>
           <div>
             <p>You have no quotes!</p>
@@ -52,7 +52,7 @@ const RecentUserQuotes = (props: {
       )
     }
       return (
-        <div>
+        <div className='profile-quotes-column'>
             <h1>Most recent</h1>
             <div className='profile-quotecards'>
               
