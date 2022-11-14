@@ -1,5 +1,7 @@
-@media screen and (min-width: 769px) {
-$orange: #DE8667;
+@import-normalize;
+
+@media only screen and (max-width: 768px){
+    $orange: #DE8667;
 $light_orange: #EFB467;
 $font-stack: 'Raleway';
 
@@ -11,18 +13,58 @@ font-size: 18px;
 color: #322D38;
 margin: 0px;
 padding: 0px;
-width: 100%;
-height: 100%;
+box-sizing: border-box;
 }
 
 .nav {
-    .desktop {
-        display: flex;
+.desktop {
+    display: none;
+}
+.mobile {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    background-color: white;
+    padding: 30px 30px;
+    box-sizing: border-box;
+    align-items: center;
+}
 
+.side-menu {
+    display: none;
+
+    &.open {
+        display: block;
+        background: #fff;
+        z-index: 9999;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        padding: 30px 40px;
     }
-    .mobile {
-        display: none;
-    }
+}
+}
+
+.side-menu-button-layout{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline; 
+    justify-content: space-between;
+}
+
+.side-menu-profile{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px 0px 0px 0px;
+    gap: 40px;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
 }
 
 .orange-block{
@@ -59,19 +101,48 @@ height: 100%;
     align-items: center;
     padding: 16px 0px;
     gap: 16px;    
+    margin-top: 30px;
     background: #DE8667;   
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
     border-radius: 0px;
 }
-.nav-buttons{
+.mobile-nav-buttons{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    gap: 32px;
     justify-content:space-around;
+    padding-top: 40px;
 }
 
-.link-no-decor{
+.login_button_nav_side{
+    color: $orange;
+    background-color: white;
+    border-radius: 55px;
+    border: 2px solid $orange;
     text-decoration: none;
+    height: 40px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    font-size: 18px;
 }
+
+.register_button_nav_side{
+    
+    color: white;
+    background-color: $orange;
+    border-radius: 55px;
+    border: 2px solid $orange;
+    text-decoration: none;
+    height: 40px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    font-size: 18px;
+}
+    
 
 .login_button_nav{
     color: $orange;
@@ -118,7 +189,6 @@ height: 100%;
     flex-direction: row;
     justify-content:center;
     margin-top: 20px;
-    margin-bottom: 20px;
     font-size: 18px;
     cursor: pointer;
 }
@@ -135,29 +205,39 @@ height: 100%;
 .bold{
     font-weight: bold;
 }
+
+.link-no-decor{
+    text-decoration: none;
+    color: black;
+}
+
+
+
+
+
 .footer-items{
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: center;  
+    padding: 0px 20px;
     justify-content: space-between;
-    padding: 0px 72px;
-    gap: 100px;
+    width: 100%;
     color: white;
-    width: 1440px;
     height: 25px;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    img{
+        width: 35px;
+    }
 }
 
 
-.margin-bottom{
-    margin-bottom: 20px;
-}
 
-.nav div {
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-align-items: center;
-padding: 10px 20px 0px 20px;
+
+.nav{
 }
 
 span{
@@ -181,5 +261,6 @@ span{
     background-color: white;  
     border-radius: 25px;
 }
+
 
 }

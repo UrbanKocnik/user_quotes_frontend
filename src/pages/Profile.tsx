@@ -72,7 +72,7 @@ const Profile = () => {
     }
   return (
     <>
-      <Nav />
+    <Nav />
       <div className='profile-page'>  
       
           <div className='orange-background'></div>       
@@ -80,13 +80,13 @@ const Profile = () => {
               {loaded && <LoggedProfileData loggedUser={user} quotes={quoteCount} karma={karma}/>}
           </div>
           <div className='profile-quotes'>
-            <div>{loaded && <BestLoggedUserQuotes page={multiplier}/>}</div>
-            <div>{loaded && <RecentLoggedUserQuotes page={multiplier}/>}</div>          
-            <div>{loaded && <LoggedUserLikedQuotes page={multiplier}/>}</div>          
+            {loaded && <BestLoggedUserQuotes page={multiplier}/>}
+            {loaded && <RecentLoggedUserQuotes page={multiplier}/>}         
+            {loaded && <LoggedUserLikedQuotes page={multiplier}/>}          
           </div>
           <div>
             {liked > 0 && <Paginator lastPage={lastPage} multiplier={multiplier} pageChanged={setMultiplier}/>}
-          </div>        
+          </div>  
       </div>
       <Footer />
     </>

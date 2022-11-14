@@ -40,12 +40,12 @@ const Landing = () => {
     getUser();
   }, [signedIn]);
   return (
-      <>
+      <div>
       <Nav />
         <div className="landing-page">
           <div>
             {!signedIn && <WelcomeGuest />}
-            {signedIn && <RandomQuote />}
+            {signedIn && <RandomQuote user={user}/>}
           </div>
           <div>
             {!isLoading && <BestQuotes loggedIn={signedIn} user={user}/>}
@@ -57,7 +57,7 @@ const Landing = () => {
         </div>
       <Footer />
         
-      </>
+      </div>
   )
 }
 

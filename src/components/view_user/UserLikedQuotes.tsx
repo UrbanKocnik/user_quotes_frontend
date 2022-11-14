@@ -32,7 +32,7 @@ const UserLikedQuotes = (props: {
 
   if(isLoading){
     return (
-      <div>
+      <div className='profile-quotes-column'>
         <h1>Users liked quotes</h1>
         <div>
           <p>Loading</p>
@@ -43,7 +43,7 @@ const UserLikedQuotes = (props: {
   else {
     if(quotes.length === 0){
     return (
-      <div>
+      <div className='profile-quotes-column'>
         <h1>Users liked quotes</h1>
         <div>
           <p>User has no liked quotes!</p>
@@ -52,7 +52,7 @@ const UserLikedQuotes = (props: {
     )
   }
     return (
-      <div>
+      <div className='profile-quotes-column'>
           <h1>Users liked quotes</h1>
           <div className='profile-quotecards'>
             

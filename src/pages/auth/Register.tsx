@@ -24,8 +24,15 @@ function Register() {
             password_confirm: password_confirm,
 
         })
-        setRedirect(true);
-        return undefined;
+        if(response.data === 'Passwords do not match'){
+            window.alert('Passwords do not match')
+          }
+        else if(response.data === 'email exists'){
+            window.alert('Email already exists in the database')
+          }
+        else{
+            setRedirect(true);
+        }
     }
 
     if(redirect){
@@ -68,11 +75,12 @@ function Register() {
                     onChange={e => setPasswordConfirm(e.target.value)}/>
                 </div>
                 <button className="register-button stretch pointer" type="submit">Register</button>
-            </form>
-            <div className='register-below-form'>
+                <div className='register-below-form'>
                 <p>Already have an account?</p>
                 <Link className='orange' to={'/login'}>Sign in</Link>
-            </div>        
+            </div> 
+            </form>
+       
         </main>
     <Footer />
     

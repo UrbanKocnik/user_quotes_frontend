@@ -14,12 +14,18 @@ function Login() {
     const submit = async (e: SyntheticEvent) => {
       e.preventDefault();
 
-      await axios.post('login',
+      const response = await axios.post('login',
       {
           email,
           password
       });
-      setRedirect(true);
+      if(response.data === 'wrong info'){
+        window.alert('Wrong email or password')
+      }
+      else{
+        setRedirect(true);
+      }
+      
     }
 
     if(redirect){
@@ -30,12 +36,11 @@ function Login() {
     <>
       <Nav />
       <main className="login-page">  
-        <form onSubmit={submit} className="register-form">
+        <form onSubmit={submit} className="login-form">
           <div className='register-text-container'>
             <h1>Welcome <span>back</span></h1>
             <p>Thank you for coing back. Hope you have a good day and inspire others</p>
           </div>    
-          <div className='wrapper'></div>
           <div className="one-input ">
             <label>Email</label>      
             <input type="email" className='stretch auth-input' placeholder="name@example.com" required onChange={e => setEmail(e.target.value)}/>
@@ -45,11 +50,12 @@ function Login() {
             <input type="password" placeholder="Password" className='stretch auth-input' required onChange={e => setPassword(e.target.value)}/>               
           </div>
           <button className="login-button stretch pointer" type="submit">Login</button>
-        </form>       
-        <div className='register-below-form'>
+          <div className='login-below-form'>
             <p>Don't have an account?</p>
             <Link className='orange' to={'/register'}>Sign up</Link>
-        </div>    
+        </div>  
+        </form>       
+  
       </main>
       <Footer />
     </>

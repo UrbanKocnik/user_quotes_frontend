@@ -49,7 +49,7 @@ const ChangePicture = (props:{
   }
 
   return (
-    <div className="padding-right">
+    <div className="picture-modal">
       <div className="picture-settings">
           <h1 className="text-lg">Profile <span>settings</span></h1>
           <h3>Change your profile photo</h3>

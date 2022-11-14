@@ -18,7 +18,7 @@ const BestLoggedUserQuotes = (props: {
       }, [])
       if(quotes.length === 0){
         return (
-          <div>
+          <div className='profile-quotes-column'>
             <h1><span>Most liked quotes</span></h1>
             <div>
               <p>You have no quotes!</p>
@@ -27,7 +27,7 @@ const BestLoggedUserQuotes = (props: {
         )
       }
   return (
-    <div>
+    <div className='profile-quotes-column'>
         <h1><span>Most liked quotes</span></h1>
         <div className='profile-quotecards'>
             {quotes.map((q: Quote) => {
