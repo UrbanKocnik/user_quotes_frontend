@@ -24,8 +24,15 @@ function Register() {
             password_confirm: password_confirm,
 
         })
-        setRedirect(true);
-        return undefined;
+        if(response.data === 'Passwords do not match'){
+            window.alert('Passwords do not match')
+          }
+        else if(response.data === 'email exists'){
+            window.alert('Email already exists in the database')
+          }
+        else{
+            setRedirect(true);
+        }
     }
 
     if(redirect){

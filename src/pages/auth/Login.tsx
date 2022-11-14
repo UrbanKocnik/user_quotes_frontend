@@ -14,12 +14,18 @@ function Login() {
     const submit = async (e: SyntheticEvent) => {
       e.preventDefault();
 
-      await axios.post('login',
+      const response = await axios.post('login',
       {
           email,
           password
       });
-      setRedirect(true);
+      if(response.data === 'wrong info'){
+        window.alert('Wrong email or password')
+      }
+      else{
+        setRedirect(true);
+      }
+      
     }
 
     if(redirect){
