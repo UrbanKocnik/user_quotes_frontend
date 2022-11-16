@@ -87,10 +87,14 @@ h1{
     padding: 0px;
     gap: 20px;
     width: 90%;
+    //flex-basis: 33.333%;
+    flex-wrap: wrap;
     margin: 0 auto;
     > div {
-        width: 90%;
+        flex-basis: 30%;
+        //width: 90%;       
         max-width: 450px;
+        //min-width: 240px;
         .quoteCard {
             width: 100%;
         }
