@@ -28,6 +28,12 @@ box-sizing: border-box;
     padding: 30px 30px;
     box-sizing: border-box;
     align-items: center;
+
+}
+
+.profile-image{
+    border-radius: 50%;
+    width: 50px;
 }
 
 .side-menu {
@@ -43,6 +49,9 @@ box-sizing: border-box;
         bottom: 0;
         top: 0;
         padding: 30px 40px;
+        img{
+            border-radius: 50%;
+        }
     }
 }
 }

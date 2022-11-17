@@ -80,7 +80,6 @@ const Profile = () => {
     <>
     <Nav />
       <div className='profile-page'>  
-      
           <div className='orange-background'></div>       
           <div>
               {loaded && <LoggedProfileData loggedUser={user} quotes={quoteCount} karma={karma}/>}

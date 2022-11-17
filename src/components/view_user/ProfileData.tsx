@@ -31,7 +31,7 @@ const ProfileData = (props:{
       }, [loading])
       return (
         <div className='profile-data'>
-            <img src={user.image} width="50" />
+            <img className="profile-image" src={user.image} />
             <div className='profile-name'>{user.first_name} {user.last_name}</div>
             <div className='user-stats'>
                 <div className='quote-number'>
