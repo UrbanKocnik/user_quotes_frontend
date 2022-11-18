@@ -55,7 +55,6 @@ const Profile = () => {
               setLastPage(response.data.meta.last_page)
             }   
             else{
-              console.log('heree')
               const lp = Math.ceil((quoteCount / base))
               setLastPage(lp) // to hide load more button when all 3 options are out of quotes
             }
