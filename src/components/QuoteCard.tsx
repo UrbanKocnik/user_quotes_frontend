@@ -111,12 +111,12 @@ const QuoteCard = ({quote = new Quote(), rating = "no rating", author = false}: 
                 <p>{quote.quote}</p>
             </div>
             <div className='author'>
-              <Link to={`/user/${quote.user.id}/view`}>
+              <a href={`/user/${quote.user.id}/view`}>
                 <img src={quote.user.image} width="20" />               
-              </Link>
-              <Link className="author" to={`/user/${quote.user.id}/view`}>
+              </a>
+              <a className="author" href={`/user/${quote.user.id}/view`}>
                 <p>{quote.user.first_name} {quote.user.last_name}</p>               
-              </Link>            
+              </a>            
             </div>
         </div>
         {!isAuthor && <div></div>}
