@@ -1,24 +1,6 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import Quote from '../../models/quote'
-import QuoteCard from '../QuoteCard'
 
 const WelcomeGuest = () => {
-    const [quotes, setQuotes] = useState([])
-    const [quoteNr, setQuoteNr] = useState(false)
-
-    useEffect(() => {
-        (
-          async () => {
-            const {data} = await axios.get(`quotes?condition=likes&base=3`)
-            setQuotes(data.data)
-            if(data.data.length === 3){
-              setQuoteNr(true)
-            }
-          }
-        )()
-      }, [])
       
   return (
     <div className='welcome-page'>
@@ -28,19 +10,9 @@ const WelcomeGuest = () => {
           <h3 className='text-md'>Quotastic is free online platform for you <br />to explore the quips, quotes, and proverbs. Sign <br />up and express yourself</h3>
           <Link to={'/register'} className="register_button_nav">Sign up</Link>
         </div>
-          {quoteNr && 
-          <div className='display-quotes'>
-            <div className='top-quote'>
-              <QuoteCard quote={quotes[0]} rating={"no rating"} />
-            </div>
-            <div className='center-quote'>
-                <QuoteCard quote={quotes[1]} rating={"no rating"} />
-            </div>
-            <div className='bottom-quote'>
-                <QuoteCard quote={quotes[2]} rating={"no rating"} />
-            </div>
-          </div>
-          }
+        <div>
+          <img src='http://localhost:4000/api/uploads/display_quotes.png' />
+        </div>
       </div>
 
       <div className='explore-text'>
