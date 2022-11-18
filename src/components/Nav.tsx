@@ -9,6 +9,8 @@ import ModalComp from './modals/ModalComp';
 import AddQuote from './actions/AddQuote';
 import Settings from './settings/Settings';
 import { Icon } from '@iconify/react';
+import WhiteLogo from '../images/nav_white_logo.png'
+import BlackLogo from '../images/nav_black_logo.png'
 
 const Nav = () => {
     const location = useLocation()
@@ -67,7 +69,7 @@ if(location.pathname === '/register')
     <div className="nav">
       <div className="desktop" id='root'>
       <Link to={`/`}>
-        <img src='http://localhost:4000/api/uploads/nav_black_logo.png' width="150" />
+        <img src={BlackLogo} width="150" />
       </Link>
       <Link className="login_button_nav" to={`/login`}>Login</Link>                
       </div> 
@@ -75,7 +77,7 @@ if(location.pathname === '/register')
         <Icon icon="carbon:menu" className="pointer orange" onClick={openMenu}  width={30}/>
 
         <Link to={`/`}>
-          <img src='http://localhost:4000/api/uploads/nav_black_logo.png' width="150" />
+          <img src={BlackLogo} width="150" />
         </Link>
 
         </div>
@@ -100,7 +102,7 @@ else if(location.pathname === '/login')
     <div className="nav">
       <div className="desktop" id='root'>
       <Link to={`/`}>
-        <img src='http://localhost:4000/api/uploads/nav_black_logo.png' width="150" />
+        <img src={BlackLogo} width="150" />
       </Link>
       <Link className="register_button_nav" to={`/register`}>Register</Link>                
       </div> 
@@ -108,7 +110,7 @@ else if(location.pathname === '/login')
         <Icon icon="carbon:menu" className="pointer orange" onClick={openMenu} width={30}/>
 
         <Link to={`/`}>
-          <img src='http://localhost:4000/api/uploads/nav_black_logo.png' width="150" />
+          <img src={BlackLogo} width="150" />
         </Link>
 
         </div>
@@ -134,7 +136,7 @@ else{
             <div className="nav">
               <div className="desktop" id='root'>
               <Link to={`/`}>
-                <img src='http://localhost:4000/api/uploads/nav_black_logo.png' width="150" />
+                <img src={BlackLogo} width="150" />
               </Link>
                 <div className="nav-buttons">
                   <Link className="login_button_nav" to={`/login`}>Login</Link>
@@ -145,7 +147,7 @@ else{
                 <Icon icon="carbon:menu" className="pointer orange" onClick={openMenu} width={30}/>
 
                 <Link to={`/`}>
-                  <img src='http://localhost:4000/api/uploads/nav_black_logo.png' width="150" />
+                  <img src={BlackLogo} width="150" />
                 </Link>
 
                 </div>
@@ -177,11 +179,11 @@ else{
             <div className="desktop" id='root'>
                 {!white_class &&       
                 <Link to={`/`}>
-                  <img src='http://localhost:4000/api/uploads/nav_black_logo.png' width="150" />
+                  <img src={BlackLogo} width="150" />
                 </Link>}
                 {white_class &&       
                 <Link to={`/`}>
-                  <img src='http://localhost:4000/api/uploads/nav_white_logo.png' width="150" />
+                  <img src={WhiteLogo} width="150" />
                 </Link>}
                 <div className="button logged-in">
                     <Link className={`${white_class ? "white" : "orange"}`} to="/">
@@ -208,7 +210,7 @@ else{
             <Icon icon="carbon:menu" className="pointer orange" onClick={openMenu} width={30}/>
 
             <Link to={`/`}>
-              <img src='http://localhost:4000/api/uploads/nav_black_logo.png' width="150" />
+              <img src={BlackLogo} width="150" />
             </Link>
 
             <Icon icon="carbon:add" className="pointer orange" onClick={openModalAdd} width={30}/>

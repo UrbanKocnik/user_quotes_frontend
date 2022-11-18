@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import DisplayQuotoes from '../../images/display_quotes.png'
 
 const WelcomeGuest = () => {
       
@@ -11,7 +12,7 @@ const WelcomeGuest = () => {
           <Link to={'/register'} className="register_button_nav">Sign up</Link>
         </div>
         <div>
-          <img src='http://localhost:4000/api/uploads/display_quotes.png' />
+          <img src={DisplayQuotoes}/>
         </div>
       </div>
 

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link, Navigate } from 'react-router-dom';
 import Nav from '../../components/Nav';
 import Footer from '../../components/Footer';
+import DefaultImage from '../../images/default.png'
 
 function Register() {
     const [first_name, setFirstName] = useState('');
@@ -46,7 +47,7 @@ function Register() {
             <div className='register-text-container'>
                 <h1>What is your <span>name?</span></h1>
                 <p>Your name will appear on quotes and your public profile</p>
-                <img src='http://localhost:4000/api/uploads/default.png' />
+                <img src={DefaultImage} />
             </div>
             <form onSubmit={submit} className="register-form">
                 <div className='one-input'>
