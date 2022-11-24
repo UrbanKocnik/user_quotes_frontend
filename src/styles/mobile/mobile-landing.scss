@@ -17,7 +17,7 @@ $orange: #DE8667;
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    gap: 150px;
+    gap: 48px;
 }
 
 .welcome-first-row{
@@ -25,7 +25,7 @@ $orange: #DE8667;
     flex-direction: column;
     justify-content: center;
     align-items: stretch;   
-    gap: 200px;
+    gap: 48px;
 }
 
 .display-quotes{
@@ -59,18 +59,6 @@ h1{
         font-weight: 400;
     }
 }
-/*
-.text-xlg{
-    font-size: 40px;
-}
-
-.text-md{
-    font-size: 12px;
-}
-
-.text-lg{
-    font-size: 24px;
-}*/
 
 .explore-text{
     font-family: 'Raleway';
@@ -151,27 +139,9 @@ h1{
     width: 90%;
 }
 
-.display-quotes {
-    position: relative;
-}
-
-.top-quote {
-    position: absolute;
-    top: 0;
-    z-index: 5;
-    filter: blur(5px);
-}
-
-.center-quote {
-    position: absolute;
-    z-index: 10;
-}
-
-.bottom-quote {
-    position: absolute;
-    bottom: 0;
-    z-index: 5;
-    filter: blur(5px);
+.display-image{
+    width: 90%;
+    padding-left: 20px;
 }
 
 .random-quote {

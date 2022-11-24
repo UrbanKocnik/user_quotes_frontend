@@ -12,7 +12,7 @@ const WelcomeGuest = () => {
           <Link to={'/register'} className="register_button_nav">Sign up</Link>
         </div>
         <div>
-          <img src={DisplayQuotoes}/>
+          <img className='display-image' src={DisplayQuotoes}/>
         </div>
       </div>
 
